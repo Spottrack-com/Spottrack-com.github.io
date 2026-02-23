@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spottrack - Una aplicación de música optimizada, sin anuncios y compatible con Windows">
+  <meta name="keywords" content="música, streaming, sin anuncios, optimizado, windows">
+  <title>Spottrack Music</title>
+
+  <!-- WEB GLOBAL CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- AOS - Animate on Scroll -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"> 
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body class="overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-2">
+          <img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 object-contain">
+          <span class="text-xl font-bold text-white">Spottrack</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="javascript:void(0)" class="nav-link active text-white hover:text-primary transition-colors" data-section="inicio">Inicio</a>
+          <a href="javascript:void(0)" class="nav-link text-white hover:text-primary transition-colors" data-section="descargar">Descargar</a>
+          <a href="javascript:void(0)" class="nav-link text-white hover:text-primary transition-colors" data-section="ads">Spottrack Ads</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu gradient-bg md:hidden z-50" id="mobile-menu">
+    <div class="p-4 flex justify-end">
+      <button id="menu-close" class="text-white focus:outline-none">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-6 p-6">
+      <a href="javascript:void(0)" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-section="inicio">Inicio</a>
+      <a href="javascript:void(0)" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-section="descargar">Descargar</a>
+      <a href="javascript:void(0)" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-section="ads">Spottrack Ads</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="overlay" id="overlay"></div>
+  
+  <div class="content-wrapper pt-24">
+    <!-- Hero Section / Inicio -->
+    <section id="inicio" class="py-16 lg:py-24 section visible">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+              <span class="text-primary">Tu música</span>, sin límites
+            </h1>
+            <p class="text-lg mb-8 text-gray-300">Spottrack es una aplicación de música diseñada para ofrecerte una experiencia de audio excepcional:</p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-3"></i>
+                <span>Totalmente optimizada para un rendimiento superior</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-3"></i>
+                <span>Sin anuncios que interrumpan tu experiencia</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-3"></i>
+                <span>Ligera y rápida, incluso en equipos modestos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-3"></i>
+                <span>Compatible con todas las versiones de Windows</span>
+              </li>
+            </ul>
+            <a href="javascript:void(0)"
+   data-section="descargar"
+   class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+  <i class="fas fa-download mr-2"></i>
+  Descargar Spottrack PC
+</a>
+          </div>
+          
+          <div class="md:w-1/2" data-aos="fade-left">
+            <div class="pc-mockup">
+              <img src="images/pc.png" alt="Spottrack PC" class="w-full">
+              <div class="pc-screen">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Comparison Section -->
+<section id="comparison" class="py-16 bg-dark section">
+  <div class="container mx-auto px-4">
+    
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+        ¿Por qué elegir <span class="text-primary">Spottrack</span>?
+      </h2>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+        Comparación real de funciones y características entre Spottrack y otras apps populares de música.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto" data-aos="fade-up" data-aos-delay="100">
+      <table class="w-full text-left border-collapse min-w-[900px]">
+        <thead>
+          <tr class="border-b border-gray-700 text-lg">
+            <th class="py-4 px-6 text-gray-400">Características</th>
+            <th class="py-4 px-6 text-primary font-bold bg-primary bg-opacity-10">
+              Spottrack
+            </th>
+            <th class="py-4 px-6">Spotify</th>
+            <th class="py-4 px-6">Apple Music</th>
+            <th class="py-4 px-6">eSound</th>
+          </tr>
+        </thead>
+
+        <tbody class="text-sm lg:text-base">
+
+          <!-- Anuncios -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Anuncios</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">No</td>
+            <td class="py-4 px-6">Sí (en plan gratuito)</td>
+            <td class="py-4 px-6">No</td>
+            <td class="py-4 px-6">Sí (en plan gratuito)</td>
+          </tr>
+
+          <!-- Reproducción en segundo plano -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Reproducción en segundo plano</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">Sí</td>
+            <td class="py-4 px-6">Sí</td>
+            <td class="py-4 px-6">Sí</td>
+            <td class="py-4 px-6">Sí</td>
+          </tr>
+
+          <!-- Catálogo -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Catálogo</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">
+              Catalogo muy amplio (Todo el catalogo de YT)
+            </td>
+            <td class="py-4 px-6">Catálogo muy amplio con licencia oficial</td>
+            <td class="py-4 px-6">Catálogo medio amplio con licencia oficial</td>
+            <td class="py-4 px-6">Catálogo muy amplio sin licencia oficial</td>
+          </tr>
+
+          <!-- Precio -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Precio</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">Gratis</td>
+            <td class="py-4 px-6">Gratis / Premium</td>
+            <td class="py-4 px-6">Suscripción mensual</td>
+            <td class="py-4 px-6">Gratis / Premium</td>
+          </tr>
+
+          <!-- Compatibilidad -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Compatibilidad</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">Windows 10/11 32 y 64 bits</td>
+            <td class="py-4 px-6">Windows 10 (64 bits) y 11, macOS, iOS, Android</td>
+            <td class="py-4 px-6">Windows 10/11, macOS, iOS, Android</td>
+            <td class="py-4 px-6">Windows 10/11, macOS, iOS, Android</td>
+          </tr>
+
+          <!-- Interfaz -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Interfaz</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">Muy buena Moderna y simple</td>
+            <td class="py-4 px-6">Muy buena Moderna y conocida</td>
+            <td class="py-4 px-6">Buena Integrada con Apple</td>
+            <td class="py-4 px-6">Buena Interfaz funcional</td>
+          </tr>
+
+          <!-- Optimización -->
+          <tr class="border-b border-gray-700 hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Optimización</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">Muy Alta</td>
+            <td class="py-4 px-6">Media alta</td>
+            <td class="py-4 px-6">Alta</td>
+            <td class="py-4 px-6">Media baja</td>
+          </tr>
+
+          <!-- Modo Offline -->
+          <tr class="hover:bg-secondary transition-colors">
+            <td class="py-4 px-6 text-gray-400">Modo Offline</td>
+            <td class="py-4 px-6 text-primary font-semibold bg-primary bg-opacity-10">No (En desarrollo)</td>
+            <td class="py-4 px-6">Sí (Premium)</td>
+            <td class="py-4 px-6">Sí</td>
+            <td class="py-4 px-6">Sí (limitado)</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+    
+    <!-- Download Section -->
+<section id="descargar" class="py-16 lg:py-24 section">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+        Descarga <span class="text-primary">Spottrack</span> para Windows
+      </h2>
+
+      <p class="text-lg text-gray-300 mb-12">
+        Compatible oficialmente con <span class="text-primary font-semibold">Windows 10 y Windows 11</span>.  
+        También se esta probando en Windows 7/8/8.1 pero no se garantiza su funcionamiento en esos sistemas operativos antiguos.
+      </p>
+
+      <!-- Compatibility Badges -->
+      <div class="flex justify-center gap-10 mb-14 flex-wrap">
+        <div class="text-center">
+          <i class="fab fa-windows text-6xl text-gray-300 mb-3"></i>
+          <p class="font-semibold">Windows 10</p>
+        </div>
+        <div class="text-center">
+          <i class="fab fa-windows text-6xl text-primary mb-3"></i>
+          <p class="font-semibold text-primary">Windows 11 (SO mas reciente)</p>
+        </div>
+      </div>
+
+      <!-- Download Panel NUEVO -->
+<div class="download-panel">
+
+  <h3 class="download-title">
+    Elige tu versión segun la arquitectura de tu sistema operativo Windows 10/11:
+  </h3>
+
+  <div class="download-grid">
+
+    <!-- 32 Bits -->
+    <a href="https://github.com/RAGE-StudiosC/Spottrack-PC/releases/download/V2.0.0/Spottrack-PC-Winx32.exe"
+       class="download-card">
+
+      <i class="fas fa-microchip download-icon"></i>
+
+      <h4 class="download-heading">
+        Spottrack 32 Bits
+      </h4>
+
+      <p class="download-text">
+        Para sistemas antiguos o equipos con arquitectura x86.
+      </p>
+
+      <span class="download-button">
+        <i class="fas fa-download"></i>
+        Descargar 32 Bits
+      </span>
+    </a>
+
+
+    <!-- 64 Bits -->
+    <a href="https://github.com/RAGE-StudiosC/Spottrack-PC/releases/download/V2.0.0/Spottrack-PC-Winx64.exe"
+       class="download-card">
+
+      <i class="fas fa-bolt download-icon"></i>
+
+      <h4 class="download-heading">
+        Spottrack 64 Bits
+      </h4>
+
+      <p class="download-text">
+        Mejor rendimiento para equipos modernos y actuales.
+      </p>
+
+      <span class="download-button">
+        <i class="fas fa-download"></i>
+        Descargar 64 Bits
+      </span>
+    </a>
+
+
+    <!-- Universal -->
+    <a href="https://github.com/RAGE-StudiosC/Spottrack-PC/releases/download/V2.0.0/Spottrack-PC-Win.exe"
+       class="download-card download-featured">
+
+      <i class="fas fa-layer-group download-icon"></i>
+
+      <h4 class="download-heading">
+        Versión Universal
+      </h4>
+
+      <p class="download-text">
+        Detecta automáticamente 32 o 64 bits.
+        Recomendado para la mayoría.
+      </p>
+
+      <span class="download-button">
+        <i class="fas fa-download"></i>
+        Descargar Universal
+      </span>
+    </a>
+
+  </div>
+
+  <div class="download-info">
+    Versión 2.0.0 • 240MB • Instalador oficial
+  </div>
+</div>
+</section>
+
+    <!-- Ads Section -->
+    <section id="ads" class="py-16 bg-dark section">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6">Spottrack <span class="text-primary">Ads</span></h2>
+            <p class="text-lg text-gray-300">Oportunidades para empresas y marcas que quieren llegar a nuestra audiencia.</p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-secondary p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+              <div class="h-16 w-16 bg-primary bg-opacity-20 flex items-center justify-center rounded-lg mb-6">
+                <i class="fas fa-handshake text-2xl text-primary"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">Partnership</h3>
+              <p class="text-gray-300 mb-6">Asocie su marca con Spottrack y llegue a millones de usuarios que disfrutan de música todos los días.</p>
+              <ul class="space-y-3 mb-6 text-gray-300">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Promociones integradas</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Campañas personalizadas</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Métricas detalladas</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-secondary p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+              <div class="h-16 w-16 bg-primary bg-opacity-20 flex items-center justify-center rounded-lg mb-6">
+                <i class="fas fa-bullhorn text-2xl text-primary"></i>
+              </div>
+              <h3 class="text-2xl font-semibold mb-4">Promoción</h3>
+              <p class="text-gray-300 mb-6">Promocione sus productos o aplicaciones dentro del ecosistema de Spottrack.</p>
+              <ul class="space-y-3 mb-6 text-gray-300">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Banners no intrusivos</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Recomendaciones patrocinadas</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                  <span>Integración con la experiencia de usuario</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <a href="mailto:spottrack.rage.studios@gmail.com"
+   class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+  <i class="fas fa-envelope mr-2"></i>
+  Contactar para partnership
+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-secondary">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-8 md:mb-0 flex items-center">
+            <img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 mr-2 object-contain">
+            <span class="text-xl font-bold text-white">Spottrack</span>
+          </div>
+          
+          <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+            <a href="politica-privacidad.html" class="text-gray-300 hover:text-primary transition-colors">Política de Privacidad</a>
+            <a href="terminos-condiciones.html" class="text-gray-300 hover:text-primary transition-colors">Términos y Condiciones</a>
+          </div>
+          
+          <div class="mt-8 md:mt-0">
+  <div class="flex space-x-6">
+
+    <!-- Discord -->
+    <a href="https://discord.gg/kRhXAajRDq"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="text-gray-300 hover:text-primary transition-colors">
+      <i class="fab fa-discord text-xl"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@Rage-community"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="text-gray-300 hover:text-primary transition-colors">
+      <i class="fab fa-youtube text-xl"></i>
+    </a>
+
+    <!-- X -->
+    <a href="https://x.com/spottrack"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="text-gray-300 hover:text-primary transition-colors">
+      <i class="fab fa-x-twitter text-xl"></i>
+    </a>
+  </div>
+</div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-700 text-center">
+          <p class="text-gray-400">&copy; 2026 RAGE Studios. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- AOS Init -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js"></script>
+</body>
+</html>

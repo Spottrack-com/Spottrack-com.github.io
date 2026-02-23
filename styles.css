@@ -1,0 +1,254 @@
+/* =====================================================
+   BASE VISUAL
+===================================================== */
+
+body{
+  background:#05070d;
+  font-family:'Inter',sans-serif;
+  color:#e6edf7;
+  overflow-x:hidden;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav{
+  background:rgba(8,12,20,0.95) !important;
+  backdrop-filter:blur(16px);
+}
+
+.nav-link{
+  color:#e6edf7 !important;
+  transition:.3s ease;
+}
+
+.nav-link:hover{
+  color:#00ff88 !important;
+}
+
+/* =====================================================
+   TEXTOS DESTACADOS
+===================================================== */
+
+.text-primary{
+  color:#00ff88 !important;
+}
+
+a{
+  color:#00ff88;
+  transition:.3s ease;
+}
+
+a:hover{
+  color:#00c853;
+}
+
+/* =====================================================
+   BOTONES GENERALES
+===================================================== */
+
+.btn-primary{
+  background:linear-gradient(135deg,#00c853,#00ff88) !important;
+  border:none !important;
+  border-radius:40px !important;
+  color:white !important;
+  transition:.3s ease;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,255,136,.35);
+}
+
+/* =====================================================
+   COMPARISON
+===================================================== */
+
+#comparison{
+  background:#05070d;
+}
+
+#comparison table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+#comparison thead th,
+#comparison tbody td{
+  padding:16px;
+  border-bottom:1px solid #1f2937;
+}
+
+#comparison tbody tr:hover{
+  background:#0f1320;
+  transition:.2s ease;
+}
+
+/* =====================================================
+   DESCARGAS
+===================================================== */
+
+#descargar{
+  background:#05070d;
+}
+
+#descargar .download-panel{
+  background:#0d0d22;
+  padding:35px 25px; /* más compacto */
+  border-radius:18px;
+  max-width:1050px;
+  margin:0 auto;
+}
+
+#descargar .download-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px; /* menos espacio */
+  margin-top:25px;
+}
+
+/* 🔥 CARDS MÁS OSCURAS Y MÁS PEQUEÑAS */
+#descargar .download-card{
+  background:#010207;
+  padding:22px 20px; /* más compacto */
+  border-radius:14px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#e6edf7;
+}
+
+/* ICONO */
+#descargar .download-icon{
+  font-size:22px; /* más pequeño */
+  margin-bottom:10px;
+  color:#00ff88;
+}
+
+/* TEXTOS */
+#descargar .download-heading{
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:6px;
+  color:#ffffff;
+}
+
+#descargar .download-text{
+  font-size:12px;
+  color:#9aa7bd;
+  margin-bottom:14px;
+}
+
+/* 🔥 BOTONES MÁS PEQUEÑOS PERO MÁS ANCHOS */
+#descargar .download-button{
+  width:90%;              /* un poco más ancho */
+  max-width:220px;        /* suficiente para que entre el texto */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+
+  background:linear-gradient(135deg,#00c853,#00ff88);
+  padding:8px 16px;       /* compacto */
+  border-radius:40px;
+  font-size:13px;
+  font-weight:600;
+  color:white !important;
+
+  white-space:nowrap;     /* 👈 ESTO EVITA EL SALTO DE LÍNEA */
+  
+  transition:.25s ease;
+}
+
+#descargar .download-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,255,136,.35);
+}
+
+#descargar .download-info{
+  text-align:center;
+  margin-top:25px;
+  font-size:12px;
+  color:#9aa7bd;
+}
+
+@media(max-width:1024px){
+  #descargar .download-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* =====================================================
+   PARTNERSHIP
+===================================================== */
+/* =====================================================
+   ADS ICON BACKGROUND FIX
+===================================================== */
+
+#ads .bg-secondary .h-16{
+  background:rgba(0,255,136,0.08) !important; /* verde oscuro translúcido */
+  border:1px solid rgba(0,255,136,0.15);
+  border-radius:14px !important;
+  backdrop-filter:blur(6px);
+  transition:.3s ease;
+}
+
+/* efecto hover más pro */
+#ads .bg-secondary:hover .h-16{
+  background:rgba(0,255,136,0.15) !important;
+  box-shadow:0 6px 18px rgba(0,255,136,.15);
+}
+
+#contact .card{
+  background:#05070d;
+  border:none;
+  border-radius:16px;
+  padding:25px;
+  transition:.3s ease;
+}
+
+#contact .card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,255,136,.12);
+}
+
+#contact .card i{
+  font-size:22px;
+  color:#00ff88;
+  background:rgba(0,255,136,0.12);
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:12px;
+}
+
+/* =====================================================
+   ADS
+===================================================== */
+
+#ads{
+  background:#05070d !important;
+}
+
+#ads .bg-secondary{
+  background:#0d0d22 !important;
+  border-radius:18px !important;
+  transition:.3s ease;
+}
+
+#ads .bg-secondary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 22px rgba(0,255,136,.1);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+  background:#0d0d22 !important;
+  color:#cbd5e1;
+}
