@@ -245,6 +245,108 @@ a:hover{
 }
 
 /* =====================================================
+   ADS INFO
+===================================================== */
+
+.ads-info{
+  background:#05070d;
+}
+
+/* TITULO */
+
+.ads-title{
+  font-size:2.2rem;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+/* TEXTO */
+
+.ads-text{
+  color:#9aa7bd;
+  font-size:1rem;
+  max-width:720px;
+  margin:auto;
+  line-height:1.6;
+}
+
+/* GRID */
+
+.ads-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:28px;
+}
+
+/* CARDS */
+
+.ads-card{
+  background:#0d0d22;
+  padding:32px 26px;
+  border-radius:16px;
+  text-align:center;
+  transition:.3s ease;
+}
+
+.ads-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,255,136,.08);
+}
+
+/* ICONOS */
+
+.ads-card i{
+  font-size:28px;
+  color:#00ff88;
+  margin-bottom:14px;
+
+  background:rgba(0,255,136,.08);
+  padding:14px;
+  border-radius:12px;
+}
+
+/* TITULO CARD */
+
+.ads-card h3{
+  font-size:1.15rem;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+/* TEXTO CARD */
+
+.ads-card p{
+  font-size:.95rem;
+  color:#9aa7bd;
+  line-height:1.55;
+}
+
+/* =====================================================
+   BOTONES ADS / CONTACTO
+===================================================== */
+
+.ads-button{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  background:linear-gradient(135deg,#00c853,#00ff88);
+  color:white !important;
+
+  padding:12px 28px;
+  border-radius:40px;
+  font-weight:600;
+  text-decoration:none;
+
+  transition:.25s ease;
+}
+
+.ads-button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 22px rgba(0,255,136,.35);
+}
+
+/* =====================================================
    FOOTER
 ===================================================== */
 
