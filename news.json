@@ -1,37 +1,51 @@
 [
   {
-    "title": "Actualizacion V2.1.0 (10/4/26)",
+    "title": "Actualizacion V2.1.0",
     "text": "Spottrack PC V2.1.0 ya esta lista y disponible ✅, quedate que te contamos lo nuevo: Mejoras de interfaz, nuevas funciones, importación de playlists de YouTube y Spotify, optimizaciones generales y corrección de bugs.",
-    "image": "https://spottrack-com.github.io/images/update1.jpg"
+    "image": "https://spottrack-com.github.io/images/update1.jpg",
+    "tag": "Actualización",
+    "date": "2026-04-10"
   },
   {
-    "title": "RAGE Studios socials (2/4/26)",
+    "title": "RAGE Studios socials",
     "text": "RAGE Studios (Spottrack) ya tiene redes y canal de YouTube oficial 🔥 No te pierdas el contenido que subimos: reviews de actualizaciones, presentaciones de proyectos, Spottrack, videos divertidos y más. ¡Ve a seguirnos!",
-    "image": "https://spottrack-com.github.io/images/update7.jpg"
+    "image": "https://spottrack-com.github.io/images/update7.jpg",
+    "tag": "Comunidad",
+    "date": "2026-04-02"
   },
   {
-    "title": "Ya en Microsoft Store (20/3/26)",
+    "title": "Ya en Microsoft Store",
     "text": "Spottrack ya esta disponible en la tienda de Windows de Microsoft Store 😎, descargas mas seguras, actualizaciones rapidas, mas confianza en la comunidad ¡Apoyanos con una reseña de 5 estrellas ⭐!",
-    "image": "https://spottrack-com.github.io/images/update2.jpg"
+    "image": "https://spottrack-com.github.io/images/update2.jpg",
+    "tag": "Lanzamiento",
+    "date": "2026-03-20"
   },
   {
-    "title": "Likes ilimitados (16/1/26)",
+    "title": "Likes ilimitados",
     "text": "Se optimizó y implemento el sistema de me gustas, ahora podés guardar miles de canciones sin problemas 🔧.",
-    "image": "https://spottrack-com.github.io/images/update3.jpg"
+    "image": "https://spottrack-com.github.io/images/update3.jpg",
+    "tag": "Mejora",
+    "date": "2026-01-16"
   },
   {
-    "title": "Spottrack PC 1 año (6/1/26)",
+    "title": "Spottrack PC 1 año",
     "text": "Spottrack PC cumple 1 año 🎉 Hoy, 6 de enero de 2026, celebramos un año desde su lanzamiento. Gracias a todos por el apoyo y por ser parte de este proyecto.",
-    "image": "https://spottrack-com.github.io/images/update4.jpg"
+    "image": "https://spottrack-com.github.io/images/update4.jpg",
+    "tag": "Evento",
+    "date": "2026-01-06"
   },
   {
-    "title": "Spottrack en tiendas (5/1/26)",
+    "title": "Spottrack en tiendas",
     "text": "¿Spottrack en Microsoft Store? 👀 Se planea lanzar Spottrack PC en la tienda de Windows de Microsoft. ¡Atentos a próximas novedades!",
-    "image": "https://spottrack-com.github.io/images/update5.jpg"
+    "image": "https://spottrack-com.github.io/images/update5.jpg",
+    "tag": "Anuncio",
+    "date": "2026-01-05"
   },
   {
-    "title": "Web en mantenimiento (20/12/25)",
+    "title": "Web en mantenimiento",
     "text": "Nuestra web se encuentra en mantenimiento 🛠️ Está siendo remasterizada y mejorada con nuevas funciones.",
-    "image": "https://spottrack-com.github.io/images/update6.jpg"
+    "image": "https://spottrack-com.github.io/images/update6.jpg",
+    "tag": "Estado",
+    "date": "2025-12-20"
   }
 ]
