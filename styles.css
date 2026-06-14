@@ -86,118 +86,372 @@ a:hover{
 }
 
 /* =====================================================
-   DESCARGAS
+   DESCARGAS — SECCIÓN PRINCIPAL
 ===================================================== */
 
 #descargar{
   background:#05070d;
 }
 
+/* =====================================================
+   PANEL (contenedor de cada bloque)
+===================================================== */
+
 #descargar .download-panel{
   background:#0d0d22;
-  padding:35px 25px; /* más compacto */
-  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:28px 28px 24px;
   max-width:1050px;
-  margin:0 auto;
+  margin:0 auto 20px;
+  text-align:left;
 }
+
+/* =====================================================
+   CABECERA DEL PANEL
+===================================================== */
+
+#descargar .download-panel-header{
+  margin-bottom:22px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+#descargar .download-panel-title-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* Ícono circular del panel */
+#descargar .download-panel-icon-wrap{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+}
+
+#descargar .download-panel-icon-wrap.green{
+  background:rgba(0,255,136,0.1);
+  color:#00ff88;
+}
+
+#descargar .download-panel-icon-wrap.gray{
+  background:rgba(148,163,184,0.1);
+  color:#94a3b8;
+}
+
+/* Texto del título */
+#descargar .download-panel-title-text{
+  flex:1;
+  min-width:0;
+}
+
+#descargar .download-panel-title{
+  font-size:17px;
+  font-weight:700;
+  color:#ffffff;
+  margin:0 0 3px;
+}
+
+#descargar .download-panel-title.gray{
+  color:#94a3b8;
+}
+
+#descargar .download-panel-sub{
+  font-size:13px;
+  color:#64748b;
+  margin:0;
+}
+
+/* Badge del panel */
+#descargar .download-panel-badge{
+  font-size:11px;
+  font-weight:600;
+  padding:4px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+  margin-left:auto;
+}
+
+#descargar .download-panel-badge.green{
+  background:rgba(0,255,136,0.1);
+  color:#00ff88;
+  border:1px solid rgba(0,255,136,0.2);
+}
+
+#descargar .download-panel-badge.gray{
+  background:rgba(148,163,184,0.08);
+  color:#94a3b8;
+  border:1px solid rgba(148,163,184,0.15);
+}
+
+/* =====================================================
+   GRID DE CARDS
+===================================================== */
 
 #descargar .download-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px; /* menos espacio */
-  margin-top:25px;
+  gap:14px;
 }
 
-/* 🔥 CARDS MÁS OSCURAS Y MÁS PEQUEÑAS */
+/* =====================================================
+   CARD DE DESCARGA
+===================================================== */
+
 #descargar .download-card{
-  background:#010207;
-  padding:22px 20px; /* más compacto */
+  background:#080b14;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:20px 18px;
   border-radius:14px;
   text-align:center;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   text-decoration:none;
   color:#e6edf7;
+  transition:border-color .2s ease, transform .2s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-/* ICONO */
-#descargar .download-icon{
-  font-size:22px; /* más pequeño */
-  margin-bottom:10px;
+#descargar .download-card:hover{
+  border-color:rgba(0,255,136,0.2);
+  transform:translateY(-3px);
+}
+
+/* Card destacada */
+#descargar .download-card.download-featured{
+  border-color:rgba(0,255,136,0.35);
+  background:#04100a;
+}
+
+#descargar .download-card.download-featured:hover{
+  border-color:rgba(0,255,136,0.6);
+}
+
+/* Badge "Recomendado" dentro de la card */
+#descargar .download-card-badge-top{
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-size:10px;
+  font-weight:600;
+  background:rgba(0,255,136,0.12);
   color:#00ff88;
+  border:1px solid rgba(0,255,136,0.25);
+  padding:3px 8px;
+  border-radius:20px;
+  white-space:nowrap;
 }
 
-/* TEXTOS */
+/* Wrap del ícono de la card */
+#descargar .download-card-icon-wrap{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  margin-bottom:12px;
+  background:rgba(0,255,136,0.08);
+  color:#00ff88;
+  transition:background .2s ease;
+}
+
+#descargar .download-card:hover .download-card-icon-wrap{
+  background:rgba(0,255,136,0.15);
+}
+
+#descargar .download-card-icon-wrap.featured{
+  background:rgba(0,255,136,0.15);
+}
+
+/* Textos de la card */
 #descargar .download-heading{
   font-size:14px;
-  font-weight:600;
-  margin-bottom:6px;
+  font-weight:700;
+  margin:0 0 6px;
   color:#ffffff;
 }
 
 #descargar .download-text{
   font-size:12px;
-  color:#9aa7bd;
-  margin-bottom:14px;
+  color:#64748b;
+  margin:0 0 16px;
+  line-height:1.5;
+  flex:1;
 }
 
-/* 🔥 BOTONES MÁS PEQUEÑOS PERO MÁS ANCHOS */
+/* Botón de descarga */
 #descargar .download-button{
-  width:90%;              /* un poco más ancho */
-  max-width:220px;        /* suficiente para que entre el texto */
+  width:100%;
+  max-width:200px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:6px;
-
-  background:linear-gradient(135deg,#00c853,#00ff88);
-  padding:8px 16px;       /* compacto */
+  background:rgba(0,255,136,0.08);
+  border:1px solid rgba(0,255,136,0.2);
+  padding:8px 16px;
   border-radius:40px;
   font-size:13px;
   font-weight:600;
-  color:white !important;
-
-  white-space:nowrap;     /* 👈 ESTO EVITA EL SALTO DE LÍNEA */
-  
-  transition:.25s ease;
+  color:#00ff88 !important;
+  white-space:nowrap;
+  transition:.2s ease;
+  text-decoration:none;
 }
 
-#descargar .download-button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 18px rgba(0,255,136,.35);
+#descargar .download-card:hover .download-button{
+  background:rgba(0,255,136,0.14);
+  border-color:rgba(0,255,136,0.4);
 }
+
+/* =====================================================
+   NOTA DE VERSIÓN
+===================================================== */
 
 #descargar .download-info{
-  text-align:center;
-  margin-top:25px;
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,0.05);
   font-size:12px;
-  color:#9aa7bd;
+  color:#3d4f63;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
 }
 
-@media(max-width:1024px){
+#descargar .download-info i{
+  font-size:11px;
+}
+
+/* =====================================================
+   PANEL MICROSOFT STORE
+===================================================== */
+
+#descargar .download-store-panel{
+  background:#0d0d22;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:22px 28px;
+  max-width:1050px;
+  margin:0 auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+#descargar .download-store-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex:1;
+  min-width:220px;
+}
+
+#descargar .download-store-icon-wrap{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+  background:rgba(0,120,215,0.12);
+  color:#3b82f6;
+}
+
+#descargar .download-store-title{
+  font-size:16px;
+  font-weight:700;
+  color:#ffffff;
+  margin:0 0 4px;
+}
+
+#descargar .download-store-sub{
+  font-size:12px;
+  color:#64748b;
+  margin:0;
+  line-height:1.5;
+}
+
+#descargar .download-store-badge{
+  display:inline-block;
+  flex-shrink:0;
+  transition:transform .2s ease;
+}
+
+#descargar .download-store-badge img{
+  height:46px;
+  display:block;
+  border-radius:8px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:768px){
+
+  #descargar .download-panel{
+    padding:20px 16px;
+  }
+
   #descargar .download-grid{
     grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  #descargar .download-panel-title-row{
+    gap:10px;
+  }
+
+  #descargar .download-panel-badge{
+    margin-left:0;
+  }
+
+  #descargar .download-store-panel{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:20px 16px;
+    gap:16px;
+  }
+
+  #descargar .download-store-badge{
+    align-self:center;
   }
 }
 
 /* =====================================================
    PARTNERSHIP
 ===================================================== */
+
 /* =====================================================
    ADS ICON BACKGROUND FIX
 ===================================================== */
 
 #ads .bg-secondary .h-16{
-  background:rgba(0,255,136,0.08) !important; /* verde oscuro translúcido */
+  background:rgba(0,255,136,0.08) !important;
   border:1px solid rgba(0,255,136,0.15);
   border-radius:14px !important;
   backdrop-filter:blur(6px);
   transition:.3s ease;
 }
 
-/* efecto hover más pro */
 #ads .bg-secondary:hover .h-16{
   background:rgba(0,255,136,0.15) !important;
   box-shadow:0 6px 18px rgba(0,255,136,.15);
@@ -252,15 +506,11 @@ a:hover{
   background:#05070d;
 }
 
-/* TITULO */
-
 .ads-title{
   font-size:2.2rem;
   font-weight:700;
   margin-bottom:20px;
 }
-
-/* TEXTO */
 
 .ads-text{
   color:#9aa7bd;
@@ -270,15 +520,11 @@ a:hover{
   line-height:1.6;
 }
 
-/* GRID */
-
 .ads-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:28px;
 }
-
-/* CARDS */
 
 .ads-card{
   background:#0d0d22;
@@ -293,27 +539,20 @@ a:hover{
   box-shadow:0 10px 24px rgba(0,255,136,.08);
 }
 
-/* ICONOS */
-
 .ads-card i{
   font-size:28px;
   color:#00ff88;
   margin-bottom:14px;
-
   background:rgba(0,255,136,.08);
   padding:14px;
   border-radius:12px;
 }
-
-/* TITULO CARD */
 
 .ads-card h3{
   font-size:1.15rem;
   margin-bottom:10px;
   font-weight:600;
 }
-
-/* TEXTO CARD */
 
 .ads-card p{
   font-size:.95rem;
@@ -329,15 +568,12 @@ a:hover{
   display:inline-flex;
   align-items:center;
   gap:8px;
-
   background:linear-gradient(135deg,#00c853,#00ff88);
   color:white !important;
-
   padding:12px 28px;
   border-radius:40px;
   font-weight:600;
   text-decoration:none;
-
   transition:.25s ease;
 }
 
