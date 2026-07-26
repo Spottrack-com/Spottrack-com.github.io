@@ -4,135 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Privacidad - Spottrack</title>
-<link rel="stylesheet" href="styles.css">
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-dark text-white">
+<body class="bg-dark text-white overflow-x-hidden">
 
+<!-- NAVBAR SIMPLE (logo + volver + selector de idioma) -->
+<nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 object-contain">
+        <span class="text-xl font-bold text-white">Spottrack</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="nav-link text-white hover:text-primary transition-colors hidden sm:inline-flex items-center gap-2" data-i18n="privacy.back">← Volver a la web</a>
+        <div class="lang-switcher"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="pt-24">
 <div class="container mx-auto px-6 py-16 max-w-4xl">
 
-<h1 class="text-4xl font-bold mb-8 text-primary">Política de Privacidad</h1>
+<h1 class="text-4xl font-bold mb-8 text-primary" data-i18n="privacy.h1">Política de Privacidad</h1>
 
 <p class="mb-6">
-Última actualización: 12/3/2026
+<span data-i18n="privacy.updated_label">Última actualización</span>: 12/3/2026
 </p>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.intro">
 En Spottrack respetamos tu privacidad y nos comprometemos a proteger la información que compartes con nosotros. 
 Esta política explica qué datos se recopilan, cómo se utilizan y cómo se almacenan.
 </p>
 
 <!-- 1 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">1. Información que recopilamos</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s1.title">1. Información que recopilamos</h2>
 
-<p class="mb-4">
+<p class="mb-4" data-i18n="privacy.s1.intro">
 Spottrack puede recopilar y almacenar los siguientes datos cuando el usuario crea una cuenta o utiliza la aplicación:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li>Dirección de correo electrónico (si se registra una cuenta).</li>
-<li>Nombre o alias de usuario.</li>
-<li>Playlists creadas.</li>
-<li>Canciones marcadas como “Me gusta”.</li>
-<li>Preferencias básicas de la cuenta.</li>
+<li data-i18n="privacy.s1.li1">Dirección de correo electrónico (si se registra una cuenta).</li>
+<li data-i18n="privacy.s1.li2">Nombre o alias de usuario.</li>
+<li data-i18n="privacy.s1.li3">Playlists creadas.</li>
+<li data-i18n="privacy.s1.li4">Canciones marcadas como "Me gusta".</li>
+<li data-i18n="privacy.s1.li5">Preferencias básicas de la cuenta.</li>
 </ul>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s1.outro">
 Spottrack no recopila información financiera, contraseñas en texto plano ni datos sensibles como ubicación precisa, documentos de identidad o información biométrica.
 </p>
 
 <!-- 2 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">2. Uso de Firebase</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s2.title">2. Uso de Firebase</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s2.intro">
 Spottrack utiliza servicios de Google Firebase como sistema de autenticación y base de datos en la nube. 
 Firebase se emplea para:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li>Gestionar el registro e inicio de sesión de usuarios.</li>
-<li>Almacenar playlists.</li>
-<li>Guardar canciones marcadas como favoritas.</li>
-<li>Conservar configuraciones asociadas a la cuenta.</li>
+<li data-i18n="privacy.s2.li1">Gestionar el registro e inicio de sesión de usuarios.</li>
+<li data-i18n="privacy.s2.li2">Almacenar playlists.</li>
+<li data-i18n="privacy.s2.li3">Guardar canciones marcadas como favoritas.</li>
+<li data-i18n="privacy.s2.li4">Conservar configuraciones asociadas a la cuenta.</li>
 </ul>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s2.outro">
 Firebase puede procesar datos conforme a las políticas de privacidad y seguridad de Google.
 </p>
 
 <!-- 3 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">3. Almacenamiento Local (LocalStorage)</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s3.title">3. Almacenamiento Local (LocalStorage)</h2>
 
-<p class="mb-4">
+<p class="mb-4" data-i18n="privacy.s3.intro">
 La aplicación utiliza almacenamiento local del navegador (LocalStorage) para mejorar el rendimiento y la experiencia del usuario.
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li>Guardar música reproducida recientemente.</li>
-<li>Almacenar temporalmente datos de reproducción.</li>
-<li>Recordar configuraciones locales.</li>
-<li>Facilitar una carga más rápida de contenido previamente escuchado.</li>
+<li data-i18n="privacy.s3.li1">Guardar música reproducida recientemente.</li>
+<li data-i18n="privacy.s3.li2">Almacenar temporalmente datos de reproducción.</li>
+<li data-i18n="privacy.s3.li3">Recordar configuraciones locales.</li>
+<li data-i18n="privacy.s3.li4">Facilitar una carga más rápida de contenido previamente escuchado.</li>
 </ul>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s3.outro">
 Estos datos permanecen en el dispositivo del usuario y pueden eliminarse limpiando los datos del navegador o desinstalando la aplicación.
 </p>
 
 <!-- 4 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">4. Finalidad del uso de datos</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s4.title">4. Finalidad del uso de datos</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s4.intro">
 La información recopilada se utiliza exclusivamente para:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li>Proporcionar funcionalidades de la aplicación.</li>
-<li>Permitir la creación y gestión de playlists.</li>
-<li>Personalizar la experiencia del usuario.</li>
-<li>Mejorar el rendimiento y estabilidad del sistema.</li>
+<li data-i18n="privacy.s4.li1">Proporcionar funcionalidades de la aplicación.</li>
+<li data-i18n="privacy.s4.li2">Permitir la creación y gestión de playlists.</li>
+<li data-i18n="privacy.s4.li3">Personalizar la experiencia del usuario.</li>
+<li data-i18n="privacy.s4.li4">Mejorar el rendimiento y estabilidad del sistema.</li>
 </ul>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s4.outro">
 Spottrack no vende ni comparte datos personales con terceros con fines comerciales.
 </p>
 
 <!-- 5 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">5. Seguridad</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s5.title">5. Seguridad</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s5.p">
 Implementamos medidas técnicas razonables para proteger la información almacenada tanto localmente como en la nube.
 Los datos alojados en Firebase están protegidos mediante los mecanismos de seguridad proporcionados por dicha plataforma.
 </p>
 
 <!-- 6 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">6. Eliminación de datos</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s6.title">6. Eliminación de datos</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s6.p">
 El usuario puede solicitar la eliminación de su cuenta y los datos asociados.
 Al eliminar la cuenta, se eliminarán los datos almacenados en la base de datos relacionados con dicha cuenta.
 </p>
 
 <!-- 7 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">7. Cambios en esta política</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s7.title">7. Cambios en esta política</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s7.p">
 Spottrack puede actualizar esta Política de Privacidad cuando sea necesario.
 Las modificaciones serán publicadas en esta misma página.
 </p>
 
 <!-- 8 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4">8. Contacto</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s8.title">8. Contacto</h2>
 
-<p class="mb-6">
+<p class="mb-6" data-i18n="privacy.s8.p">
 Para consultas relacionadas con privacidad o eliminación de datos, puedes contactarnos a través del sitio oficial de Spottrack.
 </p>
 
 <div class="mt-12">
-<a href="index.html" class="text-primary hover:underline">← Volver al inicio</a>
+<a href="index.html" class="text-primary hover:underline" data-i18n="privacy.back">← Volver al inicio</a>
 </div>
 
 </div>
+</div>
 
+<script src="i18n.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

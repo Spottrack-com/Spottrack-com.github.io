@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spottrack Ediciones - Conocé Spottrack PC y Spottrack Mobile, próximamente en agosto">
+  <meta name="keywords" content="spottrack, ediciones, pc, mobile, música">
+  <title>Spottrack Ediciones</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spottrack Ediciones">
+  <meta property="og:description" content="Spottrack PC ya disponible. Spottrack Mobile, próximamente en agosto.">
+  <meta property="og:url" content="https://spottrack-com.github.io/ediciones.html">
+  <meta property="og:image" content="https://spottrack-com.github.io/assets/banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spottrack Ediciones">
+  <meta name="twitter:description" content="Spottrack PC ya disponible. Spottrack Mobile, próximamente en agosto.">
+  <meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
+
+  <!-- Tailwind primero, styles.css después para que nuestras animaciones no queden pisadas -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 object-contain">
+          <span class="text-xl font-bold text-white">Spottrack</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
+          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
+          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
+          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
+          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+          <div class="lang-switcher"></div>
+        </div>
+
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu gradient-bg md:hidden z-50" id="mobile-menu">
+    <div class="p-4 flex justify-end">
+      <button id="menu-close" class="text-white focus:outline-none">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-6 p-6">
+      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
+      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
+      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
+      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
+      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+      <div class="lang-switcher"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content-wrapper pt-24">
+
+    <!-- Hero -->
+    <section id="ediciones-hero" class="py-16 lg:py-20 section">
+      <div class="container mx-auto px-4 text-center">
+        <span class="edition-eyebrow animate-fade-up">
+          <i class="fas fa-layer-group"></i>
+          <span data-i18n="editions.eyebrow">Spottrack Ediciones</span>
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6 animate-fade-up delay-1">
+          <span data-i18n="editions.title.pre">Una app,</span>
+          <span class="text-primary" data-i18n="editions.title.mid">dos plataformas</span>
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto animate-fade-up delay-2" data-i18n="editions.subtitle">
+          Spottrack PC ya está disponible para descargar. Spottrack Mobile está en camino, con el mismo espíritu: rápido, sin anuncios y hecho para vos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Ediciones -->
+    <section id="editions-list" class="pb-20 section">
+      <div class="container mx-auto px-4">
+        <div class="edition-showcase">
+
+          <!-- SPOTTRACK PC — disponible, va primero -->
+          <div class="edition-card pc" data-aos="fade-up">
+            <div class="edition-card-top">
+              <div class="edition-card-heading">
+                <div class="edition-icon-wrap">
+                  <i class="fas fa-desktop"></i>
+                </div>
+                <div>
+                  <h2 class="edition-title" data-i18n="editions.pc.title">Spottrack PC</h2>
+                  <p class="edition-subtitle" data-i18n="editions.pc.subtitle">Windows 7, 8, 8.1, 10 y 11 · 32 y 64 bits</p>
+                </div>
+              </div>
+              <span class="edition-status live">
+                <span class="edition-status-dot"></span>
+                <span data-i18n="editions.pc.status">Disponible ahora</span>
+              </span>
+            </div>
+
+            <p class="edition-desc" data-i18n="editions.pc.desc">
+              La versión de escritorio de Spottrack: optimizada, liviana y sin anuncios. Con reproducción en segundo plano, notificaciones nativas
+              y acceso a todo el catálogo de música, para que la lleves siempre a mano en tu PC.
+            </p>
+
+            <div class="edition-feature-grid">
+              <div class="edition-feature">
+                <i class="fas fa-ban"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.pc.f1.title">Sin anuncios</h4>
+                  <p data-i18n="editions.pc.f1.text">Escuchá sin interrupciones, siempre.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-bolt"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.pc.f2.title">Muy optimizada</h4>
+                  <p data-i18n="editions.pc.f2.text">Corre bien incluso en equipos modestos.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-music"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.pc.f3.title">Catálogo completo</h4>
+                  <p data-i18n="editions.pc.f3.text">Acceso a todo el catálogo de YouTube.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-bell"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.pc.f4.title">Reproducción en segundo plano</h4>
+                  <p data-i18n="editions.pc.f4.text">Seguí escuchando mientras trabajás.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="edition-cta-row">
+              <a href="descargas.html" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                <span data-i18n="editions.pc.cta">Descargar Spottrack PC</span>
+              </a>
+              <span class="edition-cta-note">
+                <i class="fas fa-tag"></i>
+                <span data-i18n="editions.pc.note">Instaladores oficiales · Gratis</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- SPOTTRACK MOBILE — en desarrollo, va después -->
+          <div class="edition-card mobile" data-aos="fade-up" data-aos-delay="100">
+            <div class="edition-card-top">
+              <div class="edition-card-heading">
+                <div class="edition-icon-wrap mobile">
+                  <i class="fas fa-mobile-screen-button"></i>
+                </div>
+                <div>
+                  <h2 class="edition-title" data-i18n="editions.mobile.title">Spottrack Mobile</h2>
+                  <p class="edition-subtitle" data-i18n="editions.mobile.subtitle">Android</p>
+                </div>
+              </div>
+              <span class="edition-status dev">
+                <span class="edition-status-dot"></span>
+                <span data-i18n="editions.mobile.status">En desarrollo · Disponible en agosto</span>
+              </span>
+            </div>
+
+            <p class="edition-desc" data-i18n="editions.mobile.desc">
+              La misma experiencia Spottrack, ahora en tu bolsillo. Estamos terminando de pulir la reproducción en segundo plano,
+              las notificaciones y la navegación por artistas antes de lanzarla.
+            </p>
+
+            <div class="edition-feature-grid">
+              <div class="edition-feature">
+                <i class="fas fa-play"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.mobile.f1.title">Reproducción en segundo plano</h4>
+                  <p data-i18n="editions.mobile.f1.text">Con notificación de controles y portada.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-id-badge"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.mobile.f2.title">Perfiles de artista</h4>
+                  <p data-i18n="editions.mobile.f2.text">Discografía, videos y populares.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-list-ul"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.mobile.f3.title">Tus playlists</h4>
+                  <p data-i18n="editions.mobile.f3.text">Creá y organizá tu música fácilmente.</p>
+                </div>
+              </div>
+              <div class="edition-feature">
+                <i class="fas fa-bolt"></i>
+                <div class="edition-feature-text">
+                  <h4 data-i18n="editions.mobile.f4.title">Liviana</h4>
+                  <p data-i18n="editions.mobile.f4.text">Optimizada para no consumir batería de más.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="edition-cta-row">
+              <span class="edition-btn-disabled">
+                <i class="fas fa-clock"></i>
+                <span data-i18n="editions.mobile.cta">Próximamente</span>
+              </span>
+              <span class="edition-cta-note">
+                <i class="fas fa-calendar"></i>
+                <span data-i18n="editions.mobile.note">Disponible en agosto</span>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <div class="flex items-center">
+            <img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 mr-2 object-contain">
+            <span class="text-xl font-bold text-white">Spottrack</span>
+          </div>
+          <p class="footer-brand-text" data-i18n="footer.tagline">Tu música, sin límites ni anuncios.</p>
+          <div class="footer-social">
+            <a href="https://discord.gg/kRhXAajRDq" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
+              <i class="fab fa-discord text-xl"></i>
+            </a>
+            <a href="https://www.youtube.com/@Rage-community" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
+              <i class="fab fa-youtube text-xl"></i>
+            </a>
+            <a href="https://x.com/spottrack" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
+              <i class="fab fa-x-twitter text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.product">Producto</h4>
+          <a href="index.html#inicio" data-i18n="nav.inicio">Inicio</a>
+          <a href="descargas.html" data-i18n="nav.descargar">Descargar</a>
+          <a href="ediciones.html" data-i18n="nav.ediciones">Ediciones</a>
+          <a href="index.html#novedades" data-i18n="nav.novedades">Novedades</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.legal">Legal</h4>
+          <a href="politica-privacidad.html" data-i18n="footer.privacy">Política de Privacidad</a>
+          <a href="terminos-condiciones.html" data-i18n="footer.terms">Términos y Condiciones</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.status">Estado del servicio</h4>
+          <div class="footer-status-badge">
+            <iframe src="https://rage-studios-status.betteruptime.com/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no" style="color-scheme: normal"></iframe>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 RAGE Studios. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
