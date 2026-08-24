@@ -110,7 +110,7 @@ const SPOTTRACK_I18N = {
     "descargas.universal": "Universal",
     "descargas.universal.desc": "Detecta automáticamente si es 32 o 64 bits.",
     "descargas.download": "Descargar",
-    "descargas.info.win1011": "Versión 2.1.0 · Instaladores oficiales para Windows 10 y 11",
+    "descargas.info.win1011": "Versión 2.1.1 · Instaladores oficiales para Windows 10 y 11",
     "descargas.store.title": "Microsoft Store",
     "descargas.store.sub": "Instalación segura y actualizaciones automáticas desde la tienda oficial de Microsoft.",
     "descargas.legacy.title": "Windows 7 / 8 / 8.1",
@@ -119,7 +119,7 @@ const SPOTTRACK_I18N = {
     "descargas.32bits.legacy": "Para Windows 7/8/8.1 en arquitectura x86.",
     "descargas.64bits.legacy": "Versión de 64 bits para Windows 7/8/8.1.",
     "descargas.universal.legacy": "Detecta automáticamente la arquitectura del sistema.",
-    "descargas.info.legacy": "Versión 2.1.0 (Legacy) · Instaladores oficiales para Windows 7/8/8.1",
+    "descargas.info.legacy": "Versión 2.1.1 (Legacy) · Instaladores oficiales para Windows 7/8/8.1",
 
     "editions.eyebrow": "Spottrack Ediciones",
     "editions.title.pre": "Una app,",
