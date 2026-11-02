@@ -270,11 +270,12 @@ a:not(.btn-primary):not(.ads-button):not(.download-store-badge):hover{
 .pc-mockup img{
   display:block;
   width:100%;
-  aspect-ratio: 16 / 11;
-  object-fit:cover;
-  object-position:center;
-  border-radius:16px;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  height:auto;
+  object-fit:contain;
+  background:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
 }
 
 /* =====================================================
@@ -1431,4 +1432,1144 @@ footer.site-footer{
 
 @media(max-width:520px){
   .footer-grid{ grid-template-columns:1fr; text-align:left; }
+}
+
+
+/* =====================================================
+   v5 REMASTER — fondo con iconos, Spottrack Mobile
+===================================================== */
+
+/* Secciones transparentes para que se vea el fondo de iconos */
+#comparison,
+#novedades,
+#ads,
+#mobile,
+#ediciones-hero,
+#descargar.download-teaser,
+.ads-info{ background:transparent !important; }
+
+/* ---------- Fondo: iconos flotantes con brillo ---------- */
+@keyframes bgFloat{
+  0%,100%{ transform:translate3d(0,0,0) rotate(-4deg); }
+  50%{ transform:translate3d(10px,-26px,0) rotate(6deg); }
+}
+@keyframes eqBar{
+  0%,100%{ transform:scaleY(.25); }
+  50%{ transform:scaleY(1); }
+}
+
+.bg-icons{
+  position:fixed; inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.bg-icons i{
+  position:absolute;
+  color:var(--accent);
+  opacity:.08;
+  text-shadow:0 0 22px rgba(0,255,136,.9), 0 0 48px rgba(0,255,136,.45);
+  animation:bgFloat 16s ease-in-out infinite;
+  will-change:transform;
+}
+
+.bg-icons i.b{
+  color:var(--accent-2);
+  text-shadow:0 0 22px rgba(45,212,255,.9), 0 0 48px rgba(45,212,255,.45);
+}
+
+.bg-glow{
+  position:absolute;
+  width:520px; height:520px;
+  border-radius:50%;
+  filter:blur(40px);
+  animation:glowPulse 9s ease-in-out infinite;
+}
+.bg-glow.g1{ top:-120px; left:-140px; background:radial-gradient(circle, rgba(0,255,136,.10), transparent 70%); }
+.bg-glow.g2{ bottom:-160px; right:-120px; background:radial-gradient(circle, rgba(45,212,255,.10), transparent 70%); animation-delay:-4s; }
+
+@media(max-width:640px){
+  .bg-icons i:nth-child(n+11){ display:none; }
+  .bg-glow{ width:320px; height:320px; }
+}
+
+/* Brillo suave en el texto destacado de los títulos */
+h1 .text-primary, h2 .text-primary{ text-shadow:0 0 28px rgba(0,255,136,.35); }
+
+/* ---------- Botón secundario (ghost) ---------- */
+.btn-ghost{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 26px;
+  border-radius:40px;
+  font-weight:600; font-size:15px;
+  color:var(--accent) !important;
+  background:var(--accent-soft);
+  border:1px solid rgba(0,255,136,.3);
+  text-decoration:none;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease) !important;
+}
+.btn-ghost:hover{
+  color:var(--accent) !important;
+  background:rgba(0,255,136,.16) !important;
+  transform:translateY(-3px) !important;
+  box-shadow:0 10px 22px rgba(0,255,136,.2) !important;
+}
+.btn-ghost.blue{
+  color:var(--accent-2) !important;
+  background:var(--accent-2-soft);
+  border-color:rgba(45,212,255,.3);
+}
+.btn-ghost.blue:hover{
+  color:var(--accent-2) !important;
+  background:rgba(45,212,255,.16) !important;
+  box-shadow:0 10px 22px rgba(45,212,255,.2) !important;
+}
+
+/* ---------- Sección Spottrack Mobile ---------- */
+.mobile-showcase{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+}
+
+.mobile-showcase-text .edition-eyebrow{ margin-bottom:18px; }
+
+.mobile-cta-row{
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+}
+
+.mobile-version-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12.5px; font-weight:600;
+  color:var(--accent-2);
+  background:var(--accent-2-soft);
+  border:1px solid rgba(45,212,255,.25);
+  padding:8px 14px;
+  border-radius:20px;
+}
+
+.mobile-cta-note{
+  margin:14px 0 26px;
+  font-size:12.5px;
+  color:var(--text-faint);
+  display:flex; align-items:center; gap:6px;
+}
+
+.playstore-soon{
+  display:flex; align-items:center; gap:16px;
+  background:linear-gradient(120deg, #0f1b31, var(--bg-elevated) 70%);
+  border:1px dashed rgba(45,212,255,.3);
+  border-radius:18px;
+  padding:18px 20px;
+}
+.playstore-soon-icon{
+  width:46px; height:46px; flex-shrink:0;
+  border-radius:13px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px;
+  background:var(--accent-2-soft);
+  color:var(--accent-2);
+}
+.playstore-soon h4{ font-size:14.5px; font-weight:700; color:#fff; margin:0 0 3px; }
+.playstore-soon p{ font-size:12.5px; color:var(--text-faint); margin:0; line-height:1.5; }
+
+/* ---------- Celular (mockup en CSS puro) ---------- */
+.phone-wrap{
+  position:relative;
+  display:flex; justify-content:center;
+  padding:24px 0;
+}
+.phone-wrap::before{
+  content:"";
+  position:absolute; inset:0; margin:auto;
+  width:340px; height:340px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(0,255,136,.22), transparent 70%);
+  animation:glowPulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+.phone{
+  position:relative;
+  width:250px; height:510px;
+  border-radius:38px;
+  background:#0b0c1c;
+  border:2px solid rgba(255,255,255,.12);
+  padding:12px;
+  box-shadow:0 30px 60px rgba(0,0,0,.55), 0 0 40px rgba(0,255,136,.12);
+  animation:floatY 6s ease-in-out infinite;
+}
+.phone-notch{
+  position:absolute; top:12px; left:50%;
+  width:78px; height:20px;
+  margin-left:-39px;
+  background:#05070d;
+  border-radius:0 0 14px 14px;
+  z-index:2;
+}
+.phone-screen{
+  height:100%;
+  border-radius:28px;
+  background:linear-gradient(180deg,#0f2a20 0%, #07100d 45%, var(--bg) 100%);
+  padding:46px 18px 20px;
+  display:flex; flex-direction:column; align-items:center; gap:16px;
+  overflow:hidden;
+}
+.phone-cover{
+  width:168px; height:168px;
+  border-radius:22px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex; align-items:center; justify-content:center;
+  font-size:58px; color:#04140c;
+  box-shadow:0 14px 34px rgba(0,255,136,.3);
+}
+.phone-lines{ width:100%; display:flex; flex-direction:column; gap:8px; align-items:center; }
+.phone-lines span{ display:block; height:9px; border-radius:6px; background:rgba(255,255,255,.14); }
+.phone-lines .l1{ width:70%; background:rgba(255,255,255,.28); }
+.phone-lines .l2{ width:45%; }
+
+.eq{ display:flex; align-items:flex-end; gap:5px; height:34px; }
+.eq span{
+  width:6px; height:100%;
+  border-radius:3px;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  transform-origin:bottom;
+  animation:eqBar 1.1s ease-in-out infinite;
+}
+.eq span:nth-child(2){ animation-delay:-.2s; }
+.eq span:nth-child(3){ animation-delay:-.5s; }
+.eq span:nth-child(4){ animation-delay:-.8s; }
+.eq span:nth-child(5){ animation-delay:-.35s; }
+.eq span:nth-child(6){ animation-delay:-.65s; }
+.eq span:nth-child(7){ animation-delay:-.1s; }
+
+.phone-bar{ width:100%; height:5px; border-radius:4px; background:rgba(255,255,255,.12); overflow:hidden; }
+.phone-bar span{ display:block; width:42%; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:4px; }
+
+.phone-controls{ display:flex; align-items:center; gap:26px; color:var(--text-muted); font-size:18px; }
+.phone-controls .main{
+  width:50px; height:50px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--accent); color:#04140c; font-size:18px;
+  box-shadow:0 0 22px rgba(0,255,136,.5);
+}
+
+/* ---------- Grid de funciones ---------- */
+.mobile-feature-grid{
+  max-width:1100px; margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+.mobile-feature{
+  display:flex; align-items:flex-start; gap:14px;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 18px;
+  font-size:13.5px; line-height:1.55;
+  color:var(--text-muted);
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease) !important;
+}
+.mobile-feature:hover{
+  border-color:rgba(0,255,136,.3) !important;
+  box-shadow:0 10px 24px rgba(0,255,136,.1) !important;
+}
+.mobile-feature i{
+  width:38px; height:38px; flex-shrink:0;
+  border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+.mobile-feature:nth-child(even) i{ background:var(--accent-2-soft); color:var(--accent-2); }
+
+/* ---------- Instalación + WebView ---------- */
+.mobile-install-grid{
+  max-width:1100px; margin:0 auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px;
+  align-items:stretch;
+}
+
+.mobile-steps{
+  list-style:none; margin:0; padding:0;
+  counter-reset:step;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:26px 26px;
+  display:flex; flex-direction:column; gap:20px;
+}
+.mobile-steps li{
+  counter-increment:step;
+  display:flex; align-items:flex-start; gap:16px;
+  font-size:14px; line-height:1.6; color:var(--text-muted);
+}
+.mobile-steps li::before{
+  content:counter(step);
+  width:32px; height:32px; flex-shrink:0;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14px;
+  color:#04140c;
+  background:linear-gradient(135deg,var(--accent-dim),var(--accent));
+  box-shadow:0 0 16px rgba(0,255,136,.35);
+}
+
+.webview-note{
+  background:linear-gradient(160deg, #101d34, var(--bg-elevated) 60%);
+  border:1px solid rgba(45,212,255,.25);
+  border-radius:20px;
+  padding:26px;
+  display:flex; flex-direction:column; align-items:flex-start;
+}
+.webview-note-icon{
+  width:46px; height:46px;
+  border-radius:13px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px;
+  background:var(--accent-2-soft);
+  color:var(--accent-2);
+  margin-bottom:14px;
+}
+.webview-note h4{ font-size:16px; font-weight:700; color:#fff; margin:0 0 8px; }
+.webview-note p{ font-size:13.5px; color:var(--text-muted); line-height:1.65; margin:0 0 18px; flex:1; }
+
+@media(max-width:900px){
+  .mobile-showcase{ grid-template-columns:1fr; gap:32px; }
+  .mobile-install-grid{ grid-template-columns:1fr; }
+  .phone-wrap{ order:-1; }
+}
+@media(max-width:640px){
+  .mobile-showcase-text{ text-align:center; }
+  .mobile-cta-row, .mobile-cta-note{ justify-content:center; }
+  .playstore-soon{ text-align:left; }
+}
+
+/* Mobile "live" en la tarjeta de Ediciones */
+.edition-card.mobile{
+  border-color:rgba(45,212,255,.25);
+  background:linear-gradient(160deg, #0b1620 0%, var(--bg-elevated) 55%);
+}
+.edition-card.mobile:hover{ box-shadow:0 20px 44px rgba(45,212,255,.12) !important; }
+
+
+/* =====================================================
+   FIX — temblor del fondo y del resto de la página
+===================================================== */
+
+/* 1) Iconos: solo suben y bajan (sin rotación), en su propia capa de GPU */
+@keyframes bgFloat{
+  0%,100%{ transform:translate3d(0,0,0); }
+  50%{ transform:translate3d(0,-22px,0); }
+}
+
+.bg-icons{
+  contain:layout paint;
+  transform:translateZ(0);
+}
+
+.bg-icons i{
+  animation:bgFloat 18s ease-in-out infinite;
+  will-change:transform;
+  backface-visibility:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-shadow:0 0 18px rgba(0,255,136,.7);
+}
+
+.bg-icons i.b{
+  text-shadow:0 0 18px rgba(45,212,255,.7);
+}
+
+/* 2) Glows: sin filter blur (el radial-gradient ya es suave) */
+.bg-glow{
+  filter:none;
+  will-change:transform, opacity;
+}
+
+/* 3) Navbar: sin backdrop-filter, con fondo casi opaco */
+nav{
+  background:#05070d !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+nav.shadow-2xl{
+  background:#05070d !important;
+}
+
+/* 4) Los banners que flotan no deben re-pintar el contenido */
+.phone, .pc-mockup{
+  will-change:transform;
+  backface-visibility:hidden;
+}
+
+/* =====================================================
+   FONDO v6 — estructuras estáticas (sin animación)
+===================================================== */
+.bg-old{ display:none !important; }
+
+.bg-art{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:100vh;
+  height:100lvh;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+/* Grilla de puntos que se desvanece hacia los bordes */
+.art-grid{
+  position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size:30px 30px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%, #000 20%, transparent 80%);
+          mask-image:radial-gradient(ellipse at 50% 40%, #000 20%, transparent 80%);
+}
+
+/* Brillos de color fijos */
+.art-glow{ position:absolute; width:560px; height:560px; border-radius:50%; }
+.art-glow.g1{ top:-200px; left:-180px; background:radial-gradient(circle, rgba(0,255,136,.12), transparent 70%); }
+.art-glow.g2{ bottom:-240px; right:-160px; background:radial-gradient(circle, rgba(45,212,255,.12), transparent 70%); }
+
+/* Ondas de sonido (arriba izquierda) */
+.art-waves{
+  position:absolute; left:-150px; top:6%;
+  width:440px; height:440px; border-radius:50%;
+  background:repeating-radial-gradient(circle, transparent 0 26px, rgba(45,212,255,.22) 27px 28px);
+  -webkit-mask-image:radial-gradient(circle, #000 25%, transparent 70%);
+          mask-image:radial-gradient(circle, #000 25%, transparent 70%);
+  opacity:.6;
+}
+
+/* Disco de vinilo (derecha) */
+.art-vinyl{
+  position:absolute; right:-190px; top:16%;
+  width:540px; height:540px; border-radius:50%;
+  background:
+    conic-gradient(from 20deg, rgba(255,255,255,.06), transparent 18%, transparent 50%, rgba(255,255,255,.05) 68%, transparent 85%),
+    repeating-radial-gradient(circle, #0b0c1c 0 3px, #12132b 3px 6px);
+  border:1px solid rgba(0,255,136,.2);
+  box-shadow:0 0 90px rgba(0,255,136,.09);
+  opacity:.65;
+}
+.art-vinyl::before{
+  content:""; position:absolute; inset:0; margin:auto;
+  width:170px; height:170px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  opacity:.55;
+}
+.art-vinyl::after{
+  content:""; position:absolute; inset:0; margin:auto;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--bg);
+}
+
+/* Contorno de celular (izquierda, inclinado) */
+.art-phone{
+  position:absolute; left:5%; top:52%;
+  width:150px; height:300px;
+  border:2px solid rgba(0,255,136,.2);
+  border-radius:28px;
+  transform:rotate(-14deg);
+  box-shadow:0 0 40px rgba(0,255,136,.06);
+  opacity:.7;
+}
+.art-phone::before{
+  content:""; position:absolute; inset:10px;
+  border:1px solid rgba(0,255,136,.12);
+  border-radius:20px;
+  background:
+    linear-gradient(135deg, rgba(0,255,136,.25), rgba(45,212,255,.25)) top 34px left 18px / 90px 90px no-repeat,
+    linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.12)) top 150px left 18px / 80px 6px no-repeat,
+    linear-gradient(rgba(255,255,255,.07), rgba(255,255,255,.07)) top 166px left 18px / 50px 6px no-repeat;
+}
+.art-phone::after{
+  content:""; position:absolute; top:8px; left:50%;
+  width:46px; height:8px; margin-left:-23px;
+  border-radius:0 0 8px 8px;
+  background:rgba(0,255,136,.2);
+}
+
+/* Contorno de monitor (abajo derecha, inclinado) */
+.art-monitor{
+  position:absolute; right:9%; bottom:7%;
+  width:250px; height:156px;
+  border:2px solid rgba(45,212,255,.22);
+  border-radius:12px;
+  transform:rotate(7deg);
+  opacity:.7;
+  background:
+    linear-gradient(rgba(45,212,255,.18), rgba(45,212,255,.18)) top 22px left 22px / 70px 6px no-repeat,
+    linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)) top 40px left 22px / 120px 6px no-repeat,
+    linear-gradient(135deg, rgba(0,255,136,.2), rgba(45,212,255,.2)) bottom 20px right 22px / 70px 56px no-repeat;
+}
+.art-monitor::before{
+  content:""; position:absolute; left:50%; bottom:-24px;
+  width:4px; height:24px; margin-left:-2px;
+  background:rgba(45,212,255,.22);
+}
+.art-monitor::after{
+  content:""; position:absolute; left:50%; bottom:-28px;
+  width:84px; height:4px; margin-left:-42px; border-radius:3px;
+  background:rgba(45,212,255,.22);
+}
+
+/* Ecualizador (abajo izquierda) */
+.art-eq{
+  position:absolute; left:3%; bottom:5%;
+  display:flex; align-items:flex-end; gap:9px;
+  height:170px; opacity:.32;
+}
+.art-eq span{
+  width:11px; border-radius:6px;
+  background:linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+
+/* Celular: menos estructuras para no tapar contenido */
+@media(max-width:900px){
+  .art-vinyl{ width:380px; height:380px; right:-170px; }
+  .art-monitor, .art-phone{ display:none; }
+  .art-waves{ width:300px; height:300px; left:-120px; }
+  .art-eq{ height:110px; left:-8px; }
+}
+
+/* =====================================================
+   FONDO v7 — limpio, iconos mínimos, teléfono estable
+===================================================== */
+
+/* Ocultamos las estructuras grandes del fondo */
+.art-vinyl,
+.art-phone,
+.art-monitor,
+.art-waves,
+.art-eq{ display:none !important; }
+
+/* Iconos chiquitos, quietos y sutiles */
+.art-mini{
+  position:absolute;
+  font-size:18px;
+  color:var(--accent);
+  opacity:.16;
+  animation:none !important;
+}
+.art-mini.b{ color:var(--accent-2); }
+
+@media(max-width:640px){
+  .art-mini:nth-of-type(n+4){ display:none; }
+}
+
+/* Teléfono de la sección Mobile: sin flotar, sin pulsos */
+.phone{
+  animation:none !important;
+  will-change:auto !important;
+  backface-visibility:visible !important;
+  transform:none !important;
+}
+.phone-wrap::before{
+  animation:none !important;
+  opacity:.8;
+}
+.phone-screen{ isolation:isolate; }
+
+/* Ecualizador: único movimiento, aislado en su propia capa */
+.eq{ contain:layout paint; }
+.eq span{
+  will-change:transform;
+  animation-duration:1.4s;
+}
+
+/* =====================================================
+   v8 — esquinas decorativas, pasos visuales, WebView, botones
+===================================================== */
+
+/* Ocultar iconitos sueltos anteriores */
+.art-mini{ display:none !important; }
+
+/* ---------- Esquinas estilo "doodle" con líneas ---------- */
+.art-corner{
+  position:absolute;
+  width:220px; height:220px;
+  opacity:.55;
+}
+.art-corner.tl{ top:70px; left:0; }
+.art-corner.tr{ top:70px; right:0; }
+.art-corner.bl{ bottom:0; left:0; }
+.art-corner.br{ bottom:0; right:0; }
+
+.art-corner svg{ position:absolute; inset:0; width:100%; height:100%; }
+.art-corner.tr svg{ transform:scaleX(-1); }
+.art-corner.bl svg{ transform:scaleY(-1); }
+.art-corner.br svg{ transform:scale(-1,-1); }
+
+.art-corner svg path{ stroke:rgba(0,255,136,.45); stroke-width:1.2; }
+.art-corner svg path.d{ stroke:rgba(45,212,255,.4); stroke-dasharray:4 6; }
+.art-corner svg circle{ fill:var(--bg); stroke:rgba(0,255,136,.7); stroke-width:1.2; }
+
+.art-corner i{
+  position:absolute;
+  width:36px; height:36px;
+  margin:-18px;                 /* centra el icono sobre el nodo */
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px;
+  color:var(--accent);
+  background:var(--bg);
+  border:1px solid rgba(0,255,136,.35);
+  border-radius:50%;
+}
+.art-corner i.b{ color:var(--accent-2); border-color:rgba(45,212,255,.35); }
+/* en la esquina derecha el margen se invierte */
+.art-corner.tr i, .art-corner.br i{ margin:-18px; }
+
+@media(max-width:900px){
+  .art-corner{ width:150px; height:150px; opacity:.4; }
+  .art-corner i{ transform:scale(.8); }
+}
+@media(max-width:640px){
+  .art-corner.bl, .art-corner.br{ display:none; }
+}
+
+/* ---------- Teléfono: ecualizador 100% estático ---------- */
+.eq span{
+  animation:none !important;
+  transform:none !important;
+  will-change:auto !important;
+}
+.eq span:nth-child(1){ height:40%; }
+.eq span:nth-child(2){ height:75%; }
+.eq span:nth-child(3){ height:55%; }
+.eq span:nth-child(4){ height:100%; }
+.eq span:nth-child(5){ height:65%; }
+.eq span:nth-child(6){ height:85%; }
+.eq span:nth-child(7){ height:45%; }
+
+/* ---------- Pasos de instalación ---------- */
+.mobile-steps{ gap:12px; padding:20px; }
+.mobile-steps li{
+  align-items:center;
+  gap:16px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--border-soft);
+  border-radius:14px;
+  transition:border-color .25s var(--ease), background .25s var(--ease) !important;
+}
+.mobile-steps li:hover{
+  border-color:rgba(0,255,136,.25) !important;
+  background:rgba(0,255,136,.03) !important;
+}
+.mobile-steps li > span{ flex:1; }
+
+.step-ico{
+  width:44px; height:44px; flex-shrink:0;
+  border-radius:13px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+.step-ico.b{ background:var(--accent-2-soft); color:var(--accent-2); }
+
+/* El número pasa a ser un indicador chico al final */
+.mobile-steps li::before{
+  order:3;
+  width:auto; height:auto;
+  background:none; box-shadow:none;
+  color:var(--text-faint);
+  font-size:22px; font-weight:800;
+  opacity:.55;
+}
+
+/* ---------- WebView ---------- */
+.webview-icons{
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:16px;
+  width:100%;
+}
+.webview-icons .webview-note-icon{ margin-bottom:0; }
+.webview-note-icon.web{
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+.webview-plus{ color:var(--text-faint); font-size:12px; }
+.webview-chip{
+  margin-left:auto;
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11.5px; font-weight:700;
+  color:var(--accent-2);
+  background:var(--accent-2-soft);
+  border:1px solid rgba(45,212,255,.25);
+  padding:5px 11px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+/* ---------- Botones de descarga: todos iguales (PC, Mobile, hero, ediciones) ---------- */
+.btn-primary{
+  padding:13px 28px !important;
+  font-size:15px;
+  line-height:1.25;
+  box-shadow:0 6px 18px rgba(0,255,136,.22), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-primary i{ font-size:15px; }
+
+/* Botón "Abrir WebView" a todo el ancho */
+.webview-note .btn-ghost{ width:100%; justify-content:center; }
+
+
+/* =====================================================
+   INTRO PINNEADO (estilo GTA VI)
+===================================================== */
+.intro{
+  position:relative;
+  height:300vh; height:300svh;      /* más alto = más lento; más bajo = más rápido */
+  margin-top:-96px;                 /* compensa el pt-24 del wrapper */
+}
+.intro-stage{
+  position:sticky; top:0;
+  height:100vh; height:100svh;
+  overflow:hidden;
+  background:#04060c;
+}
+
+/* ---------- Fondo del intro ---------- */
+.intro-bg{ position:absolute; inset:0; }
+.intro-bg .lay{ position:absolute; inset:0; will-change:opacity; }
+.intro-bg .l0{
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(0,255,136,.18), transparent 60%),
+    radial-gradient(ellipse at 5% 95%, rgba(45,212,255,.10), transparent 55%);
+}
+.intro-bg .l1{
+  opacity:0;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(45,212,255,.18), transparent 62%),
+    radial-gradient(ellipse at 90% 100%, rgba(0,255,136,.08), transparent 50%);
+}
+.intro-rings{
+  position:absolute; right:-18%; top:50%;
+  width:900px; height:900px; margin-top:-450px; border-radius:50%;
+  background:repeating-radial-gradient(circle, transparent 0 46px, rgba(0,255,136,.09) 47px 48px);
+  -webkit-mask-image:radial-gradient(circle, #000 20%, transparent 68%);
+          mask-image:radial-gradient(circle, #000 20%, transparent 68%);
+  will-change:transform;
+}
+.intro-floor{
+  position:absolute; left:-50%; right:-50%; bottom:-12%; height:55%;
+  background:
+    linear-gradient(rgba(0,255,136,.16) 1px, transparent 1px) 0 0 / 70px 70px,
+    linear-gradient(90deg, rgba(0,255,136,.16) 1px, transparent 1px) 0 0 / 70px 70px;
+  transform:perspective(520px) rotateX(64deg);
+  -webkit-mask-image:linear-gradient(to top, #000, transparent 85%);
+          mask-image:linear-gradient(to top, #000, transparent 85%);
+  opacity:.35;
+}
+.intro-vignette{
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+
+/* ---------- Escenas ---------- */
+.intro-scene{
+  position:absolute; inset:0;
+  display:flex; align-items:center;
+  z-index:2;
+}
+/* La escena 2 arranca oculta; el JS la maneja */
+.intro-scene[data-i="1"]{ opacity:0; visibility:hidden; pointer-events:none; }
+
+.intro-inner{
+  width:100%; margin:0 auto;
+  padding:96px 16px 40px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0; align-items:center;
+}
+/* Mismo ancho que el .container de Tailwind (como el hero original) */
+@media(min-width:640px){ .intro-inner{ max-width:640px; } }
+@media(min-width:768px){ .intro-inner{ max-width:768px; } }
+@media(min-width:1024px){ .intro-inner{ max-width:1024px; } }
+@media(min-width:1280px){ .intro-inner{ max-width:1280px; } }
+@media(min-width:1536px){ .intro-inner{ max-width:1536px; } }
+.intro-inner.center{ grid-template-columns:1fr; text-align:center; }
+
+.s0-text, .s0-visual{ will-change:transform; }
+
+/* Entrada del hero al cargar la página (escalonada) */
+@keyframes introRise{
+  from{ opacity:0; transform:translate3d(0,28px,0); }
+  to{ opacity:1; transform:none; }
+}
+.intro-scene[data-i="0"] .rv{
+  animation:introRise .9s var(--ease) both;
+  animation-delay:calc(var(--d,0) * 120ms + 150ms);
+}
+/* Escena 2: el JS controla opacity/transform al scrollear */
+.intro-scene[data-i="1"] .rv{ opacity:0; }
+
+/* ---------- Hero ---------- */
+.intro-title{
+  font-size:2.25rem;            /* text-4xl */
+  line-height:2.5rem;
+  font-weight:700;              /* font-bold */
+  margin:0 0 24px;              /* mb-6 */
+}
+@media(min-width:1024px){
+  .intro-title{ font-size:3rem; line-height:1; }   /* lg:text-5xl */
+}
+.intro-sub{
+  font-size:1.125rem;           /* text-lg */
+  line-height:1.75rem;
+  color:#d1d5db;                /* text-gray-300 */
+  margin:0 0 32px;              /* mb-8 */
+}
+.intro-list{
+  list-style:none; margin:0 0 32px; padding:0;     /* mb-8 */
+  display:flex; flex-direction:column; gap:16px;   /* space-y-4 */
+  font-size:16px; line-height:1.5; color:var(--text);
+}
+.intro-list li{ display:flex; align-items:flex-start; gap:12px; }
+.intro-list i{ color:var(--accent); margin-top:4px; font-size:16px; }
+
+.intro-cta{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; }
+
+.ms-badge{
+  display:inline-block;
+  width:160px; height:45px;
+  border-radius:12px;
+  background:url("https://get.microsoft.com/images/es%20dark.svg") center / contain no-repeat;
+  transition:transform .25s var(--ease);
+}
+.ms-badge:hover{ transform:scale(1.05); }
+
+.intro .pc-mockup{ animation:none !important; }
+.intro .pc-mockup img{ width:100%; max-height:64vh; object-fit:cover; }
+
+.intro-hint{
+  position:absolute; left:50%; bottom:22px; margin-left:-10px;
+  color:var(--accent); font-size:18px; opacity:.8;
+}
+.intro-hint i{ display:block; }
+@keyframes hintBounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(7px); }
+}
+
+/* ---------- Escena 2: por qué elegir ---------- */
+.iw-wrap{ max-width:1100px; margin:0 auto; will-change:transform; }
+.iw-title{
+  font-size:1.875rem;           /* text-3xl */
+  line-height:2.25rem;
+  font-weight:700;
+  margin:0 0 24px;              /* mb-6 */
+}
+@media(min-width:1024px){
+  .iw-title{ font-size:2.25rem; line-height:2.5rem; }   /* lg:text-4xl */
+}
+.iw-sub{
+  font-size:1.125rem;           /* text-lg */
+  line-height:1.75rem;
+  color:#d1d5db;
+  max-width:48rem;              /* max-w-3xl */
+  margin:0 auto 40px;
+}
+
+.iw-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:18px; }
+@media(max-width:900px){ .iw-grid{ gap:12px; } }
+.iw-card{
+  width:calc(25% - 13.5px);
+  background:#0d0d22;
+  border:1px solid rgba(0,255,136,.2);
+  border-radius:18px;
+  padding:26px 22px;            /* igual que .why-card */
+  text-align:left;
+}
+.iw-card.b{ border-color:rgba(45,212,255,.25); }
+.iw-ico{
+  width:44px; height:44px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; margin-bottom:16px;
+  background:var(--accent-soft); color:var(--accent);
+}
+.iw-card.b .iw-ico{ background:var(--accent-2-soft); color:var(--accent-2); }
+.iw-card h3{ font-size:15.5px; font-weight:700; color:#fff; margin:0 0 8px; }
+.iw-card p{ font-size:13px; color:var(--text-muted); line-height:1.55; margin:0; }
+
+/* ---------- Puntos y barra de progreso ---------- */
+.intro-dots{
+  position:absolute; right:22px; top:50%;
+  transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:14px; z-index:5;
+}
+.intro-dot{
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(255,255,255,.22);
+  border:none; padding:0; cursor:pointer;
+  transition:background .3s var(--ease), height .3s var(--ease) !important;
+}
+.intro-dot.active{
+  background:var(--accent);
+  height:28px; border-radius:6px;
+  box-shadow:0 0 12px rgba(0,255,136,.6);
+}
+.intro-progress{
+  position:absolute; left:0; right:0; bottom:0;
+  height:3px; background:rgba(255,255,255,.06); z-index:5;
+}
+.intro-progress span{
+  display:block; height:100%; width:100%;
+  transform:scaleX(0); transform-origin:left;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* ---------- Pantallas bajas ---------- */
+@media(max-height:700px){
+  .intro-inner{ padding-top:84px; padding-bottom:24px; }
+  .intro-title{ margin-bottom:16px; }
+  .intro-sub{ margin-bottom:20px; }
+  .intro-list{ gap:10px; margin-bottom:22px; }
+  .iw-title{ margin-bottom:12px; }
+  .iw-sub{ margin-bottom:22px; }
+}
+
+/* ---------- Celulares / tablets ---------- */
+@media(max-width:900px){
+  .intro-inner{
+    grid-template-columns:1fr; gap:18px;
+    padding:80px 20px 36px; text-align:center;
+  }
+  .s0-visual{ display:none; }
+  .intro-sub{ margin-left:auto; margin-right:auto; font-size:15px; }
+  .intro-list{ display:inline-flex; text-align:left; font-size:14px; }
+  .intro-list li:nth-child(4){ display:none; }
+  .intro-cta{ justify-content:center; }
+  .intro-dots{ right:10px; }
+  .intro-rings{ opacity:.5; }
+
+  .iw-sub{ margin-bottom:18px; }
+  .iw-card{
+    width:calc(50% - 6px);
+    display:flex; align-items:center; gap:10px;
+    padding:12px;
+  }
+  .iw-ico{ margin:0; flex-shrink:0; width:34px; height:34px; font-size:15px; }
+  .iw-card h3{ margin:0; font-size:13px; }
+  .iw-card p{ display:none; }
+}
+@media(max-width:900px) and (max-height:700px){
+  .intro-sub{ display:none; }
+}
+
+/* =====================================================
+   INTRO v2 — 2 escenas (Hero → Por qué elegir)
+===================================================== */
+/* Banner de Mobile que sigue al intro */
+#comparison{ padding:40px 0 8px !important; }
+
+/* Suavidad: capas propias para lo que se anima con el scroll */
+.intro-scene{ will-change:opacity; }
+.intro-scene[data-i="1"] .rv{ will-change:transform, opacity; }
+
+/* Todo en verde: sin tarjetas azules alternadas */
+.iw-card.b{ border-color:rgba(0,255,136,.2); }
+.iw-card.b .iw-ico{ background:var(--accent-soft); color:var(--accent); }
+.mobile-feature:nth-child(even) i{ background:var(--accent-soft); color:var(--accent); }
+.step-ico.b{ background:var(--accent-soft); color:var(--accent); }
+
+/* Por qué elegir: formato de beneficios, distinto a "Qué incluye" */
+@media(min-width:901px){
+  .iw-card{
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+  }
+  .iw-ico{
+    width:52px; height:52px;
+    border-radius:50%;
+    font-size:22px;
+    margin-bottom:14px;
+  }
+}
+
+/* =====================================================
+   v9 — navbar con iconos, badge = botón, selector de plataforma
+===================================================== */
+
+/* Iconos en la navbar */
+.nav-link, .mobile-link{ display:inline-flex; align-items:center; gap:8px; }
+.mobile-link{ display:flex; gap:14px; }
+.nav-link i, .mobile-link i{ font-size:.85em; opacity:.75; transition:opacity .25s var(--ease); }
+.mobile-link i{ width:22px; text-align:center; }
+.nav-link:hover i, .nav-link.text-primary i, .mobile-link.text-primary i{ opacity:1; }
+
+/* Sección Mobile: badge y botón del mismo tamaño */
+.mobile-cta-row .btn-primary,
+.mobile-cta-row .mobile-version-badge{
+  height:48px; box-sizing:border-box;
+  padding:0 28px !important;
+  font-size:15px; line-height:1;
+  border-radius:40px;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.mobile-cta-row .btn-primary i{ margin-right:0 !important; }
+
+/* Pasos de descargas.html */
+@keyframes stepIn{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:none; } }
+.dl-step{ animation:stepIn .5s var(--ease) both; }
+.dl-step[hidden]{ display:none !important; }
+
+.dl-back{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-bottom:26px; padding:8px 16px;
+  font-size:13px; font-weight:600; font-family:inherit;
+  color:var(--text-muted);
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:30px; cursor:pointer;
+}
+.dl-back:hover{ color:var(--accent); border-color:rgba(0,255,136,.3); }
+
+/* Selector de plataforma */
+.platform-grid{
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:22px; max-width:760px; margin:0 auto;
+}
+.platform-card{
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:44px 28px 32px;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:24px;
+  color:var(--text); font-family:inherit; text-align:center; cursor:pointer;
+  transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease) !important;
+}
+.platform-card:hover{
+  transform:translateY(-6px) !important;
+  border-color:rgba(0,255,136,.45) !important;
+  box-shadow:0 18px 40px rgba(0,255,136,.14) !important;
+}
+.platform-icon{
+  width:92px; height:92px; border-radius:26px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:44px; margin-bottom:14px;
+  background:var(--accent-soft); color:var(--accent);
+}
+.platform-name{ font-size:1.6rem; font-weight:700; color:#fff; }
+.platform-sub{ font-size:14px; color:var(--text-muted); }
+.platform-go{
+  margin-top:18px; display:inline-flex; align-items:center; gap:8px;
+  font-size:13.5px; font-weight:600; color:var(--accent);
+}
+.platform-go i{ transition:transform .25s var(--ease); }
+.platform-card:hover .platform-go i{ transform:translateX(5px); }
+
+/* Panel del APK */
+.apk-panel{
+  max-width:760px; margin:0 auto; text-align:left;
+  background:linear-gradient(160deg, #0d1a14 0%, var(--bg-elevated) 55%);
+  border:1px solid rgba(0,255,136,.25);
+  border-radius:24px; padding:32px;
+}
+.apk-head{
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  padding-bottom:22px; margin-bottom:22px;
+  border-bottom:1px solid var(--border-soft);
+}
+.apk-icon{
+  width:58px; height:58px; border-radius:16px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px; background:var(--accent-soft); color:var(--accent);
+}
+.apk-head-text{ flex:1; min-width:200px; }
+.apk-head-text h3{ font-size:1.25rem; font-weight:700; color:#fff; margin:0 0 4px; }
+.apk-head-text p{ font-size:13px; color:var(--text-faint); margin:0; }
+.apk-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px; }
+.apk-chip{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:var(--text-muted);
+  background:var(--bg); border:1px solid var(--border);
+  padding:9px 14px; border-radius:30px;
+}
+.apk-chip i{ color:var(--accent); }
+.apk-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+.apk-actions > a{
+  height:48px; box-sizing:border-box;
+  padding:0 28px !important; font-size:15px; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.apk-actions .btn-primary i{ margin-right:0 !important; }
+
+@media(max-width:640px){
+  .platform-grid{ grid-template-columns:1fr; }
+  .platform-card{ padding:32px 22px 26px; }
+  .apk-panel{ padding:24px 20px; }
+  .apk-actions > a{ width:100%; }
+}
+
+/* =====================================================
+   v10 — ajustes varios
+===================================================== */
+
+/* Intro más corto: después de ver todo, pasa rápido a la siguiente sección */
+.intro{ height:250vh; height:250svh; }
+
+/* "Muy pronto en Google Play": sin borde */
+.playstore-soon{ border:none !important; }
+
+/* Texto (no badge) al lado del botón APK */
+.mobile-cta-row{ margin-bottom:26px; }
+.mobile-cta-text{
+  display:flex; flex-direction:column; gap:3px;
+}
+.mobile-cta-text-main{
+  font-size:13.5px; font-weight:600; color:var(--text-muted);
+  display:flex; align-items:center; gap:6px;
+}
+.mobile-cta-text-main i{ color:var(--accent); font-size:13px; }
+.mobile-cta-text-sub{
+  font-size:12.5px; color:var(--text-faint);
+}
+@media(max-width:640px){
+  .mobile-cta-text{ align-items:center; text-align:center; }
+}
+
+/* Guía de instalación: contenedor azul (como el de WebView) y pasos en franjas azules */
+.mobile-steps{
+  background:linear-gradient(160deg, #101d34, var(--bg-elevated) 60%);
+  border:1px solid rgba(45,212,255,.25);
+}
+.mobile-steps li{
+  background:rgba(45,212,255,.07);
+  border:1px solid rgba(45,212,255,.2);
+}
+.mobile-steps li:hover{
+  border-color:rgba(45,212,255,.45) !important;
+  background:rgba(45,212,255,.12) !important;
+}
+.step-ico,
+.step-ico.b{
+  background:var(--accent-2-soft);
+  color:var(--accent-2);
+}
+.mobile-steps li::before{ color:var(--accent-2); }
+
+/* descargas.html: botón "Cambiar plataforma" arriba a la izquierda, sin contenedor */
+.dl-back{
+  display:flex;
+  width:fit-content;
+  margin:0 auto 26px 0;
+  padding:4px 0;
+  background:none;
+  border:none;
+  border-radius:0;
+}
+.dl-back:hover{
+  background:none;
+  border:none;
+  color:var(--accent);
 }

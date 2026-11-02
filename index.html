@@ -3,37 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Spottrack - Una aplicación de música optimizada, sin anuncios y compatible con Windows">
-  <meta name="keywords" content="música, streaming, sin anuncios, optimizado, windows">
+  <meta name="description" content="Spottrack - Música optimizada y sin anuncios para Windows y Android. Spottrack Mobile v5.0.0 ya disponible.">
+  <meta name="keywords" content="música, streaming, sin anuncios, optimizado, windows, android, spottrack mobile, apk">
   <title>Spottrack Music</title>
 
-<!-- Open Graph (Preview para Discord, WhatsApp, etc.) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Spottrack Web">
-<meta property="og:description" content="Descarga Spottrack, la app de música optimizada, sin anuncios y compatible con Windows 10 y 11.">
-<meta property="og:url" content="https://spottrack-com.github.io/">
-<meta property="og:image" content="https://spottrack-com.github.io/assets/banner.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spottrack Web">
+  <meta property="og:description" content="Spottrack PC y Spottrack Mobile (Android): música optimizada y sin anuncios.">
+  <meta property="og:url" content="https://spottrack-com.github.io/">
+  <meta property="og:image" content="https://spottrack-com.github.io/assets/banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-<!-- Twitter Card (lo usan muchas apps también) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Spottrack Web">
-<meta name="twitter:description" content="La plataforma web oficial de Spottrack. Rápida, ligera y sin anuncios.">
-<meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spottrack Web">
+  <meta name="twitter:description" content="La plataforma oficial de Spottrack. Rápida, ligera y sin anuncios. Ahora también en Android.">
+  <meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
 
-  <!-- Tailwind primero, styles.css después para que nuestras animaciones no queden pisadas -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
-
 </head>
 <body class="overflow-x-hidden">
 
+  <!-- Fondo: estructuras estáticas -->
+  <div class="bg-art" aria-hidden="true">
+    <div class="art-grid"></div>
+
+    <div class="art-corner tl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-music" style="left:105px;top:66px"></i>
+    </div>
+    <div class="art-corner tr">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-headphones b" style="right:105px;top:66px"></i>
+    </div>
+    <div class="art-corner bl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-compact-disc b" style="left:105px;bottom:66px"></i>
+    </div>
+    <div class="art-corner br">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-mobile-screen-button" style="right:105px;bottom:66px"></i>
+    </div>
+    <span class="art-glow g1"></span>
+    <span class="art-glow g2"></span>
+  </div>
 
   <!-- Navigation -->
   <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
@@ -45,11 +64,12 @@
         </a>
 
         <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+          <a href="index.html#mobile" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
           <div class="lang-switcher"></div>
         </div>
 
@@ -70,11 +90,12 @@
       </button>
     </div>
     <div class="flex flex-col space-y-6 p-6">
-      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+      <a href="index.html#mobile" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
       <div class="lang-switcher"></div>
     </div>
   </div>
@@ -82,146 +103,240 @@
   <div class="overlay" id="overlay"></div>
 
   <div class="content-wrapper pt-24">
-    <!-- Hero Section / Inicio -->
-    <section id="inicio" class="py-16 lg:py-24 section visible">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-1/2 mb-12 md:mb-0">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-6 animate-fade-left delay-1">
-              <span class="text-primary" data-i18n="hero.title.pre">Tu música</span><span data-i18n="hero.title.post">, sin límites</span>
-            </h1>
-            <p class="text-lg mb-8 text-gray-300 animate-fade-left delay-2" data-i18n="hero.subtitle">Spottrack es una aplicación de música diseñada para ofrecerte una experiencia de audio excepcional:</p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start animate-fade-left delay-3">
-                <i class="fas fa-check text-primary mt-1 mr-3"></i>
-                <span data-i18n="hero.bullet1">Totalmente optimizada para un rendimiento superior</span>
-              </li>
-              <li class="flex items-start animate-fade-left delay-4">
-                <i class="fas fa-check text-primary mt-1 mr-3"></i>
-                <span data-i18n="hero.bullet2">Sin anuncios que interrumpan tu experiencia</span>
-              </li>
-              <li class="flex items-start animate-fade-left delay-5">
-                <i class="fas fa-check text-primary mt-1 mr-3"></i>
-                <span data-i18n="hero.bullet3">Ligera y rápida, incluso en equipos modestos</span>
-              </li>
-              <li class="flex items-start animate-fade-left delay-6">
-                <i class="fas fa-check text-primary mt-1 mr-3"></i>
-                <span data-i18n="hero.bullet4">Compatible con todas las versiones de Windows</span>
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-4 items-center animate-fade-left delay-6">
 
-<!-- BOTON DESCARGA -->
-<a href="descargas.html"
-   class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
-  <i class="fas fa-download mr-2"></i>
-  <span data-i18n="hero.cta">Descargar Spottrack PC</span>
-</a>
+    <!-- =====================================================
+         INTRO PINNEADO (estilo GTA VI)
+         El scroll anima las escenas en el mismo lugar (initIntro en script.js).
+         Escena 1: Hero  →  Escena 2: Por qué elegir  →  scroll normal.
+    ===================================================== -->
+    <section id="inicio" class="intro">
+      <div class="intro-stage">
 
-<!-- BADGE MICROSOFT -->
-<a style="background-image: url('https://get.microsoft.com/images/es%20dark.svg');
-border-radius: 12px;
-width: 160px;
-height: 45px;
-display: inline-block;
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
-transition: transform 0.2s ease;"
-href="https://apps.microsoft.com/detail/9MVS17ZNK60Z?referrer=appbadge&cid=msstore&mode=direct"
-target="_blank"
-onmouseover="this.style.transform='scale(1.05)'"
-onmouseout="this.style.transform='scale(1)'">
-</a>
-
-</div>
-          </div>
-
-          <div class="md:w-1/2 animate-fade-right delay-4">
-            <div class="pc-mockup">
-              <img src="images/pc.png" alt="Spottrack PC" class="w-full">
-              <div class="pc-screen"></div>
-            </div>
+        <!-- Fondo propio del intro -->
+        <div class="intro-bg" aria-hidden="true">
+          <span class="lay l0"></span><span class="lay l1"></span>
+          <div class="intro-rings"></div>
+          <div class="intro-floor"></div>
+          <div class="intro-vignette"></div>
         </div>
+
+        <!-- ESCENA 1: Hero -->
+        <div class="intro-scene" data-i="0">
+          <div class="intro-inner">
+
+            <div class="s0-text">
+              <h1 class="intro-title rv" style="--d:0">
+                <span class="text-primary" data-i18n="hero.title.pre">Tu música</span><span data-i18n="hero.title.post">, sin límites</span>
+              </h1>
+              <p class="intro-sub rv" style="--d:1" data-i18n="hero.subtitle">Spottrack es una aplicación de música diseñada para ofrecerte una experiencia de audio excepcional:</p>
+              <ul class="intro-list rv" style="--d:2">
+                <li><i class="fas fa-check"></i><span data-i18n="hero.bullet1">Totalmente optimizada para un rendimiento superior</span></li>
+                <li><i class="fas fa-check"></i><span data-i18n="hero.bullet2">Sin anuncios que interrumpan tu experiencia</span></li>
+                <li><i class="fas fa-check"></i><span data-i18n="hero.bullet3">Ligera y rápida, incluso en equipos modestos</span></li>
+                <li><i class="fas fa-check"></i><span data-i18n="hero.bullet4">Compatible con todas las versiones de Windows</span></li>
+              </ul>
+              <div class="intro-cta rv" style="--d:3">
+                <a href="descargas.html#pc" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                  <i class="fas fa-download mr-2"></i><span data-i18n="hero.cta">Descargar Spottrack PC</span>
+                </a>
+                <a href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.0/Spottrack-Music-Mobile.apk" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                  <i class="fab fa-android mr-2"></i><span data-i18n="hero.cta.mobile">Descargar Spottrack Mobile</span>
+                </a>
+                <a class="ms-badge" href="https://apps.microsoft.com/detail/9MVS17ZNK60Z?referrer=appbadge&cid=msstore&mode=direct" target="_blank" rel="noopener noreferrer" aria-label="Obtenerlo en Microsoft Store"></a>
+              </div>
+            </div>
+
+            <div class="s0-visual">
+              <div class="rv" style="--d:2">
+                <div class="pc-mockup"><img src="images/pc.png" alt="Spottrack PC"></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="intro-hint"><i class="fas fa-chevron-down"></i></div>
+        </div>
+
+        <!-- ESCENA 2: Por qué elegir Spottrack -->
+        <div class="intro-scene" data-i="1">
+          <div class="intro-inner center">
+            <div class="iw-wrap">
+              <h2 class="iw-title rv">
+                <span data-i18n="why.title.pre">¿Por qué elegir</span> <span class="text-primary">Spottrack</span><span data-i18n="why.title.post">?</span>
+              </h2>
+              <p class="iw-sub rv" data-i18n="why.subtitle">Todo lo que necesitás de una app de música, sin vueltas.</p>
+
+              <div class="iw-grid">
+                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-ban"></i></div><div class="iw-txt"><h3 data-i18n="why.ads.title">Sin anuncios</h3><p data-i18n="why.ads.text">Disfrutá sin ads.</p></div></div>
+                <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-bolt"></i></div><div class="iw-txt"><h3 data-i18n="why.fast.title">Rápida</h3><p data-i18n="why.fast.text">Fluye bien en equipos modestos.</p></div></div>
+                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-cloud-arrow-down"></i></div><div class="iw-txt"><h3 data-i18n="why.offline.title">Escuchá offline</h3><p data-i18n="why.offline.text">Descargá tus canciones y escuchalas sin internet.</p></div></div>
+                <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-desktop"></i></div><div class="iw-txt"><h3 data-i18n="why.devices.title">PC y celular</h3><p data-i18n="why.devices.text">Tu música en Windows y Android, donde quieras.</p></div></div>
+                <div class="iw-card rv"><div class="iw-ico"><i class="fab fa-youtube"></i></div><div class="iw-txt"><h3 data-i18n="why.catalog.title">Todo el catálogo</h3><p data-i18n="why.catalog.text">Todo YouTube Music: seguí artistas, mirá videos en HD y más.</p></div></div>
+                <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-bell"></i></div><div class="iw-txt"><h3 data-i18n="why.background.title">Reproducción en segundo plano</h3><p data-i18n="why.background.text">Continuá escuchando mientras trabajás.</p></div></div>
+                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-list-ul"></i></div><div class="iw-txt"><h3 data-i18n="why.playlists.title">Creá playlists</h3><p data-i18n="why.playlists.text">Añadí me gusta y explorá, tené tu contenido unificado.</p></div></div>
+                <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-sliders-h"></i></div><div class="iw-txt"><h3 data-i18n="why.audio.title">Control de audio</h3><p data-i18n="why.audio.text">Editá tiempos de la música, calidad y más.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Puntos de navegación + barra de progreso -->
+        <div class="intro-dots">
+          <button type="button" class="intro-dot active" aria-label="Inicio"></button>
+          <button type="button" class="intro-dot" aria-label="Por qué elegir Spottrack"></button>
+        </div>
+        <div class="intro-progress"><span></span></div>
+
       </div>
     </section>
 
-    <!-- Por qué elegir Spottrack -->
-    <section id="comparison" class="py-16 bg-dark section">
+    <!-- Banner Spottrack Mobile (sigue al intro) -->
+    <section id="comparison" class="section">
       <div class="container mx-auto px-4">
-
-        <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-            <span data-i18n="why.title.pre">¿Por qué elegir</span> <span class="text-primary">Spottrack</span><span data-i18n="why.title.post">?</span>
-          </h2>
-          <p class="text-lg text-gray-300 max-w-3xl mx-auto" data-i18n="why.subtitle">
-            Todo lo que necesitás de una app de música, sin vueltas.
-          </p>
-        </div>
-
-        <div class="why-grid">
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-ban"></i></div>
-            <h3 data-i18n="why.ads.title">Sin anuncios</h3>
-            <p data-i18n="why.ads.text">Disfrutá sin ads.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-bolt"></i></div>
-            <h3 data-i18n="why.fast.title">Rápida</h3>
-            <p data-i18n="why.fast.text">Fluye bien en equipos modestos.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-music"></i></div>
-            <h3 data-i18n="why.catalog.title">Todo el catálogo</h3>
-            <p data-i18n="why.catalog.text">Accedé y disfrutá todo el catálogo de YouTube.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-bell"></i></div>
-            <h3 data-i18n="why.background.title">Reproducción en segundo plano</h3>
-            <p data-i18n="why.background.text">Continuá escuchando mientras trabajás.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-list-ul"></i></div>
-            <h3 data-i18n="why.playlists.title">Creá playlists</h3>
-            <p data-i18n="why.playlists.text">Añadí me gusta y explorá, tené tu contenido unificado.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fas fa-sliders-h"></i></div>
-            <h3 data-i18n="why.audio.title">Control de audio</h3>
-            <p data-i18n="why.audio.text">Editá tiempos de la música, calidad y más.</p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-card-icon"><i class="fab fa-windows"></i></div>
-            <h3 data-i18n="why.compat.title">Compatible</h3>
-            <p data-i18n="why.compat.text">Compatible con Windows 7 al 11.</p>
-          </div>
-
-        </div>
-
         <div class="why-mobile-banner">
           <div class="why-mobile-banner-icon">
             <i class="fas fa-mobile-screen-button"></i>
           </div>
           <div class="why-mobile-banner-text">
             <h3 data-i18n="why.mobile.title">Explorá la misma experiencia con Spottrack Mobile</h3>
-            <p data-i18n="why.mobile.text">Disponible próximamente, lleva tu misma experiencia de Spottrack PC a teléfonos Android 10+.</p>
+            <p data-i18n="why.mobile.text">Ya disponible para Android.</p>
           </div>
           <a href="ediciones.html" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+            <i class="fas fa-layer-group mr-2"></i>
             <span data-i18n="why.mobile.cta">Ver edición</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTTRACK MOBILE -->
+    <section id="mobile" class="py-16 lg:py-24 section">
+      <div class="container mx-auto px-4">
+
+        <div class="mobile-showcase">
+
+          <div class="mobile-showcase-text">
+            <span class="edition-eyebrow">
+              <i class="fab fa-android"></i>
+              <span data-i18n="mobile.eyebrow">Ya disponible · Android</span>
+            </span>
+            <h2 class="text-3xl lg:text-5xl font-bold mb-5">
+              <span data-i18n="mobile.title.pre">Spottrack</span> <span class="text-primary">Mobile</span>
+            </h2>
+            <p class="text-lg text-gray-300 mb-6" data-i18n="mobile.subtitle">
+              La experiencia completa de Spottrack ahora en tu teléfono Android 8 hasta 17+. Todo el catálogo de YouTube Music, descargas offline y cero anuncios.
+            </p>
+
+            <div class="mobile-cta-row">
+              <a href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.0/Spottrack-Music-Mobile.apk"
+                 class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                <span data-i18n="mobile.cta">Descargar APK</span>
+              </a>
+              <div class="mobile-cta-text">
+                <span class="mobile-cta-text-main"><i class="fas fa-shield-heart"></i> <span data-i18n="mobile.cta.note">Gratis · Sin anuncios · APK oficial</span></span>
+                <span class="mobile-cta-text-sub" data-i18n="mobile.badge">v5.0.0 · Android 8 a 17+</span>
+              </div>
+            </div>
+
+            <div class="playstore-soon">
+              <div class="playstore-soon-icon"><i class="fab fa-google-play"></i></div>
+              <div>
+                <h4 data-i18n="mobile.playstore.title">Muy pronto en Google Play</h4>
+                <p data-i18n="mobile.playstore.text">Por ahora, instalala con el APK oficial. Estamos trabajando para llegar a la Play Store.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-wrap">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="phone-cover"><i class="fas fa-music"></i></div>
+                <div class="phone-lines">
+                  <span class="l1"></span><span class="l2"></span>
+                </div>
+                <div class="eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="phone-bar"><span></span></div>
+                <div class="phone-controls">
+                  <i class="fas fa-backward-step"></i>
+                  <i class="fas fa-play main"></i>
+                  <i class="fas fa-forward-step"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Funciones -->
+        <div class="text-center mt-20 mb-10">
+          <h2 class="text-3xl lg:text-4xl font-bold">
+            <span data-i18n="mobile.features.title.pre">Qué incluye la versión</span> <span class="text-primary">Mobile</span>
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto mt-4" data-i18n="mobile.features.subtitle">Todo lo que trae Spottrack en tu Android, de punta a punta.</p>
+        </div>
+
+        <div class="mobile-feature-grid">
+          <div class="mobile-feature"><i class="fas fa-headphones"></i><span data-i18n="mobile.f1">Todo el catálogo de YouTube y YouTube Music</span></div>
+          <div class="mobile-feature"><i class="fas fa-cloud-arrow-down"></i><span data-i18n="mobile.f2">Descargas y música offline: guardá tus canciones y escuchalas sin internet</span></div>
+          <div class="mobile-feature"><i class="fas fa-ban"></i><span data-i18n="mobile.f3">Sin anuncios</span></div>
+          <div class="mobile-feature"><i class="fas fa-bolt"></i><span data-i18n="mobile.f4">Optimizada para que ande fluida</span></div>
+          <div class="mobile-feature"><i class="fas fa-list-ul"></i><span data-i18n="mobile.f5">Playlists online, Me gusta, artistas, álbumes, EPs y canciones populares</span></div>
+          <div class="mobile-feature"><i class="fas fa-film"></i><span data-i18n="mobile.f6">Videos en HD, 2K y 4K (según lo que soporte tu teléfono)</span></div>
+          <div class="mobile-feature"><i class="fas fa-tv"></i><span data-i18n="mobile.f7">Sección de Videos con los videos musicales del momento</span></div>
+          <div class="mobile-feature"><i class="fas fa-newspaper"></i><span data-i18n="mobile.f8">Feed con novedades de tus artistas</span></div>
+          <div class="mobile-feature"><i class="fas fa-radio"></i><span data-i18n="mobile.f9">Radios en vivo de tu país</span></div>
+          <div class="mobile-feature"><i class="fas fa-sliders-h"></i><span data-i18n="mobile.f10">Ecualizador, balance L/R, región del contenido y mucho más</span></div>
+        </div>
+
+        <!-- Instalación -->
+        <div id="mobile-install" class="text-center mt-20 mb-10">
+          <h2 class="text-3xl lg:text-4xl font-bold">
+            <span data-i18n="mobile.install.title.pre">Cómo instalar</span> <span class="text-primary">Spottrack Mobile</span>
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto mt-4" data-i18n="mobile.install.subtitle">Cuatro pasos y listo, en menos de un minuto.</p>
+        </div>
+
+        <div class="mobile-install-grid">
+          <ol class="mobile-steps">
+            <li>
+              <div class="step-ico"><i class="fas fa-cloud-arrow-down"></i></div>
+              <span data-i18n="mobile.step1">Descargá el archivo .apk con el botón de arriba.</span>
+            </li>
+            <li>
+              <div class="step-ico b"><i class="fas fa-unlock-keyhole"></i></div>
+              <span data-i18n="mobile.step2">Si Android te lo pide, habilitá «Instalar apps desconocidas» para tu navegador o gestor de archivos.</span>
+            </li>
+            <li>
+              <div class="step-ico"><i class="fas fa-shield-halved"></i></div>
+              <span data-i18n="mobile.step3">Si Play Protect muestra un aviso de «app no verificada», tocá Instalar de todas formas. Es normal en apps que no están en Play Store.</span>
+            </li>
+            <li>
+              <div class="step-ico b"><i class="fas fa-circle-check"></i></div>
+              <span data-i18n="mobile.step4">¡Listo! Las próximas versiones se buscan desde Ajustes > Actualizaciones.</span>
+            </li>
+          </ol>
+
+          <div class="webview-note">
+            <div class="webview-icons">
+              <div class="webview-note-icon"><i class="fab fa-android"></i></div>
+              <span class="webview-plus"><i class="fas fa-plus"></i></span>
+              <div class="webview-note-icon web"><i class="fas fa-globe"></i></div>
+              <span class="webview-chip"><i class="fas fa-triangle-exclamation"></i> Android 8–10</span>
+            </div>
+            <h4 data-i18n="mobile.webview.title">Importante: actualizá Android System WebView</h4>
+            <p data-i18n="mobile.webview.text">La app depende de Android System WebView. En Android 8 a 10 (o si ves problemas de interfaz), instalá o actualizá esta app oficial de Google desde Play Store antes de usar Spottrack. En teléfonos modernos casi nunca pasa, pero conviene verificarlo.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.google.android.webview&hl=es_AR&pli=1" target="_blank" rel="noopener noreferrer" class="btn-ghost blue">
+              <i class="fab fa-google-play"></i>
+              <span data-i18n="mobile.webview.cta">Abrir WebView en Play Store</span>
+            </a>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Descarga (teaser -> descargas.html) -->
+    <!-- Descarga (teaser) -->
     <section id="descargar" class="py-16 lg:py-24 section download-teaser">
       <div class="container mx-auto px-4">
 
@@ -230,12 +345,11 @@ onmouseout="this.style.transform='scale(1)'">
             <span data-i18n="download.section.pre">Descargar</span> <span class="text-primary">Spottrack</span>
           </h2>
           <p class="text-lg text-gray-300 max-w-3xl mx-auto" data-i18n="download.section.subtitle">
-            Elegí tu versión de Windows y empezá a escuchar en minutos, sin anuncios y sin complicaciones.
+            Acá podés elegir la versión que quieras descargar: Spottrack para PC (Windows) o Spottrack Mobile para Android.
           </p>
         </div>
 
         <div class="download-teaser-panel" data-aos="fade-up">
-
           <div class="download-teaser-left">
             <div class="download-teaser-icon">
               <i class="fas fa-download"></i>
@@ -243,7 +357,7 @@ onmouseout="this.style.transform='scale(1)'">
             <div class="download-teaser-text">
               <h2 data-i18n="download.title">Descargá Spottrack ahora</h2>
               <p data-i18n="download.subtitle">
-                Instalá la versión que corresponda a tu Windows y empezá a escuchar en minutos.
+                Elegí tu plataforma, PC o Android, y empezá a escuchar en minutos.
               </p>
             </div>
           </div>
@@ -255,10 +369,9 @@ onmouseout="this.style.transform='scale(1)'">
             </a>
             <div class="download-teaser-note">
               <i class="fas fa-tag"></i>
-              <span data-i18n="download.note">Instaladores oficiales · Windows 7 a 11 · 32 y 64 bits</span>
+              <span data-i18n="download.note">Instaladores oficiales · Windows 7 a 11 · Android 8 a 17+</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -298,18 +411,9 @@ onmouseout="this.style.transform='scale(1)'">
               <h3 class="text-2xl font-semibold mb-4" data-i18n="ads.partnership.title">Partnership</h3>
               <p class="text-gray-300 mb-6" data-i18n="ads.partnership.text">Asocie su marca con Spottrack y llegue a millones de usuarios que disfrutan de música todos los días.</p>
               <ul class="space-y-3 mb-6 text-gray-300">
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.partnership.li1">Promociones integradas</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.partnership.li2">Campañas personalizadas</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.partnership.li3">Métricas detalladas</span>
-                </li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.partnership.li1">Promociones integradas</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.partnership.li2">Campañas personalizadas</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.partnership.li3">Métricas detalladas</span></li>
               </ul>
             </div>
 
@@ -320,28 +424,19 @@ onmouseout="this.style.transform='scale(1)'">
               <h3 class="text-2xl font-semibold mb-4" data-i18n="ads.promo.title">Promoción</h3>
               <p class="text-gray-300 mb-6" data-i18n="ads.promo.text">Promocione sus productos o aplicaciones dentro del ecosistema de Spottrack.</p>
               <ul class="space-y-3 mb-6 text-gray-300">
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.promo.li1">Banners no intrusivos</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.promo.li2">Recomendaciones patrocinadas</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                  <span data-i18n="ads.promo.li3">Integración con la experiencia de usuario</span>
-                </li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.promo.li1">Banners no intrusivos</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.promo.li2">Recomendaciones patrocinadas</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i><span data-i18n="ads.promo.li3">Integración con la experiencia de usuario</span></li>
               </ul>
             </div>
           </div>
 
           <div class="text-center" data-aos="fade-up" data-aos-delay="300">
             <a href="https://spottrack-com.github.io/ads.html"
-   class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
-  <i class="fas fa-book mr-2"></i>
-  <span data-i18n="ads.cta">Ver Spottrack Ads</span>
-</a>
+               class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+              <i class="fas fa-book mr-2"></i>
+              <span data-i18n="ads.cta">Ver Spottrack Ads</span>
+            </a>
           </div>
         </div>
       </div>
@@ -358,15 +453,9 @@ onmouseout="this.style.transform='scale(1)'">
           </div>
           <p class="footer-brand-text" data-i18n="footer.tagline">Tu música, sin límites ni anuncios.</p>
           <div class="footer-social">
-            <a href="https://discord.gg/kRhXAajRDq" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-discord text-xl"></i>
-            </a>
-            <a href="https://www.youtube.com/@Rage-community" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-youtube text-xl"></i>
-            </a>
-            <a href="https://x.com/spottrack" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-x-twitter text-xl"></i>
-            </a>
+            <a href="https://discord.gg/kRhXAajRDq" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-discord text-xl"></i></a>
+            <a href="https://www.youtube.com/@Rage-community" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+            <a href="https://x.com/spottrack" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-x-twitter text-xl"></i></a>
           </div>
         </div>
 
@@ -374,6 +463,7 @@ onmouseout="this.style.transform='scale(1)'">
           <h4 data-i18n="footer.col.product">Producto</h4>
           <a href="index.html#inicio" data-i18n="nav.inicio">Inicio</a>
           <a href="descargas.html" data-i18n="nav.descargar">Descargar</a>
+          <a href="index.html#mobile" data-i18n="nav.mobile">Mobile</a>
           <a href="ediciones.html" data-i18n="nav.ediciones">Ediciones</a>
           <a href="index.html#novedades" data-i18n="nav.novedades">Novedades</a>
         </div>
@@ -399,7 +489,6 @@ onmouseout="this.style.transform='scale(1)'">
     </footer>
   </div>
 
-  <!-- AOS Init -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="i18n.js"></script>
   <script src="script.js"></script>

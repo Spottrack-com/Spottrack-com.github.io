@@ -12,10 +12,11 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("is-visible");
+      setTimeout(() => { entry.target.style.transitionDelay = ""; }, 1800);
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15, rootMargin: "0px 0px -100px 0px" });
+}, { threshold: 0, rootMargin: "0px 0px -80px 0px" });
 
 // className: "section-reveal" o "card-reveal"
 // delayIndex: para escalonar varias cards de una misma fila (opcional)
@@ -178,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
      agregamos por JS, y a veces no llega — por eso el efecto se veía
      "desaparecido". Con clases propias el efecto siempre funciona.
   ---------------------------- */
-  sections.forEach(el => observeReveal(el, "section-reveal"));
+  sections.forEach(el => { if (el.id !== "inicio") observeReveal(el, "section-reveal"); });
 
 
   /* ----------------------------
@@ -198,7 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "#contact .card",
     "#ads .bg-secondary",
     ".why-card",
-    ".why-mobile-banner"
+    ".why-mobile-banner",
+    ".mobile-feature",
+    ".mobile-steps",
+    ".webview-note",
+    ".playstore-soon"
   ];
 
   cardGroups.forEach(selector => {
@@ -211,6 +216,125 @@ document.addEventListener("DOMContentLoaded", () => {
      IDIOMAS + GEO DETECTION
   ---------------------------- */
   initLanguageSystem();
+
+  /* ----------------------------
+     INTRO PINNEADO (estilo GTA VI)
+     El scroll avanza las escenas en el mismo lugar;
+     al terminar, la página sigue normal.
+  ---------------------------- */
+  (function initIntro() {
+    const intro = document.getElementById("inicio");
+    if (!intro || !intro.classList.contains("intro")) return;
+
+    const stage = intro.querySelector(".intro-stage");
+    const sc0 = intro.querySelector('.intro-scene[data-i="0"]');
+    const sc1 = intro.querySelector('.intro-scene[data-i="1"]');
+    if (!stage || !sc0 || !sc1) return;
+
+    const s0Text = sc0.querySelector(".s0-text");
+    const s0Vis = sc0.querySelector(".s0-visual");
+    const iwWrap = sc1.querySelector(".iw-wrap");
+    const iwItems = Array.from(sc1.querySelectorAll(".rv"));
+    const lay0 = intro.querySelector(".l0");
+    const lay1 = intro.querySelector(".l1");
+    const rings = intro.querySelector(".intro-rings");
+    const bar = intro.querySelector(".intro-progress span");
+    const dots = Array.from(intro.querySelectorAll(".intro-dot"));
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+    const easeInOut = t => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    // Línea de tiempo (progreso 0 → 1 del scroll dentro del intro)
+    const EXIT_START = 0.00, EXIT_END = 0.30;     // el hero se va (arranca al primer scroll)
+    const ENTER_START = 0.28, ENTER_END = 0.78;   // entra "por qué elegir"
+    // De 0.68 a 1.0 queda quieto (tiempo para leer) y después se suelta.
+
+    let smooth = 0, raf = 0, lastP = -1, curDot = -1;
+
+    function readTarget() {
+      const total = intro.offsetHeight - stage.offsetHeight;
+      if (total <= 0) return 0;
+      return clamp(-intro.getBoundingClientRect().top / total);
+    }
+
+    function render(p) {
+      if (p === lastP) return;
+      lastP = p;
+
+      const t0 = clamp((p - EXIT_START) / (EXIT_END - EXIT_START));
+      const e = 1 - (1 - t0) * (1 - t0);   // sale rápido al empezar y se suaviza al final
+      const s = clamp((p - ENTER_START) / (ENTER_END - ENTER_START));
+      const m = easeInOut(clamp((p - 0.05) / 0.35));
+
+      // --- Escena 1 (hero): se desvanece, el texto sube y el PC se va a la derecha
+      const o0 = 1 - e;
+      sc0.style.opacity = o0;
+      sc0.style.visibility = o0 < 0.01 ? "hidden" : "visible";
+      sc0.style.pointerEvents = o0 > 0.6 ? "auto" : "none";
+      if (s0Text) s0Text.style.transform = "translate3d(" + (-48 * e) + "px," + (-30 * e) + "px,0)";
+      if (s0Vis) s0Vis.style.transform = "translate3d(" + (72 * e) + "px," + (-12 * e) + "px,0) scale(" + (1 - 0.08 * e) + ")";
+
+      // --- Escena 2 (por qué elegir): entra con elementos en cascada
+      const o1 = clamp(s * 3);
+      sc1.style.opacity = o1;
+      sc1.style.visibility = o1 < 0.01 ? "hidden" : "visible";
+      sc1.style.pointerEvents = o1 > 0.6 ? "auto" : "none";
+      if (iwWrap) iwWrap.style.transform = "scale(" + (0.96 + 0.04 * easeOut(s)) + ")";
+      iwItems.forEach((el, i) => {
+        const t = easeOut(clamp((s - i * 0.05) / 0.5));
+        el.style.opacity = t;
+        el.style.transform = "translate3d(0," + ((1 - t) * 34) + "px,0)";
+      });
+
+      // --- Fondo: crossfade entre los dos brillos + anillos que crecen
+      if (lay0) lay0.style.opacity = 1 - m;
+      if (lay1) lay1.style.opacity = m;
+      if (rings) rings.style.transform = "translate3d(" + (-60 * p) + "px,0,0) scale(" + (1 + 0.35 * p) + ")";
+
+      // --- Progreso + puntos
+      if (bar) bar.style.transform = "scaleX(" + p + ")";
+      const idx = p < ENTER_START + 0.01 ? 0 : 1;
+      if (idx !== curDot) {
+        curDot = idx;
+        dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+      }
+    }
+
+    // Suavizado: el progreso "persigue" al scroll real.
+    // Depende del tiempo (no de los FPS) y se aplica siempre.
+    let lastT = 0;
+    function loop(now) {
+      raf = 0;
+      const dt = Math.min(64, now - (lastT || now - 16));
+      lastT = now;
+      const target = readTarget();
+      const diff = target - smooth;
+      smooth = Math.abs(diff) < 0.0004 ? target : smooth + diff * (1 - Math.exp(-dt / 140));
+      render(smooth);
+      if (smooth !== target) raf = requestAnimationFrame(loop);
+      else lastT = 0;
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+
+    smooth = readTarget();
+    render(smooth);
+
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", () => { lastP = -1; kick(); });
+    window.addEventListener("load", () => { lastP = -1; kick(); });
+
+    // Click en los puntos: salta a cada escena
+    const anchors = [0, 0.8];
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        const total = intro.offsetHeight - stage.offsetHeight;
+        const top = intro.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: top + (anchors[i] || 0) * total, behavior: "smooth" });
+      });
+    });
+  })();
 
 
   /* ----------------------------

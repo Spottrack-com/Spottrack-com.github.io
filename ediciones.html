@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Spottrack Ediciones - Conocé Spottrack PC y Spottrack Mobile, próximamente en agosto">
-  <meta name="keywords" content="spottrack, ediciones, pc, mobile, música">
+  <meta name="description" content="Spottrack Ediciones - Spottrack PC para Windows y Spottrack Mobile para Android, ya disponibles">
+  <meta name="keywords" content="spottrack, ediciones, pc, mobile, android, apk, música">
   <title>Spottrack Ediciones</title>
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Spottrack Ediciones">
-  <meta property="og:description" content="Spottrack PC ya disponible. Spottrack Mobile, próximamente en agosto.">
+  <meta property="og:description" content="Spottrack PC y Spottrack Mobile (Android) ya disponibles.">
   <meta property="og:url" content="https://spottrack-com.github.io/ediciones.html">
   <meta property="og:image" content="https://spottrack-com.github.io/assets/banner.jpg">
   <meta property="og:image:width" content="1200">
@@ -17,10 +17,9 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Spottrack Ediciones">
-  <meta name="twitter:description" content="Spottrack PC ya disponible. Spottrack Mobile, próximamente en agosto.">
+  <meta name="twitter:description" content="Spottrack PC y Spottrack Mobile (Android) ya disponibles.">
   <meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
 
-  <!-- Tailwind primero, styles.css después para que nuestras animaciones no queden pisadas -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,6 +29,64 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="overflow-x-hidden">
+
+  <!-- Fondo: iconos con brillo -->
+  <!-- Fondo nuevo: estructuras estáticas -->
+  <div class="bg-art" aria-hidden="true">
+    <div class="art-grid"></div>
+
+    <div class="art-corner tl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-music" style="left:105px;top:66px"></i>
+    </div>
+    <div class="art-corner tr">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-headphones b" style="right:105px;top:66px"></i>
+    </div>
+    <div class="art-corner bl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-compact-disc b" style="left:105px;bottom:66px"></i>
+    </div>
+    <div class="art-corner br">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-mobile-screen-button" style="right:105px;bottom:66px"></i>
+    </div>
+    <i class="fas fa-music art-mini" style="top:14%;left:6%"></i>
+    <i class="fas fa-headphones art-mini b" style="top:22%;right:6%"></i>
+    <i class="fas fa-compact-disc art-mini" style="top:58%;left:4%"></i>
+    <i class="fas fa-wave-square art-mini b" style="top:70%;right:5%"></i>
+    <i class="fas fa-heart art-mini" style="top:86%;left:46%"></i>
+    <span class="art-glow g1"></span>
+    <span class="art-glow g2"></span>
+    <div class="art-waves"></div>
+    <div class="art-vinyl"></div>
+    <div class="art-phone"></div>
+    <div class="art-monitor"></div>
+    <div class="art-eq">
+      <span style="height:38%"></span><span style="height:70%"></span><span style="height:52%"></span>
+      <span style="height:92%"></span><span style="height:60%"></span><span style="height:80%"></span>
+      <span style="height:34%"></span><span style="height:66%"></span><span style="height:46%"></span>
+    </div>
+  </div>
+
+  <!-- Fondo viejo (oculto por CSS, lo podés borrar después) -->
+  <div class="bg-old" aria-hidden="true">
+    <span class="bg-glow g1"></span><span class="bg-glow g2"></span>
+    <i class="fas fa-music" style="top:9%;left:5%;font-size:54px;animation-delay:-1s"></i>
+    <i class="fas fa-headphones b" style="top:16%;right:7%;font-size:64px;animation-delay:-4s"></i>
+    <i class="fas fa-compact-disc" style="top:38%;left:3%;font-size:70px;animation-delay:-7s"></i>
+    <i class="fas fa-wave-square b" style="top:47%;right:4%;font-size:48px;animation-delay:-2s"></i>
+    <i class="fas fa-microphone-lines" style="top:66%;left:8%;font-size:52px;animation-delay:-9s"></i>
+    <i class="fas fa-record-vinyl b" style="top:78%;right:9%;font-size:66px;animation-delay:-5s"></i>
+    <i class="fas fa-heart" style="top:88%;left:42%;font-size:40px;animation-delay:-3s"></i>
+    <i class="fas fa-play b" style="top:28%;left:46%;font-size:38px;animation-delay:-6s"></i>
+    <i class="fas fa-guitar" style="top:56%;left:30%;font-size:50px;animation-delay:-8s"></i>
+    <i class="fas fa-radio b" style="top:6%;left:62%;font-size:44px;animation-delay:-10s"></i>
+    <i class="fas fa-mobile-screen-button" style="top:72%;left:62%;font-size:46px;animation-delay:-11s"></i>
+    <i class="fas fa-volume-high b" style="top:92%;right:30%;font-size:42px;animation-delay:-12s"></i>
+    <i class="fas fa-desktop" style="top:22%;left:24%;font-size:40px;animation-delay:-13s"></i>
+    <i class="fas fa-bolt b" style="top:60%;right:24%;font-size:36px;animation-delay:-14s"></i>
+  </div>
 
   <!-- Navigation -->
   <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
@@ -41,11 +98,12 @@
         </a>
 
         <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+          <a href="index.html#mobile" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
           <div class="lang-switcher"></div>
         </div>
 
@@ -66,11 +124,12 @@
       </button>
     </div>
     <div class="flex flex-col space-y-6 p-6">
-      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+      <a href="index.html#mobile" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
       <div class="lang-switcher"></div>
     </div>
   </div>
@@ -91,7 +150,7 @@
           <span class="text-primary" data-i18n="editions.title.mid">dos plataformas</span>
         </h1>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto animate-fade-up delay-2" data-i18n="editions.subtitle">
-          Spottrack PC ya está disponible para descargar, Spottrack Mobile está en desarrollo, con el mismo enfoque: rendimiento, simplicidad y una experiencia sin anuncios
+          Spottrack PC y Spottrack Mobile ya están disponibles, con el mismo enfoque: rendimiento, simplicidad y una experiencia sin anuncios.
         </p>
       </div>
     </section>
@@ -101,13 +160,11 @@
       <div class="container mx-auto px-4">
         <div class="edition-showcase">
 
-          <!-- SPOTTRACK PC — disponible, va primero -->
+          <!-- SPOTTRACK PC -->
           <div class="edition-card pc" data-aos="fade-up">
             <div class="edition-card-top">
               <div class="edition-card-heading">
-                <div class="edition-icon-wrap">
-                  <i class="fas fa-desktop"></i>
-                </div>
+                <div class="edition-icon-wrap"><i class="fas fa-desktop"></i></div>
                 <div>
                   <h2 class="edition-title" data-i18n="editions.pc.title">Spottrack PC</h2>
                   <p class="edition-subtitle" data-i18n="editions.pc.subtitle">Windows 7, 8, 8.1, 10 y 11 · 32 y 64 bits</p>
@@ -167,68 +224,48 @@
             </div>
           </div>
 
-          <!-- SPOTTRACK MOBILE — en desarrollo, va después -->
+          <!-- SPOTTRACK MOBILE — ya disponible -->
           <div class="edition-card mobile" data-aos="fade-up" data-aos-delay="100">
             <div class="edition-card-top">
               <div class="edition-card-heading">
-                <div class="edition-icon-wrap mobile">
-                  <i class="fas fa-mobile-screen-button"></i>
-                </div>
+                <div class="edition-icon-wrap mobile"><i class="fas fa-mobile-screen-button"></i></div>
                 <div>
                   <h2 class="edition-title" data-i18n="editions.mobile.title">Spottrack Mobile</h2>
                   <p class="edition-subtitle" data-i18n="editions.mobile.subtitle">Android</p>
                 </div>
               </div>
-              <span class="edition-status dev">
+              <span class="edition-status live">
                 <span class="edition-status-dot"></span>
-                <span data-i18n="editions.mobile.status">En desarrollo · Disponible próximamente</span>
+                <span data-i18n="editions.mobile.status">Disponible ahora · v5.0.0</span>
               </span>
             </div>
 
             <p class="edition-desc" data-i18n="editions.mobile.desc">
-              La misma experiencia Spottrack, ahora en tu bolsillo. Estamos terminando de pulir la reproducción en segundo plano,
-              las notificaciones y la navegación por artistas antes de lanzarla.
+              La misma experiencia Spottrack, ahora en tu bolsillo. Disponible para Android 8 hasta 17+ con descargas offline, videos hasta 4K, radios en vivo y cero anuncios. Muy pronto en Google Play.
             </p>
 
             <div class="edition-feature-grid">
-              <div class="edition-feature">
-                <i class="fas fa-play"></i>
-                <div class="edition-feature-text">
-                  <h4 data-i18n="editions.mobile.f1.title">Reproducción en segundo plano</h4>
-                  <p data-i18n="editions.mobile.f1.text">Con notificación de controles y portada.</p>
-                </div>
-              </div>
-              <div class="edition-feature">
-                <i class="fas fa-id-badge"></i>
-                <div class="edition-feature-text">
-                  <h4 data-i18n="editions.mobile.f2.title">Perfiles de artista</h4>
-                  <p data-i18n="editions.mobile.f2.text">Discografía, videos y populares.</p>
-                </div>
-              </div>
-              <div class="edition-feature">
-                <i class="fas fa-list-ul"></i>
-                <div class="edition-feature-text">
-                  <h4 data-i18n="editions.mobile.f3.title">Tus playlists</h4>
-                  <p data-i18n="editions.mobile.f3.text">Creá y organizá tu música fácilmente.</p>
-                </div>
-              </div>
-              <div class="edition-feature">
-                <i class="fas fa-bolt"></i>
-                <div class="edition-feature-text">
-                  <h4 data-i18n="editions.mobile.f4.title">Liviana</h4>
-                  <p data-i18n="editions.mobile.f4.text">Optimizada para no consumir batería de más.</p>
-                </div>
-              </div>
+              <div class="edition-feature"><i class="fas fa-headphones"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f1">Todo el catálogo de YouTube y YouTube Music</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-cloud-arrow-down"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f2">Descargas y música offline: guardá tus canciones y escuchalas sin internet</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-ban"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f3">Sin anuncios</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-film"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f6">Videos en HD, 2K y 4K (según lo que soporte tu teléfono)</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-radio"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f9">Radios en vivo de tu país</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-sliders-h"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f10">Ecualizador, balance L/R, región del contenido y mucho más</h4></div></div>
             </div>
 
             <div class="edition-cta-row">
-              <span class="edition-btn-disabled">
-                <i class="fas fa-clock"></i>
-                <span data-i18n="editions.mobile.cta">Próximamente</span>
-              </span>
+              <a href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.0/Spottrack-Music-Mobile.apk"
+                 class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                <i class="fab fa-android mr-2"></i>
+                <span data-i18n="editions.mobile.cta">Descargar Spottrack Mobile</span>
+              </a>
+              <a href="index.html#mobile-install" class="btn-ghost blue">
+                <i class="fas fa-circle-info"></i>
+                <span data-i18n="editions.mobile.guide">Guía de instalación</span>
+              </a>
               <span class="edition-cta-note">
-                <i class="fas fa-calendar"></i>
-                <span data-i18n="editions.mobile.note">Disponible próximamente</span>
+                <i class="fab fa-google-play"></i>
+                <span data-i18n="editions.mobile.note">Muy pronto en Google Play</span>
               </span>
             </div>
           </div>
@@ -248,15 +285,9 @@
           </div>
           <p class="footer-brand-text" data-i18n="footer.tagline">Tu música, sin límites ni anuncios.</p>
           <div class="footer-social">
-            <a href="https://discord.gg/kRhXAajRDq" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-discord text-xl"></i>
-            </a>
-            <a href="https://www.youtube.com/@Rage-community" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-youtube text-xl"></i>
-            </a>
-            <a href="https://x.com/spottrack" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors">
-              <i class="fab fa-x-twitter text-xl"></i>
-            </a>
+            <a href="https://discord.gg/kRhXAajRDq" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-discord text-xl"></i></a>
+            <a href="https://www.youtube.com/@Rage-community" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+            <a href="https://x.com/spottrack" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary transition-colors"><i class="fab fa-x-twitter text-xl"></i></a>
           </div>
         </div>
 
@@ -264,6 +295,7 @@
           <h4 data-i18n="footer.col.product">Producto</h4>
           <a href="index.html#inicio" data-i18n="nav.inicio">Inicio</a>
           <a href="descargas.html" data-i18n="nav.descargar">Descargar</a>
+          <a href="index.html#mobile" data-i18n="nav.mobile">Mobile</a>
           <a href="ediciones.html" data-i18n="nav.ediciones">Ediciones</a>
           <a href="index.html#novedades" data-i18n="nav.novedades">Novedades</a>
         </div>

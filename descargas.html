@@ -22,6 +22,64 @@
 </head>
 <body class="overflow-x-hidden">
 
+  <!-- Fondo: iconos con brillo -->
+  <!-- Fondo nuevo: estructuras estáticas -->
+  <div class="bg-art" aria-hidden="true">
+    <div class="art-grid"></div>
+
+    <div class="art-corner tl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-music" style="left:105px;top:66px"></i>
+    </div>
+    <div class="art-corner tr">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-headphones b" style="right:105px;top:66px"></i>
+    </div>
+    <div class="art-corner bl">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-compact-disc b" style="left:105px;bottom:66px"></i>
+    </div>
+    <div class="art-corner br">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
+      <i class="fas fa-mobile-screen-button" style="right:105px;bottom:66px"></i>
+    </div>
+    <i class="fas fa-music art-mini" style="top:14%;left:6%"></i>
+    <i class="fas fa-headphones art-mini b" style="top:22%;right:6%"></i>
+    <i class="fas fa-compact-disc art-mini" style="top:58%;left:4%"></i>
+    <i class="fas fa-wave-square art-mini b" style="top:70%;right:5%"></i>
+    <i class="fas fa-heart art-mini" style="top:86%;left:46%"></i>
+    <span class="art-glow g1"></span>
+    <span class="art-glow g2"></span>
+    <div class="art-waves"></div>
+    <div class="art-vinyl"></div>
+    <div class="art-phone"></div>
+    <div class="art-monitor"></div>
+    <div class="art-eq">
+      <span style="height:38%"></span><span style="height:70%"></span><span style="height:52%"></span>
+      <span style="height:92%"></span><span style="height:60%"></span><span style="height:80%"></span>
+      <span style="height:34%"></span><span style="height:66%"></span><span style="height:46%"></span>
+    </div>
+  </div>
+
+  <!-- Fondo viejo (oculto por CSS, lo podés borrar después) -->
+  <div class="bg-old" aria-hidden="true">
+    <span class="bg-glow g1"></span><span class="bg-glow g2"></span>
+    <i class="fas fa-music" style="top:9%;left:5%;font-size:54px;animation-delay:-1s"></i>
+    <i class="fas fa-headphones b" style="top:16%;right:7%;font-size:64px;animation-delay:-4s"></i>
+    <i class="fas fa-compact-disc" style="top:38%;left:3%;font-size:70px;animation-delay:-7s"></i>
+    <i class="fas fa-wave-square b" style="top:47%;right:4%;font-size:48px;animation-delay:-2s"></i>
+    <i class="fas fa-microphone-lines" style="top:66%;left:8%;font-size:52px;animation-delay:-9s"></i>
+    <i class="fas fa-record-vinyl b" style="top:78%;right:9%;font-size:66px;animation-delay:-5s"></i>
+    <i class="fas fa-heart" style="top:88%;left:42%;font-size:40px;animation-delay:-3s"></i>
+    <i class="fas fa-play b" style="top:28%;left:46%;font-size:38px;animation-delay:-6s"></i>
+    <i class="fas fa-guitar" style="top:56%;left:30%;font-size:50px;animation-delay:-8s"></i>
+    <i class="fas fa-radio b" style="top:6%;left:62%;font-size:44px;animation-delay:-10s"></i>
+    <i class="fas fa-mobile-screen-button" style="top:72%;left:62%;font-size:46px;animation-delay:-11s"></i>
+    <i class="fas fa-volume-high b" style="top:92%;right:30%;font-size:42px;animation-delay:-12s"></i>
+    <i class="fas fa-desktop" style="top:22%;left:24%;font-size:40px;animation-delay:-13s"></i>
+    <i class="fas fa-bolt b" style="top:60%;right:24%;font-size:36px;animation-delay:-14s"></i>
+  </div>
+
   <!-- Navigation -->
   <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
     <div class="container mx-auto px-4">
@@ -32,11 +90,12 @@
         </a>
 
         <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+          <a href="index.html#mobile" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
           <div class="lang-switcher"></div>
         </div>
 
@@ -57,11 +116,12 @@
       </button>
     </div>
     <div class="flex flex-col space-y-6 p-6">
-      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio" data-i18n="nav.inicio">Inicio</a>
-      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas" data-i18n="nav.descargar">Descargar</a>
-      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones" data-i18n="nav.ediciones">Ediciones</a>
-      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades" data-i18n="nav.novedades">Novedades</a>
-      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads" data-i18n="nav.ads">Spottrack Ads</a>
+      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+      <a href="index.html#mobile" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+      <a href="index.html#ads" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
       <div class="lang-switcher"></div>
     </div>
   </div>
@@ -72,6 +132,33 @@
     <section class="py-16 lg:py-24 section">
       <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+
+          <!-- PASO 1: elegir plataforma -->
+          <div id="dl-picker" class="dl-step">
+            <h1 class="text-3xl lg:text-4xl font-bold mb-6">
+              <span data-i18n="picker.title.pre">Seleccioná tu</span> <span class="text-primary" data-i18n="picker.title.post">plataforma</span>
+            </h1>
+            <p class="text-lg text-gray-300 mb-12 max-w-2xl mx-auto" data-i18n="picker.subtitle">Elegí la plataforma en la que querés descargar y usar Spottrack: PC o Android.</p>
+
+            <div class="platform-grid">
+              <button type="button" class="platform-card" data-platform="pc">
+                <span class="platform-icon"><i class="fab fa-windows"></i></span>
+                <span class="platform-name">PC</span>
+                <span class="platform-sub" data-i18n="picker.pc.sub">Windows 7 al 11</span>
+                <span class="platform-go"><span data-i18n="picker.go">Continuar</span> <i class="fas fa-arrow-right"></i></span>
+              </button>
+              <button type="button" class="platform-card" data-platform="android">
+                <span class="platform-icon"><i class="fab fa-android"></i></span>
+                <span class="platform-name">Android</span>
+                <span class="platform-sub" data-i18n="picker.android.sub">Android 8 al 17+</span>
+                <span class="platform-go"><span data-i18n="picker.go">Continuar</span> <i class="fas fa-arrow-right"></i></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PASO 2A: PC -->
+          <div id="dl-pc" class="dl-step" hidden>
+          <button type="button" class="dl-back" data-back><i class="fas fa-arrow-left"></i><span data-i18n="picker.back">Cambiar plataforma</span></button>
 
           <h1 class="text-3xl lg:text-4xl font-bold mb-6">
             <span data-i18n="descargas.title.pre">Descarga</span> <span class="text-primary">Spottrack</span> <span data-i18n="descargas.title.post">para Windows</span>
@@ -217,6 +304,50 @@
               <i class="fas fa-tag"></i> <span data-i18n="descargas.info.legacy">Versión 2.1.1 (Legacy) · Instaladores oficiales para Windows 7/8/8.1</span>
             </div>
           </div>
+          </div><!-- /dl-pc -->
+
+          <!-- PASO 2B: ANDROID -->
+          <div id="dl-android" class="dl-step" hidden>
+            <button type="button" class="dl-back" data-back><i class="fas fa-arrow-left"></i><span data-i18n="picker.back">Cambiar plataforma</span></button>
+
+            <h1 class="text-3xl lg:text-4xl font-bold mb-6">
+              <span data-i18n="descargas.title.pre">Descarga</span> <span class="text-primary">Spottrack</span> <span data-i18n="apk.title.post">para Android</span>
+            </h1>
+            <p class="text-lg text-gray-300 mb-12 max-w-2xl mx-auto" data-i18n="apk.subtitle">Instalá Spottrack Mobile en tu teléfono con el instalador oficial (APK).</p>
+
+            <div class="apk-panel">
+              <div class="apk-head">
+                <div class="apk-icon"><i class="fab fa-android"></i></div>
+                <div class="apk-head-text">
+                  <h3>Spottrack Mobile</h3>
+                  <p data-i18n="descargas.android.sub">Spottrack Mobile v5.0.0 · Android 8 a 17+ · Instalación por APK.</p>
+                </div>
+                <span class="download-panel-badge green" data-i18n="editions.pc.status">Disponible ahora</span>
+              </div>
+
+              <div class="apk-chips">
+                <span class="apk-chip"><i class="fas fa-tag"></i><span data-i18n="mobile.badge">v5.0.0 · Android 8 a 17+</span></span>
+                <span class="apk-chip"><i class="fas fa-shield-heart"></i><span data-i18n="mobile.cta.note">Gratis · Sin anuncios · APK oficial</span></span>
+              </div>
+
+              <div class="apk-actions">
+                <a href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.0/Spottrack-Music-Mobile.apk" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
+                  <i class="fas fa-download mr-2"></i><span data-i18n="mobile.cta">Descargar APK</span>
+                </a>
+                <a href="index.html#mobile-install" class="btn-ghost blue">
+                  <i class="fas fa-circle-info"></i><span data-i18n="descargas.android.guide">Ver guía de instalación</span>
+                </a>
+              </div>
+
+              <div class="playstore-soon" style="margin-top:26px">
+                <div class="playstore-soon-icon"><i class="fab fa-google-play"></i></div>
+                <div>
+                  <h4 data-i18n="mobile.playstore.title">Muy pronto en Google Play</h4>
+                  <p data-i18n="mobile.playstore.text">Por ahora, instalala con el APK oficial. Estamos trabajando para llegar a la Play Store.</p>
+                </div>
+              </div>
+            </div>
+          </div><!-- /dl-android -->
 
         </div>
       </div>
@@ -249,6 +380,7 @@
           <a href="index.html#inicio" data-i18n="nav.inicio">Inicio</a>
           <a href="descargas.html" data-i18n="nav.descargar">Descargar</a>
           <a href="ediciones.html" data-i18n="nav.ediciones">Ediciones</a>
+          <a href="index.html#mobile" data-i18n="nav.mobile">Mobile</a>
           <a href="index.html#novedades" data-i18n="nav.novedades">Novedades</a>
         </div>
 
@@ -275,5 +407,29 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="i18n.js"></script>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const steps = {
+        picker: document.getElementById("dl-picker"),
+        pc: document.getElementById("dl-pc"),
+        android: document.getElementById("dl-android")
+      };
+      function render(scroll) {
+        const h = location.hash.replace("#", "");
+        const name = (h === "pc" || h === "android") ? h : "picker";
+        Object.keys(steps).forEach(k => { steps[k].hidden = (k !== name); });
+        if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      document.querySelectorAll("[data-platform]").forEach(b =>
+        b.addEventListener("click", () => { location.hash = b.dataset.platform; }));
+      document.querySelectorAll("[data-back]").forEach(b =>
+        b.addEventListener("click", () => {
+          history.pushState(null, "", location.pathname + location.search);
+          render(true);
+        }));
+      window.addEventListener("hashchange", () => render(true));
+      render(false);
+    })();
+  </script>
 </body>
 </html>
