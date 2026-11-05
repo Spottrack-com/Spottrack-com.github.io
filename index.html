@@ -20,13 +20,17 @@
   <meta name="twitter:description" content="La plataforma oficial de Spottrack. Rápida, ligera y sin anuncios. Ahora también en Android.">
   <meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="overflow-x-hidden">
 
@@ -148,7 +152,7 @@
 
             <div class="s0-visual">
               <div class="rv" style="--d:2">
-                <div class="pc-mockup"><img src="images/pc.png" alt="Spottrack PC"></div>
+                <div class="pc-mockup"><img src="images/pc.png" alt="Spottrack PC" fetchpriority="high" decoding="async"></div>
               </div>
             </div>
 
@@ -168,9 +172,9 @@
               <div class="iw-grid">
                 <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-ban"></i></div><div class="iw-txt"><h3 data-i18n="why.ads.title">Sin anuncios</h3><p data-i18n="why.ads.text">Disfrutá sin ads.</p></div></div>
                 <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-bolt"></i></div><div class="iw-txt"><h3 data-i18n="why.fast.title">Rápida</h3><p data-i18n="why.fast.text">Fluye bien en equipos modestos.</p></div></div>
-                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-cloud-arrow-down"></i></div><div class="iw-txt"><h3 data-i18n="why.offline.title">Escuchá offline</h3><p data-i18n="why.offline.text">Descargá tus canciones y escuchalas sin internet.</p></div></div>
+                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-cloud-arrow-down"></i></div><div class="iw-txt"><h3 data-i18n="why.offline.title">Escuchá offline</h3><p data-i18n="why.offline.text">Guardá tus canciones para escucharlas sin internet.</p></div></div>
                 <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-desktop"></i></div><div class="iw-txt"><h3 data-i18n="why.devices.title">PC y celular</h3><p data-i18n="why.devices.text">Tu música en Windows y Android, donde quieras.</p></div></div>
-                <div class="iw-card rv"><div class="iw-ico"><i class="fab fa-youtube"></i></div><div class="iw-txt"><h3 data-i18n="why.catalog.title">Todo el catálogo</h3><p data-i18n="why.catalog.text">Todo YouTube Music: seguí artistas, mirá videos en HD y más.</p></div></div>
+                <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-music"></i></div><div class="iw-txt"><h3 data-i18n="why.catalog.title">Millones de canciones</h3><p data-i18n="why.catalog.text">Un catálogo enorme: seguí artistas, mirá videos en HD y más.</p></div></div>
                 <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-bell"></i></div><div class="iw-txt"><h3 data-i18n="why.background.title">Reproducción en segundo plano</h3><p data-i18n="why.background.text">Continuá escuchando mientras trabajás.</p></div></div>
                 <div class="iw-card rv"><div class="iw-ico"><i class="fas fa-list-ul"></i></div><div class="iw-txt"><h3 data-i18n="why.playlists.title">Creá playlists</h3><p data-i18n="why.playlists.text">Añadí me gusta y explorá, tené tu contenido unificado.</p></div></div>
                 <div class="iw-card b rv"><div class="iw-ico"><i class="fas fa-sliders-h"></i></div><div class="iw-txt"><h3 data-i18n="why.audio.title">Control de audio</h3><p data-i18n="why.audio.text">Editá tiempos de la música, calidad y más.</p></div></div>
@@ -223,7 +227,7 @@
               <span data-i18n="mobile.title.pre">Spottrack</span> <span class="text-primary">Mobile</span>
             </h2>
             <p class="text-lg text-gray-300 mb-6" data-i18n="mobile.subtitle">
-              La experiencia completa de Spottrack ahora en tu teléfono Android 8 hasta 17+. Todo el catálogo de YouTube Music, descargas offline y cero anuncios.
+              La experiencia completa de Spottrack ahora en tu teléfono Android 8 hasta 17+. Millones de canciones, música offline y cero anuncios.
             </p>
 
             <div class="mobile-cta-row">
@@ -277,8 +281,8 @@
         </div>
 
         <div class="mobile-feature-grid">
-          <div class="mobile-feature"><i class="fas fa-headphones"></i><span data-i18n="mobile.f1">Todo el catálogo de YouTube y YouTube Music</span></div>
-          <div class="mobile-feature"><i class="fas fa-cloud-arrow-down"></i><span data-i18n="mobile.f2">Descargas y música offline: guardá tus canciones y escuchalas sin internet</span></div>
+          <div class="mobile-feature"><i class="fas fa-headphones"></i><span data-i18n="mobile.f1">Millones de canciones disponibles</span></div>
+          <div class="mobile-feature"><i class="fas fa-cloud-arrow-down"></i><span data-i18n="mobile.f2">Música offline: guardá tus canciones y escuchalas sin internet</span></div>
           <div class="mobile-feature"><i class="fas fa-ban"></i><span data-i18n="mobile.f3">Sin anuncios</span></div>
           <div class="mobile-feature"><i class="fas fa-bolt"></i><span data-i18n="mobile.f4">Optimizada para que ande fluida</span></div>
           <div class="mobile-feature"><i class="fas fa-list-ul"></i><span data-i18n="mobile.f5">Playlists online, Me gusta, artistas, álbumes, EPs y canciones populares</span></div>
@@ -477,7 +481,7 @@
         <div class="footer-col">
           <h4 data-i18n="footer.col.status">Estado del servicio</h4>
           <div class="footer-status-badge">
-            <iframe src="https://rage-studios-status.betteruptime.com/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no" style="color-scheme: normal"></iframe>
+            <iframe src="https://rage-studios-status.betteruptime.com/badge?theme=dark" loading="lazy" width="250" height="30" frameborder="0" scrolling="no" style="color-scheme: normal"></iframe>
           </div>
         </div>
 
@@ -489,8 +493,8 @@
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="i18n.js"></script>
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -20,13 +20,16 @@
   <meta name="twitter:description" content="Spottrack PC y Spottrack Mobile (Android) ya disponibles.">
   <meta name="twitter:image" content="https://spottrack-com.github.io/assets/banner.jpg">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="overflow-x-hidden">
 
@@ -51,41 +54,8 @@
       <svg viewBox="0 0 220 220" fill="none"><path d="M0 130 C50 130 60 80 105 66 S170 34 205 0"/><path class="d" d="M0 70 Q40 70 52 28 T96 0"/><circle cx="105" cy="66" r="3.5"/><circle cx="52" cy="28" r="2.5"/></svg>
       <i class="fas fa-mobile-screen-button" style="right:105px;bottom:66px"></i>
     </div>
-    <i class="fas fa-music art-mini" style="top:14%;left:6%"></i>
-    <i class="fas fa-headphones art-mini b" style="top:22%;right:6%"></i>
-    <i class="fas fa-compact-disc art-mini" style="top:58%;left:4%"></i>
-    <i class="fas fa-wave-square art-mini b" style="top:70%;right:5%"></i>
-    <i class="fas fa-heart art-mini" style="top:86%;left:46%"></i>
     <span class="art-glow g1"></span>
     <span class="art-glow g2"></span>
-    <div class="art-waves"></div>
-    <div class="art-vinyl"></div>
-    <div class="art-phone"></div>
-    <div class="art-monitor"></div>
-    <div class="art-eq">
-      <span style="height:38%"></span><span style="height:70%"></span><span style="height:52%"></span>
-      <span style="height:92%"></span><span style="height:60%"></span><span style="height:80%"></span>
-      <span style="height:34%"></span><span style="height:66%"></span><span style="height:46%"></span>
-    </div>
-  </div>
-
-  <!-- Fondo viejo (oculto por CSS, lo podés borrar después) -->
-  <div class="bg-old" aria-hidden="true">
-    <span class="bg-glow g1"></span><span class="bg-glow g2"></span>
-    <i class="fas fa-music" style="top:9%;left:5%;font-size:54px;animation-delay:-1s"></i>
-    <i class="fas fa-headphones b" style="top:16%;right:7%;font-size:64px;animation-delay:-4s"></i>
-    <i class="fas fa-compact-disc" style="top:38%;left:3%;font-size:70px;animation-delay:-7s"></i>
-    <i class="fas fa-wave-square b" style="top:47%;right:4%;font-size:48px;animation-delay:-2s"></i>
-    <i class="fas fa-microphone-lines" style="top:66%;left:8%;font-size:52px;animation-delay:-9s"></i>
-    <i class="fas fa-record-vinyl b" style="top:78%;right:9%;font-size:66px;animation-delay:-5s"></i>
-    <i class="fas fa-heart" style="top:88%;left:42%;font-size:40px;animation-delay:-3s"></i>
-    <i class="fas fa-play b" style="top:28%;left:46%;font-size:38px;animation-delay:-6s"></i>
-    <i class="fas fa-guitar" style="top:56%;left:30%;font-size:50px;animation-delay:-8s"></i>
-    <i class="fas fa-radio b" style="top:6%;left:62%;font-size:44px;animation-delay:-10s"></i>
-    <i class="fas fa-mobile-screen-button" style="top:72%;left:62%;font-size:46px;animation-delay:-11s"></i>
-    <i class="fas fa-volume-high b" style="top:92%;right:30%;font-size:42px;animation-delay:-12s"></i>
-    <i class="fas fa-desktop" style="top:22%;left:24%;font-size:40px;animation-delay:-13s"></i>
-    <i class="fas fa-bolt b" style="top:60%;right:24%;font-size:36px;animation-delay:-14s"></i>
   </div>
 
   <!-- Navigation -->
@@ -178,7 +148,7 @@
 
             <p class="edition-desc" data-i18n="editions.pc.desc">
               La versión de escritorio de Spottrack: optimizada, liviana y sin anuncios. Con reproducción en segundo plano, notificaciones nativas
-              y acceso a todo el catálogo de música, para que la lleves siempre a mano en tu PC.
+              y acceso a millones de canciones, para que la lleves siempre a mano en tu PC.
             </p>
 
             <div class="edition-feature-grid">
@@ -200,7 +170,7 @@
                 <i class="fas fa-music"></i>
                 <div class="edition-feature-text">
                   <h4 data-i18n="editions.pc.f3.title">Catálogo completo</h4>
-                  <p data-i18n="editions.pc.f3.text">Acceso a todo el catálogo de YouTube.</p>
+                  <p data-i18n="editions.pc.f3.text">Millones de canciones disponibles.</p>
                 </div>
               </div>
               <div class="edition-feature">
@@ -241,12 +211,12 @@
             </div>
 
             <p class="edition-desc" data-i18n="editions.mobile.desc">
-              La misma experiencia Spottrack, ahora en tu bolsillo. Disponible para Android 8 hasta 17+ con descargas offline, videos hasta 4K, radios en vivo y cero anuncios. Muy pronto en Google Play.
+              La misma experiencia Spottrack, ahora en tu bolsillo. Disponible para Android 8 hasta 17+ con música offline, videos hasta 4K, radios en vivo y cero anuncios. Muy pronto en Google Play.
             </p>
 
             <div class="edition-feature-grid">
-              <div class="edition-feature"><i class="fas fa-headphones"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f1">Todo el catálogo de YouTube y YouTube Music</h4></div></div>
-              <div class="edition-feature"><i class="fas fa-cloud-arrow-down"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f2">Descargas y música offline: guardá tus canciones y escuchalas sin internet</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-headphones"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f1">Millones de canciones disponibles</h4></div></div>
+              <div class="edition-feature"><i class="fas fa-cloud-arrow-down"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f2">Música offline: guardá tus canciones y escuchalas sin internet</h4></div></div>
               <div class="edition-feature"><i class="fas fa-ban"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f3">Sin anuncios</h4></div></div>
               <div class="edition-feature"><i class="fas fa-film"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f6">Videos en HD, 2K y 4K (según lo que soporte tu teléfono)</h4></div></div>
               <div class="edition-feature"><i class="fas fa-radio"></i><div class="edition-feature-text"><h4 data-i18n="mobile.f9">Radios en vivo de tu país</h4></div></div>

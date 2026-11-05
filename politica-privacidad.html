@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Privacidad - Spottrack</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="icon" href="images/logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tailwind.css">
 </head>
 
 <body class="bg-dark text-white overflow-x-hidden">
@@ -35,27 +38,28 @@
 <h1 class="text-4xl font-bold mb-8 text-primary" data-i18n="privacy.h1">Política de Privacidad</h1>
 
 <p class="mb-6">
-<span data-i18n="privacy.updated_label">Última actualización</span>: 12/3/2026
+<span data-i18n="privacy.updated_label">Última actualización</span>: 5/11/2026
 </p>
 
 <p class="mb-6" data-i18n="privacy.intro">
-En Spottrack respetamos tu privacidad y nos comprometemos a proteger la información que compartes con nosotros. 
-Esta política explica qué datos se recopilan, cómo se utilizan y cómo se almacenan.
+En Spottrack respetamos tu privacidad y nos comprometemos a proteger la información que compartes con nosotros. Esta política aplica a Spottrack PC y Spottrack Mobile (Android) y explica qué datos se recopilan, cómo se utilizan, dónde se almacenan y cómo se protegen.
 </p>
 
 <!-- 1 -->
 <h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s1.title">1. Información que recopilamos</h2>
 
 <p class="mb-4" data-i18n="privacy.s1.intro">
-Spottrack puede recopilar y almacenar los siguientes datos cuando el usuario crea una cuenta o utiliza la aplicación:
+Cuando creas una cuenta o utilizas la aplicación, Spottrack puede recopilar y almacenar los siguientes datos:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li data-i18n="privacy.s1.li1">Dirección de correo electrónico (si se registra una cuenta).</li>
+<li data-i18n="privacy.s1.li1">Dirección de correo electrónico (si registras una cuenta).</li>
 <li data-i18n="privacy.s1.li2">Nombre o alias de usuario.</li>
-<li data-i18n="privacy.s1.li3">Playlists creadas.</li>
-<li data-i18n="privacy.s1.li4">Canciones marcadas como "Me gusta".</li>
-<li data-i18n="privacy.s1.li5">Preferencias básicas de la cuenta.</li>
+<li data-i18n="privacy.s1.li3">Foto de perfil (si decides subir una).</li>
+<li data-i18n="privacy.s1.li4">Playlists creadas.</li>
+<li data-i18n="privacy.s1.li5">Canciones marcadas como "Me gusta".</li>
+<li data-i18n="privacy.s1.li6">Artistas que sigues.</li>
+<li data-i18n="privacy.s1.li7">Preferencias básicas de la cuenta.</li>
 </ul>
 
 <p class="mb-6" data-i18n="privacy.s1.outro">
@@ -63,88 +67,143 @@ Spottrack no recopila información financiera, contraseñas en texto plano ni da
 </p>
 
 <!-- 2 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s2.title">2. Uso de Firebase</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s2.title">2. Cuenta y modo invitado</h2>
 
-<p class="mb-6" data-i18n="privacy.s2.intro">
-Spottrack utiliza servicios de Google Firebase como sistema de autenticación y base de datos en la nube. 
-Firebase se emplea para:
+<p class="mb-4" data-i18n="privacy.s2.p1">
+Spottrack puede usarse con una cuenta o en modo invitado. Con una cuenta, tus datos (playlists, Me gusta, artistas seguidos, foto de perfil y preferencias) se guardan en la nube y quedan asociados a tu cuenta.
+</p>
+
+<p class="mb-4" data-i18n="privacy.s2.p2">
+En modo invitado no se crea ninguna cuenta y tus datos no se guardan en la nube:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li data-i18n="privacy.s2.li1">Gestionar el registro e inicio de sesión de usuarios.</li>
-<li data-i18n="privacy.s2.li2">Almacenar playlists.</li>
-<li data-i18n="privacy.s2.li3">Guardar canciones marcadas como favoritas.</li>
-<li data-i18n="privacy.s2.li4">Conservar configuraciones asociadas a la cuenta.</li>
+<li data-i18n="privacy.s2.li1">Los datos del modo invitado quedan únicamente en la caché y en IndexedDB de tu dispositivo.</li>
+<li data-i18n="privacy.s2.li2">No se sincronizan con otros dispositivos ni se envían a ningún servidor de Spottrack.</li>
+<li data-i18n="privacy.s2.li3">Si borras la aplicación o sus datos, todos los datos del modo invitado se perderán de forma definitiva y no podrán recuperarse.</li>
 </ul>
 
 <p class="mb-6" data-i18n="privacy.s2.outro">
-Firebase puede procesar datos conforme a las políticas de privacidad y seguridad de Google.
+Si quieres conservar tu contenido de forma segura y acceder a él desde otros dispositivos, crea una cuenta.
 </p>
 
 <!-- 3 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s3.title">3. Almacenamiento Local (LocalStorage)</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s3.title">3. Uso de Firebase</h2>
 
-<p class="mb-4" data-i18n="privacy.s3.intro">
-La aplicación utiliza almacenamiento local del navegador (LocalStorage) para mejorar el rendimiento y la experiencia del usuario.
+<p class="mb-6" data-i18n="privacy.s3.intro">
+Spottrack utiliza servicios de Google Firebase como sistema de autenticación y base de datos en la nube para los usuarios con cuenta. Firebase se emplea para:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li data-i18n="privacy.s3.li1">Guardar música reproducida recientemente.</li>
-<li data-i18n="privacy.s3.li2">Almacenar temporalmente datos de reproducción.</li>
-<li data-i18n="privacy.s3.li3">Recordar configuraciones locales.</li>
-<li data-i18n="privacy.s3.li4">Facilitar una carga más rápida de contenido previamente escuchado.</li>
+<li data-i18n="privacy.s3.li1">Gestionar el registro e inicio de sesión de usuarios.</li>
+<li data-i18n="privacy.s3.li2">Almacenar playlists.</li>
+<li data-i18n="privacy.s3.li3">Guardar canciones marcadas como "Me gusta" y los artistas que sigues.</li>
+<li data-i18n="privacy.s3.li4">Almacenar tu foto de perfil.</li>
+<li data-i18n="privacy.s3.li5">Conservar configuraciones asociadas a la cuenta.</li>
 </ul>
 
 <p class="mb-6" data-i18n="privacy.s3.outro">
-Estos datos permanecen en el dispositivo del usuario y pueden eliminarse limpiando los datos del navegador o desinstalando la aplicación.
+Firebase puede procesar datos conforme a las políticas de privacidad y seguridad de Google.
 </p>
 
 <!-- 4 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s4.title">4. Finalidad del uso de datos</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s4.title">4. Música offline y almacenamiento local</h2>
 
-<p class="mb-6" data-i18n="privacy.s4.intro">
+<p class="mb-4" data-i18n="privacy.s4.p1">
+La música que guardas para escuchar sin conexión se almacena en IndexedDB, dentro de tu propio dispositivo. Esa música no se sube a Firebase ni a servidores de Spottrack.
+</p>
+
+<p class="mb-4" data-i18n="privacy.s4.intro">
+Además, para que el contenido cargue más rápido, Spottrack guarda algunos datos en caché mediante LocalStorage e IndexedDB, por ejemplo:
+</p>
+
+<ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
+<li data-i18n="privacy.s4.li1">Música reproducida recientemente.</li>
+<li data-i18n="privacy.s4.li2">Datos de reproducción temporales.</li>
+<li data-i18n="privacy.s4.li3">Configuraciones locales.</li>
+<li data-i18n="privacy.s4.li4">Información de contenido que ya cargaste antes (listas, artistas, portadas).</li>
+</ul>
+
+<p class="mb-6" data-i18n="privacy.s4.outro">
+Estos datos permanecen en tu dispositivo. Puedes eliminarlos desde la aplicación, borrando los datos de la app o desinstalándola.
+</p>
+
+<!-- 5 -->
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s5.title">5. Servicios de Google y YouTube</h2>
+
+<p class="mb-4" data-i18n="privacy.s5.p1">
+Spottrack se apoya en servicios y contenido de YouTube y Google. Al usar la aplicación, esos servicios pueden procesar ciertos datos técnicos (como tu dirección IP o información del dispositivo) conforme a sus propias políticas, sobre las cuales Spottrack no tiene control.
+</p>
+
+<p class="mb-4" data-i18n="privacy.s5.p2">
+Puedes consultar sus políticas y términos aquí:
+</p>
+
+<ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
+<li><span data-i18n="privacy.s5.link1">Política de Privacidad de Google:</span> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline break-all">https://policies.google.com/privacy</a></li>
+<li><span data-i18n="privacy.s5.link2">Términos de servicio de YouTube:</span> <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline break-all">https://www.youtube.com/t/terms</a></li>
+<li><span data-i18n="privacy.s5.link3">Términos de servicio de Google:</span> <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline break-all">https://policies.google.com/terms</a></li>
+</ul>
+
+<!-- 6 -->
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s6.title">6. Finalidad del uso de datos</h2>
+
+<p class="mb-6" data-i18n="privacy.s6.intro">
 La información recopilada se utiliza exclusivamente para:
 </p>
 
 <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
-<li data-i18n="privacy.s4.li1">Proporcionar funcionalidades de la aplicación.</li>
-<li data-i18n="privacy.s4.li2">Permitir la creación y gestión de playlists.</li>
-<li data-i18n="privacy.s4.li3">Personalizar la experiencia del usuario.</li>
-<li data-i18n="privacy.s4.li4">Mejorar el rendimiento y estabilidad del sistema.</li>
+<li data-i18n="privacy.s6.li1">Proporcionar las funcionalidades de la aplicación.</li>
+<li data-i18n="privacy.s6.li2">Permitir la creación y gestión de playlists, Me gusta y artistas seguidos.</li>
+<li data-i18n="privacy.s6.li3">Personalizar la experiencia del usuario.</li>
+<li data-i18n="privacy.s6.li4">Mejorar el rendimiento y la estabilidad del sistema.</li>
 </ul>
 
-<p class="mb-6" data-i18n="privacy.s4.outro">
+<p class="mb-6" data-i18n="privacy.s6.outro">
 Spottrack no vende ni comparte datos personales con terceros con fines comerciales.
 </p>
 
-<!-- 5 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s5.title">5. Seguridad</h2>
-
-<p class="mb-6" data-i18n="privacy.s5.p">
-Implementamos medidas técnicas razonables para proteger la información almacenada tanto localmente como en la nube.
-Los datos alojados en Firebase están protegidos mediante los mecanismos de seguridad proporcionados por dicha plataforma.
-</p>
-
-<!-- 6 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s6.title">6. Eliminación de datos</h2>
-
-<p class="mb-6" data-i18n="privacy.s6.p">
-El usuario puede solicitar la eliminación de su cuenta y los datos asociados.
-Al eliminar la cuenta, se eliminarán los datos almacenados en la base de datos relacionados con dicha cuenta.
-</p>
-
 <!-- 7 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s7.title">7. Cambios en esta política</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s7.title">7. Seguridad</h2>
 
-<p class="mb-6" data-i18n="privacy.s7.p">
-Spottrack puede actualizar esta Política de Privacidad cuando sea necesario.
-Las modificaciones serán publicadas en esta misma página.
+<p class="mb-4" data-i18n="privacy.s7.intro">
+Implementamos medidas técnicas razonables para proteger la información:
+</p>
+
+<ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
+<li data-i18n="privacy.s7.li1">Los datos en la nube están protegidos mediante los mecanismos de seguridad de Firebase, incluida la autenticación de usuarios.</li>
+<li data-i18n="privacy.s7.li2">El acceso a los datos de cada cuenta se controla mediante las reglas de seguridad configuradas en Firebase.</li>
+<li data-i18n="privacy.s7.li3">La música offline y la caché se almacenan en el espacio interno de la aplicación en tu dispositivo y no se envían a la nube.</li>
+</ul>
+
+<p class="mb-6" data-i18n="privacy.s7.outro">
+Ningún sistema es completamente infalible; te recomendamos proteger tu dispositivo y tus credenciales de acceso.
 </p>
 
 <!-- 8 -->
-<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s8.title">8. Contacto</h2>
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s8.title">8. Eliminación de datos</h2>
 
-<p class="mb-6" data-i18n="privacy.s8.p">
+<p class="mb-4" data-i18n="privacy.s8.intro">
+Tienes control sobre tus datos:
+</p>
+
+<ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
+<li data-i18n="privacy.s8.li1">Cuenta: puedes solicitar la eliminación de tu cuenta; al eliminarla, se borrarán los datos almacenados en la nube asociados a ella.</li>
+<li data-i18n="privacy.s8.li2">Modo invitado: los datos se eliminan al borrar la aplicación o sus datos.</li>
+<li data-i18n="privacy.s8.li3">Música offline y caché: puedes quitarlas desde la aplicación, borrando los datos de la app o desinstalándola.</li>
+</ul>
+
+<!-- 9 -->
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s9.title">9. Cambios en esta política</h2>
+
+<p class="mb-6" data-i18n="privacy.s9.p">
+Spottrack puede actualizar esta Política de Privacidad cuando sea necesario. Las modificaciones serán publicadas en esta misma página.
+</p>
+
+<!-- 10 -->
+<h2 class="text-2xl font-semibold mt-10 mb-4" data-i18n="privacy.s10.title">10. Contacto</h2>
+
+<p class="mb-6" data-i18n="privacy.s10.p">
 Para consultas relacionadas con privacidad o eliminación de datos, puedes contactarnos a través del sitio oficial de Spottrack.
 </p>
 
@@ -155,7 +214,7 @@ Para consultas relacionadas con privacidad o eliminación de datos, puedes conta
 </div>
 </div>
 
-<script src="i18n.js"></script>
-<script src="script.js"></script>
+<script src="i18n.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

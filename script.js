@@ -131,43 +131,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const isStaticPage = setActiveByPage();
 
-  let lastScroll = 0;
+  let ticking = false;
+  let lastCurrent = null;
+
+  function onScrollFrame() {
+    ticking = false;
+    const y = window.scrollY;
+
+    // 1) lecturas primero
+    let current = "";
+    if (!isStaticPage && sections.length) {
+      const navH = navbar.offsetHeight;
+      sections.forEach(section => {
+        if (y >= section.offsetTop - navH - 80) current = section.getAttribute("id");
+      });
+    }
+
+    // 2) escrituras después
+    navbar.classList.toggle("shadow-2xl", y > 10);
+
+    if (isStaticPage || !sections.length || current === lastCurrent) return;
+    lastCurrent = current;
+    navLinks.forEach(link => {
+      link.classList.toggle(
+        "text-primary",
+        link.getAttribute("data-section") === current && link.getAttribute("data-page") === currentPage
+      );
+    });
+  }
 
   window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 10) {
-      navbar.classList.add("shadow-2xl");
-    } else {
-      navbar.classList.remove("shadow-2xl");
-    }
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      navbar.style.transform = "translateY(-100%)";
-    } else {
-      navbar.style.transform = "translateY(0)";
-    }
-
-    lastScroll = currentScroll;
-
-    // Solo recalculamos el link activo por scroll si estamos en index.html
-    if (isStaticPage || !sections.length) return;
-
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - navbar.offsetHeight - 80;
-      if (currentScroll >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("text-primary");
-      if (link.getAttribute("data-section") === current && link.getAttribute("data-page") === currentPage) {
-        link.classList.add("text-primary");
-      }
-    });
-  });
+    if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
+  }, { passive: true });
+  onScrollFrame();
 
 
   /* ----------------------------
@@ -338,9 +334,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ----------------------------
-     NOVEDADES
+     NOVEDADES (carga diferida)
   ---------------------------- */
-  cargarNovedades();
+  const newsList = document.querySelector(".news-list");
+  if (newsList) {
+    if ("IntersectionObserver" in window) {
+      const newsObs = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) {
+          newsObs.disconnect();
+          cargarNovedades();
+        }
+      }, { rootMargin: "600px 0px" });
+      newsObs.observe(newsList);
+    } else {
+      cargarNovedades();
+    }
+  }
 
 });
 
@@ -373,7 +382,9 @@ function initLanguageSystem() {
 
   // Geo-detección: solo si el usuario no descartó ya el cartel
   if (!sessionStorage.getItem(DISMISS_KEY)) {
-    detectCountryAndSuggest(currentLang);
+    const runGeo = () => detectCountryAndSuggest(currentLang);
+    if ("requestIdleCallback" in window) requestIdleCallback(runGeo, { timeout: 4000 });
+    else setTimeout(runGeo, 2500);
   }
 
   function applyLanguage(lang) {
@@ -403,7 +414,8 @@ function initLanguageSystem() {
 
   function flagImg(code, size) {
     const cc = SPOTTRACK_FLAG_CC[code] || "us";
-    return `<img src="https://flagcdn.com/${size}/${cc}.png" alt="" class="lang-flag-icon">`;
+    const [w, h] = size.split("x");
+    return `<img src="https://flagcdn.com/${size}/${cc}.png" alt="" class="lang-flag-icon" width="${w}" height="${h}" loading="lazy" decoding="async">`;
   }
 
   function buildLanguageSwitcher(active) {
@@ -452,10 +464,14 @@ function initLanguageSystem() {
 
   async function detectCountryAndSuggest(activeLang) {
     try {
-      const res = await fetch("https://ipapi.co/json/");
-      if (!res.ok) return;
-      const data = await res.json();
-      const countryCode = data.country_code;
+      let countryCode = localStorage.getItem("spottrackCountry");
+      if (!countryCode) {
+        const res = await fetch("https://ipapi.co/json/");
+        if (!res.ok) return;
+        const data = await res.json();
+        countryCode = data.country_code;
+        if (countryCode) localStorage.setItem("spottrackCountry", countryCode);
+      }
       if (!countryCode || typeof SPOTTRACK_COUNTRY_LANG === "undefined") return;
 
       const suggested = SPOTTRACK_COUNTRY_LANG[countryCode];
@@ -512,7 +528,7 @@ function initLanguageSystem() {
    ================================================================ */
 
 async function cargarNovedades() {
-  const URL = "https://spottrack-com.github.io/news.json?t=" + Date.now();
+  const URL = "https://spottrack-com.github.io/news.json?t=" + Math.floor(Date.now() / 600000);
   const container = document.querySelector(".news-list");
 
   if (!container) return;

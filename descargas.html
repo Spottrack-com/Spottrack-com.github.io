@@ -12,13 +12,16 @@
   <meta property="og:description" content="Instaladores oficiales de Spottrack para Windows 7 a 11, 32 y 64 bits.">
   <meta property="og:url" content="https://spottrack-com.github.io/descargas.html">
 
-  <!-- Tailwind primero, styles.css después para que nuestras animaciones no queden pisadas -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="overflow-x-hidden">
 
@@ -244,7 +247,7 @@
                target="_blank"
                onmouseover="this.style.transform='scale(1.05)'"
                onmouseout="this.style.transform='scale(1)'">
-              <img src="https://get.microsoft.com/images/es%20dark.svg" alt="Obtenerlo en Microsoft Store" />
+              <img src="https://get.microsoft.com/images/es%20dark.svg" alt="Obtenerlo en Microsoft Store" loading="lazy" />
             </a>
           </div>
 
