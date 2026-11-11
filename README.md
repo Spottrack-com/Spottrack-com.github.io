@@ -1,6 +1,6 @@
-# 🎵 Spottrack Web 5.0
+# 🎵 Spottrack Web 5.2
 
-![Version](https://img.shields.io/badge/version-5.0-blue)
+![Version](https://img.shields.io/badge/version-5.2-blue)
 ![Status](https://img.shields.io/badge/status-Online-success)
 ![Platform](https://img.shields.io/badge/platform-GitHub%20Pages-black)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -61,7 +61,7 @@ Creador de Spottrack
 ## 📦 Producto
 
 **Nombre:** Spottrack Web  
-**Versión Actual:** 5.0  
+**Versión Actual:** 5.2  
 **Tipo:** Plataforma Web Musical  
 **Estado:** Activo y en desarrollo  
 
