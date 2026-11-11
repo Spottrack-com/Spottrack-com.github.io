@@ -3,6 +3,62 @@
    ============================ */
 
 /* ----------------------------
+   SPOTTRACK MOBILE: versión y APK desde latest.json
+   Editando latest.json en el repo de Mobile se actualizan
+   solos los botones de descarga y los textos de versión.
+---------------------------- */
+const MOBILE_JSON_URL = "https://raw.githubusercontent.com/RAGE-StudiosC/Spottrack-Mobile/main/latest.json";
+const MOBILE_CACHE_KEY = "spottrackMobileRelease";
+// Claves de i18n cuyo texto lleva "vX.X.X" y se reemplaza por la versión real
+const MOBILE_VERSION_KEYS = new Set(["mobile.badge", "descargas.android.sub", "editions.mobile.status"]);
+
+// Valores por defecto (por si el fetch falla)
+window.SPOTTRACK_MOBILE = {
+  version: "5.0.1",
+  apk: "https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.1/Spottrack-Music-Mobile.apk"
+};
+
+function applyMobileRelease(data) {
+  if (!data || !data.version || !data.apk) return;
+  const version = String(data.version).replace(/^v/i, "");
+  const apk = String(data.apk);
+
+  // Validaciones: versión con formato razonable y APK solo de nuestro GitHub
+  if (!/^[0-9][0-9A-Za-z.\-]*$/.test(version)) return;
+  if (!apk.startsWith("https://github.com/RAGE-StudiosC/")) return;
+
+  const changed = version !== window.SPOTTRACK_MOBILE.version || apk !== window.SPOTTRACK_MOBILE.apk;
+  window.SPOTTRACK_MOBILE = { version, apk };
+
+  document.querySelectorAll("[data-apk-link]").forEach(a => { a.href = apk; });
+
+  // Re-pinta los textos con la versión nueva
+  if (changed && typeof window.spottrackReapplyLanguage === "function") {
+    window.spottrackReapplyLanguage();
+  }
+}
+
+function initMobileRelease() {
+  // 1) Lo último guardado, para pintar al instante
+  try {
+    const cached = JSON.parse(localStorage.getItem(MOBILE_CACHE_KEY) || "null");
+    if (cached) applyMobileRelease(cached);
+  } catch (e) { /* no-op */ }
+
+  // 2) Dato fresco (el ?t= evita que quede una versión vieja en caché)
+  fetch(MOBILE_JSON_URL + "?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" })
+    .then(res => {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      applyMobileRelease(data);
+      try { localStorage.setItem(MOBILE_CACHE_KEY, JSON.stringify(data)); } catch (e) { /* no-op */ }
+    })
+    .catch(err => console.warn("No se pudo leer latest.json:", err));
+}
+
+/* ----------------------------
    SISTEMA DE REVEAL (scroll)
    Global para que tanto el DOMContentLoaded como
    cargarNovedades (que agrega cards después, por fetch)
@@ -212,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
      IDIOMAS + GEO DETECTION
   ---------------------------- */
   initLanguageSystem();
+  initMobileRelease();
 
   /* ----------------------------
      INTRO PINNEADO (estilo GTA VI)
@@ -380,6 +437,9 @@ function initLanguageSystem() {
   applyLanguage(currentLang);
   buildLanguageSwitcher(currentLang);
 
+  // Permite re-pintar los textos cuando llega la versión nueva de latest.json
+  window.spottrackReapplyLanguage = () => applyLanguage(currentLang);
+
   // Geo-detección: solo si el usuario no descartó ya el cartel
   if (!sessionStorage.getItem(DISMISS_KEY)) {
     const runGeo = () => detectCountryAndSuggest(currentLang);
@@ -398,7 +458,11 @@ function initLanguageSystem() {
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (dict[key] !== undefined) {
-        el.textContent = dict[key];
+        let text = dict[key];
+        if (MOBILE_VERSION_KEYS.has(key)) {
+          text = text.replace(/v\d+(\.\d+)+/g, "v" + window.SPOTTRACK_MOBILE.version);
+        }
+        el.textContent = text;
       }
     });
 
