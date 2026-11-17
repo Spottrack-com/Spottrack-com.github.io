@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (path === "" || path === "index.html") return "index";
     if (path.startsWith("descargas")) return "descargas";
     if (path.startsWith("ediciones")) return "ediciones";
+    if (path.startsWith("mobile")) return "mobile";
     return path.replace(".html", "");
   }
   const currentPage = getCurrentPage();
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // y (si tiene data-section) cuya sección coincide con la actual en el scroll.
     navLinks.forEach(link => link.classList.remove("text-primary"));
 
-    if (currentPage === "ediciones" || currentPage === "descargas") {
+    if (currentPage === "ediciones" || currentPage === "descargas" || currentPage === "mobile") {
       navLinks.forEach(link => {
         if (link.getAttribute("data-page") === currentPage) {
           link.classList.add("text-primary");

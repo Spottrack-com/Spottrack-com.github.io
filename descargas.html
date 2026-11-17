@@ -150,12 +150,12 @@
                 <span class="platform-sub" data-i18n="picker.pc.sub">Windows 7 al 11</span>
                 <span class="platform-go"><span data-i18n="picker.go">Continuar</span> <i class="fas fa-arrow-right"></i></span>
               </button>
-              <button type="button" class="platform-card" data-platform="android">
+              <a href="mobile.html" class="platform-card" style="text-decoration:none">
                 <span class="platform-icon"><i class="fab fa-android"></i></span>
                 <span class="platform-name">Android</span>
                 <span class="platform-sub" data-i18n="picker.android.sub">Android 8 al 17+</span>
                 <span class="platform-go"><span data-i18n="picker.go">Continuar</span> <i class="fas fa-arrow-right"></i></span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -309,49 +309,6 @@
           </div>
           </div><!-- /dl-pc -->
 
-          <!-- PASO 2B: ANDROID -->
-          <div id="dl-android" class="dl-step" hidden>
-            <button type="button" class="dl-back" data-back><i class="fas fa-arrow-left"></i><span data-i18n="picker.back">Cambiar plataforma</span></button>
-
-            <h1 class="text-3xl lg:text-4xl font-bold mb-6">
-              <span data-i18n="descargas.title.pre">Descarga</span> <span class="text-primary">Spottrack</span> <span data-i18n="apk.title.post">para Android</span>
-            </h1>
-            <p class="text-lg text-gray-300 mb-12 max-w-2xl mx-auto" data-i18n="apk.subtitle">Instalá Spottrack Mobile en tu teléfono con el instalador oficial (APK).</p>
-
-            <div class="apk-panel">
-              <div class="apk-head">
-                <div class="apk-icon"><i class="fab fa-android"></i></div>
-                <div class="apk-head-text">
-                  <h3>Spottrack Mobile</h3>
-                  <p data-i18n="descargas.android.sub">Spottrack Mobile v5.0.1 · Android 8 a 17+ · Instalación por APK.</p>
-                </div>
-                <span class="download-panel-badge green" data-i18n="editions.pc.status">Disponible ahora</span>
-              </div>
-
-              <div class="apk-chips">
-                <span class="apk-chip"><i class="fas fa-tag"></i><span data-i18n="mobile.badge">v5.0.1 · Android 8 a 17+</span></span>
-                <span class="apk-chip"><i class="fas fa-shield-heart"></i><span data-i18n="mobile.cta.note">Gratis · Sin anuncios · APK oficial</span></span>
-              </div>
-
-              <div class="apk-actions">
-                <a data-apk-link href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.1/Spottrack-Music-Mobile.apk" class="btn-primary bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
-                  <i class="fas fa-download mr-2"></i><span data-i18n="mobile.cta">Descargar APK</span>
-                </a>
-                <a href="index.html#mobile-install" class="btn-ghost blue">
-                  <i class="fas fa-circle-info"></i><span data-i18n="descargas.android.guide">Ver guía de instalación</span>
-                </a>
-              </div>
-
-              <div class="playstore-soon" style="margin-top:26px">
-                <div class="playstore-soon-icon"><i class="fab fa-google-play"></i></div>
-                <div>
-                  <h4 data-i18n="mobile.playstore.title">Muy pronto en Google Play</h4>
-                  <p data-i18n="mobile.playstore.text">Por ahora, instalala con el APK oficial. Estamos trabajando para llegar a la Play Store.</p>
-                </div>
-              </div>
-            </div>
-          </div><!-- /dl-android -->
-
         </div>
       </div>
     </section>
@@ -412,14 +369,15 @@
   <script src="script.js"></script>
   <script>
     (function () {
+      // Enlaces viejos a descargas.html#android → directo a mobile.html
+      if (location.hash === "#android") { location.replace("mobile.html"); return; }
       const steps = {
         picker: document.getElementById("dl-picker"),
-        pc: document.getElementById("dl-pc"),
-        android: document.getElementById("dl-android")
+        pc: document.getElementById("dl-pc")
       };
       function render(scroll) {
         const h = location.hash.replace("#", "");
-        const name = (h === "pc" || h === "android") ? h : "picker";
+        const name = (h === "pc") ? "pc" : "picker";
         Object.keys(steps).forEach(k => { steps[k].hidden = (k !== name); });
         if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
       }

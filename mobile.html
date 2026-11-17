@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spottrack Mobile · RAGE Studios</title>
+  <meta name="description" content="Spottrack Mobile para Android: música sin anuncios, offline y gratis. Descargá el APK oficial.">
+  <meta property="og:title" content="Spottrack Mobile">
+  <meta property="og:description" content="Música sin anuncios para Android. APK oficial de RAGE Studios.">
+  <meta property="og:url" content="https://spottrack-com.github.io/mobile.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="tailwind.css">
+  <style>
+    .store{max-width:980px;margin:0 auto;padding:8px 16px 80px;position:relative;z-index:1}
+    .store h2{font-size:1.25rem;font-weight:700;color:#fff;margin:0 0 14px}
+    .blk{margin-top:40px}
+    .muted{color:var(--text-muted);font-size:14.5px;line-height:1.7;max-width:72ch}
+
+    /* Cabecera */
+    .s-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap;padding:30px 0 22px}
+    .s-icon{width:132px;height:132px;flex-shrink:0}
+    .s-icon img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+    .s-title{flex:1;min-width:230px}
+    .s-title h1{font-size:2rem;font-weight:800;color:#fff;margin:0 0 4px;line-height:1.15}
+    .s-dev{font-weight:600;font-size:15px}
+    .s-sub{font-size:13px;color:var(--text-faint);margin-top:6px}
+
+    .s-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-elevated);border:1px solid var(--border);border-radius:18px;margin:0}
+    .s-stat{text-align:center;padding:16px 8px;border-right:1px solid var(--border-soft)}
+    .s-stat:last-child{border-right:none}
+    .s-stat b{display:block;font-size:17px;color:#fff}
+    .s-stat span{font-size:12px;color:var(--text-faint)}
+    .s-stat b .star{color:#ffc83d;font-size:14px}
+
+    .inst-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:4px 0 22px}
+    .inst-btn{flex:0 0 auto;min-width:180px;max-width:240px;height:42px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;border-radius:24px;text-decoration:none;background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#04140c!important}
+    .inst-btn:hover{transform:translateY(-2px);color:#04140c!important}
+    .inst-note{font-size:12.5px;color:var(--text-faint);display:flex;gap:6px;align-items:center}
+    .not-android{display:none;margin:-10px 0 22px;padding:12px 16px;border-radius:14px;font-size:13.5px;color:var(--text-muted);background:var(--accent-2-soft);border:1px solid rgba(45,212,255,.25)}
+
+    /* Capturas */
+    .shots{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+    .shot{flex:0 0 auto;width:min(88%,720px);border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-elevated);padding:0;cursor:zoom-in;scroll-snap-align:start}
+    .shot img{width:100%;height:auto;display:block}
+    .lb{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+    .lb.open{display:flex}
+    .lb img{max-height:92vh;max-width:92vw;border-radius:18px}
+
+    /* Info */
+    .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .info-i{background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+    .info-i span{display:block;font-size:12px;color:var(--text-faint);margin-bottom:3px}
+    .info-i b{font-size:14px;color:#fff;font-weight:600;word-break:break-word}
+    .sha{margin-top:12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+    .sha-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:12px;color:var(--text-faint)}
+    .sha code{display:block;font-size:12.5px;color:var(--accent-2);word-break:break-all;font-family:ui-monospace,Menlo,Consolas,monospace}
+    .sha button{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(0,255,136,.25);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+    .sha details{margin-top:10px;font-size:12.5px;color:var(--text-muted)}
+    .sha summary{cursor:pointer;color:var(--text-faint)}
+    .sha pre{margin:8px 0 0;white-space:pre-wrap;color:var(--text-muted);font-size:12px}
+    .safe{display:flex;gap:14px;align-items:flex-start;background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:18px}
+    .safe i{width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+    .safe p{margin:0;font-size:13.5px;color:var(--text-muted);line-height:1.65}
+
+    /* Reseñas */
+    .rv-top{display:flex;gap:34px;align-items:center;flex-wrap:wrap;background:var(--bg-elevated);border:1px solid var(--border);border-radius:18px;padding:22px 24px;margin-bottom:18px}
+    .rv-avg{text-align:center;min-width:110px}
+    .rv-avg b{font-size:3rem;font-weight:800;color:#fff;line-height:1}
+    .rv-avg small{display:block;color:var(--text-faint);font-size:12px;margin-top:4px}
+    .star{width:1em;height:1em;display:inline-block;flex-shrink:0;fill:currentColor;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;vertical-align:-.14em}
+    .st{color:#ffc83d;white-space:nowrap;display:inline-flex;align-items:center;gap:3px;font-size:14px;filter:drop-shadow(0 0 4px rgba(255,200,61,.35))}
+    .st .off{color:rgba(255,255,255,.16);filter:none}
+    #rv-avg-st{font-size:18px}
+    .rv-bars{flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px}
+    .rv-bar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-faint)}
+    .rv-bar i{flex:1;height:6px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+    .rv-bar i span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+    .rv-bar em{font-style:normal;width:16px;text-align:right}
+    .rv-form{background:var(--bg-elevated);border:1px solid rgba(0,255,136,.2);border-radius:18px;padding:22px;margin-bottom:22px}
+    .rv-form h3{font-size:1rem;font-weight:700;color:#fff;margin:0 0 4px}
+    .rv-form p{font-size:13px;color:var(--text-faint);margin:0 0 14px}
+    .g-btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border-radius:30px;background:#fff;color:#1f1f1f;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:inherit}
+    .g-btn i{color:#4285f4}
+    .me{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:14px;color:#fff;font-weight:600}
+    .me button{margin-left:auto;background:none;border:none;color:var(--text-faint);font-size:12.5px;cursor:pointer;font-family:inherit}
+    .av{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;flex-shrink:0}
+    .pick{display:flex;gap:8px;margin-bottom:12px}
+    .pick button{background:none;border:none;font-size:34px;color:rgba(255,255,255,.18);cursor:pointer;padding:0;line-height:1;display:inline-flex;transition:transform .15s,color .15s}
+    .pick button:hover{transform:scale(1.15)}
+    .pick button.on{color:#ffc83d;filter:drop-shadow(0 0 8px rgba(255,200,61,.5))}
+    .rv-form textarea{width:100%;min-height:96px;resize:vertical;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:12px 14px;font:inherit;font-size:14px}
+    .rv-form textarea:focus{outline:none;border-color:rgba(0,255,136,.4)}
+    .rv-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap}
+    .rv-row small{color:var(--text-faint);font-size:12px}
+    .rv-send{height:42px;padding:0 24px;border-radius:30px;border:none;font-weight:700;font-size:14px;cursor:pointer;background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#04140c;font-family:inherit}
+    .rv-send:disabled{opacity:.45;cursor:not-allowed}
+    .rv-msg{margin-top:10px;font-size:13px;color:var(--accent-2)}
+    .rv-msg.err{color:#ff7a7a}
+    .rv-item{padding:18px 0;border-top:1px solid var(--border-soft)}
+    .rv-item-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .rv-item-h b{display:block;color:#fff;font-size:14px}
+    .rv-item-h small{color:var(--text-faint);font-size:12px}
+    .rv-item p{margin:6px 0 0;font-size:14px;color:var(--text-muted);line-height:1.65;white-space:pre-wrap;word-break:break-word}
+    .rv-more{margin-top:14px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(0,255,136,.25);border-radius:30px;padding:10px 22px;font-weight:600;cursor:pointer;font-family:inherit}
+    .rv-empty{color:var(--text-faint);font-size:14px;padding:18px 0}
+
+    .rv-form input[type=email],.rv-form input[type=text]{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:11px 14px;font:inherit;font-size:14px;margin-bottom:10px}
+    .rv-form input:focus{outline:none;border-color:rgba(0,255,136,.4)}
+    .rv-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+    @media(max-width:640px){.rv-two{grid-template-columns:1fr}}
+    /* Modal */
+    .modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);padding:16px}
+    .modal.open{display:flex}
+    .sheet{width:100%;max-width:500px;background:var(--bg-elevated);border:1px solid rgba(0,255,136,.2);border-radius:26px;padding:26px 22px}
+    .sheet h3{font-size:1.2rem;font-weight:700;color:#fff;margin:0 0 4px}
+    .sheet>p{font-size:13px;color:var(--text-faint);margin:0 0 16px}
+    .ld{height:5px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;margin-bottom:16px}
+    .ld span{display:block;width:35%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));animation:ld 2s ease-in-out infinite}
+    @keyframes ld{to{transform:translateX(300%)}}
+    .steps{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:10px}
+    .steps li{display:flex;gap:12px;font-size:13.5px;line-height:1.55;color:var(--text-muted)}
+    .steps i{width:32px;height:32px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent)}
+    .sheet-a{display:flex;gap:10px;flex-wrap:wrap}
+    .sheet-a>*{flex:1;min-width:130px;height:44px;border-radius:30px;font-weight:600;font-size:13.5px;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    @media(max-width:640px){
+      .s-head{text-align:center;justify-content:center}
+      .s-stats{grid-template-columns:repeat(2,1fr)}
+      .s-stat:nth-child(2){border-right:none}
+      .s-stat:nth-child(-n+2){border-bottom:1px solid var(--border-soft)}
+      .inst-btn{max-width:none;flex:1}
+      .shot{width:88%}
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Estrella personalizada (se reutiliza con <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="sp-star" viewBox="0 0 24 24">
+      <path d="M12 2.6l2.85 6.05 6.65.85-4.9 4.6 1.25 6.6L12 17.4l-5.85 3.3 1.25-6.6-4.9-4.6 6.65-.85z"/>
+    </symbol>
+  </svg>
+
+  <div class="bg-art" aria-hidden="true"><div class="art-grid"></div><span class="art-glow g1"></span><span class="art-glow g2"></span></div>
+
+  <nav class="fixed w-full top-0 z-50 bg-secondary shadow-lg" id="navbar">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <a href="index.html" class="flex items-center space-x-2"><img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 object-contain"><span class="text-xl font-bold text-white">Spottrack</span></a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html#inicio" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+          <a href="descargas.html" class="nav-link text-white hover:text-primary transition-colors" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+          <a href="mobile.html" class="nav-link text-white hover:text-primary transition-colors" data-page="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+          <a href="ediciones.html" class="nav-link text-white hover:text-primary transition-colors" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+          <a href="index.html#novedades" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+          <a href="index.html#ads" class="nav-link text-white hover:text-primary transition-colors" data-page="index" data-section="ads"><i class="fas fa-bullhorn"></i><span data-i18n="nav.ads">Spottrack Ads</span></a>
+          <div class="lang-switcher"></div>
+        </div>
+        <div class="md:hidden"><button id="menu-toggle" class="text-white focus:outline-none"><i class="fas fa-bars text-xl"></i></button></div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu gradient-bg md:hidden" id="mobile-menu">
+    <div class="p-4 flex justify-end"><button id="menu-close" class="text-white focus:outline-none"><i class="fas fa-times text-xl"></i></button></div>
+    <div class="flex flex-col space-y-6 p-6">
+      <a href="index.html#inicio" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="inicio"><i class="fas fa-house"></i><span data-i18n="nav.inicio">Inicio</span></a>
+      <a href="descargas.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="descargas"><i class="fas fa-download"></i><span data-i18n="nav.descargar">Descargar</span></a>
+      <a href="mobile.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="mobile"><i class="fas fa-mobile-screen-button"></i><span data-i18n="nav.mobile">Mobile</span></a>
+      <a href="ediciones.html" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="ediciones"><i class="fas fa-layer-group"></i><span data-i18n="nav.ediciones">Ediciones</span></a>
+      <a href="index.html#novedades" class="text-xl text-white hover:text-primary transition-colors mobile-link" data-page="index" data-section="novedades"><i class="fas fa-newspaper"></i><span data-i18n="nav.novedades">Novedades</span></a>
+      <div class="lang-switcher"></div>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content-wrapper pt-24">
+    <main class="store">
+
+      <!-- CABECERA -->
+      <header class="s-head">
+        <div class="s-icon"><img src="images/logo.png" alt="Logo de Spottrack Mobile"></div>
+        <div class="s-title">
+          <h1>Spottrack Mobile</h1>
+          <a class="s-dev" href="https://rage-studiosc.github.io/" target="_blank" rel="noopener noreferrer">RAGE Studios</a>
+          <div class="s-sub">Música sin ads · offline · Videos · YouTube</div>
+        </div>
+      </header>
+
+      <div class="inst-row">
+        <a id="install-btn" class="inst-btn" data-apk-link href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.1/Spottrack-Music-Mobile.apk"><i class="fas fa-download"></i> Instalar</a>
+        <span class="inst-note"><i class="fas fa-shield-heart"></i> Archivo oficial de RAGE Studios</span>
+      </div>
+      <div class="not-android" id="not-android"><i class="fas fa-circle-info"></i> Estás en un dispositivo que no es Android. Abrí esta página desde tu teléfono para instalar la app.</div>
+
+      <div class="s-stats">
+        <div class="s-stat"><b><span id="st-avg">–</span> <svg class="star"><use href="#sp-star"/></svg></b><span id="st-count">Sin reseñas</span></div>
+        <div class="s-stat"><b>Android 8–17+</b><span>Compatibilidad</span></div>
+        <div class="s-stat"><b id="st-ver">v5.0.1</b><span>Versión actual</span></div>
+        <div class="s-stat"><b>Gratis</b><span>Sin anuncios en música</span></div>
+      </div>
+
+      <!-- CAPTURAS -->
+      <div class="blk" id="sec-shots" hidden>
+        <h2>Capturas de pantalla</h2>
+        <div class="shots" id="shots"></div>
+      </div>
+
+      <!-- ACERCA -->
+      <div class="blk">
+        <h2>Acerca de esta app</h2>
+        <p class="muted">La experiencia completa de Spottrack en tu Android: millones de canciones, música offline, videos en HD, 2K y 4K, radios en vivo de tu país, ecualizador, playlists, Me gusta y feed con novedades de tus artistas. Todo sin anuncios y optimizado para que ande fluida.</p>
+      </div>
+
+      <div class="blk">
+        <h2>Novedades de la versión <span id="nw-ver" class="muted" style="font-size:13px"></span></h2>
+        <p class="muted" id="nw-text">Mejoras de rendimiento y correcciones. Mirá el historial en <a href="index.html#novedades">Novedades</a>.</p>
+      </div>
+
+      <!-- INFORMACIÓN -->
+      <div class="blk">
+        <h2>Información de la app</h2>
+        <div class="info">
+          <div class="info-i"><span>Versión actual</span><b id="in-ver">5.0.1</b></div>
+          <div class="info-i"><span>Actualizada el</span><b id="in-date">–</b></div>
+          <div class="info-i"><span>Requiere</span><b>Android 8.0 hasta Android 17+</b></div>
+          <div class="info-i"><span>Tamaño</span><b id="in-size">–</b></div>
+          <div class="info-i"><span>Desarrollador</span><b><a href="https://rage-studiosc.github.io/" target="_blank" rel="noopener noreferrer">RAGE Studios</a></b></div>
+          <div class="info-i"><span>Distribución</span><b>APK oficial · Play Store próximamente</b></div>
+        </div>
+        <div class="sha">
+          <div class="sha-top"><span><i class="fas fa-fingerprint"></i> SHA-256 del APK</span><button type="button" id="sha-copy">Copiar</button></div>
+          <code id="sha">Pendiente de publicar</code>
+        </div>
+      </div>
+
+      <div class="blk">
+        <h2>Seguridad de los datos</h2>
+        <div class="safe"><i class="fas fa-lock"></i><p>Con cuenta, tus playlists, Me gusta y artistas seguidos se guardan en la nube (Firebase). La música offline queda solo en tu dispositivo. Si dejás una reseña, guardamos tu correo (no se muestra públicamente) solo para evitar reseñas duplicadas. No vendemos ni compartimos datos personales. Más detalle en la <a href="politica-privacidad.html">Política de Privacidad</a>.</p></div>
+      </div>
+
+      <!-- RESEÑAS -->
+      <div class="blk" id="reviews">
+        <h2>Calificaciones y reseñas</h2>
+        <div class="muted" id="rv-off" hidden>Las reseñas se habilitan muy pronto.</div>
+        <div id="rv-main">
+          <div class="rv-top">
+            <div class="rv-avg"><b id="rv-avg">–</b><div class="st" id="rv-avg-st"></div><small id="rv-total">Sin reseñas</small></div>
+            <div class="rv-bars" id="rv-bars"></div>
+          </div>
+
+          <div class="rv-form" id="rv-form">
+            <div id="rv-write">
+              <h3>Contá tu experiencia</h3>
+              <p>Calificá la app y dejá tu correo para enviar la reseña. Tu correo no se muestra públicamente. Se permite una reseña por correo.</p>
+              <div class="pick" id="pick" role="radiogroup" aria-label="Calificación"></div>
+              <div class="rv-two">
+                <input type="email" id="rv-email" placeholder="tu@correo.com" autocomplete="email" maxlength="120" required>
+                <input type="text" id="rv-name" placeholder="Nombre (opcional)" autocomplete="nickname" maxlength="40">
+              </div>
+              <input type="text" id="rv-hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <textarea id="rv-text" maxlength="500" placeholder="Escribí tu reseña (opcional)"></textarea>
+              <div class="rv-row"><small><span id="rv-len">0</span>/500</small><button type="button" class="rv-send" id="rv-send" disabled>Enviar reseña</button></div>
+              <div class="rv-msg" id="rv-msg" hidden></div>
+            </div>
+            <div id="rv-done" hidden><h3><i class="fas fa-circle-check" style="color:var(--accent)"></i> ¡Gracias por tu reseña!</h3><p style="margin:6px 0 0">Ya registramos una reseña con este correo. Cada correo puede enviar solo una.</p></div>
+          </div>
+
+          <div id="rv-list"></div>
+          <button type="button" class="rv-more" id="rv-more" hidden>Ver más reseñas</button>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="flex items-center"><img src="images/logo.png" alt="Spottrack Logo" class="h-8 w-8 mr-2 object-contain"><span class="text-xl font-bold text-white">Spottrack</span></div>
+          <p class="footer-brand-text" data-i18n="footer.tagline">Tu música, sin límites ni anuncios.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.product">Producto</h4>
+          <a href="index.html#inicio" data-i18n="nav.inicio">Inicio</a>
+          <a href="descargas.html" data-i18n="nav.descargar">Descargar</a>
+          <a href="mobile.html" data-i18n="nav.mobile">Mobile</a>
+          <a href="ediciones.html" data-i18n="nav.ediciones">Ediciones</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.legal">Legal</h4>
+          <a href="politica-privacidad.html" data-i18n="footer.privacy">Política de Privacidad</a>
+          <a href="terminos-condiciones.html" data-i18n="footer.terms">Términos y Condiciones</a>
+        </div>
+        <div class="footer-col"></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 RAGE Studios. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p></div>
+    </footer>
+  </div>
+
+  <div class="lb" id="lb"><img id="lb-img" alt="Captura ampliada"></div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="sheet">
+      <h3 id="m-title">Descargando Spottrack Mobile…</h3>
+      <p>Cuando termine, abrí el archivo desde las notificaciones o tus Descargas.</p>
+      <div class="ld"><span></span></div>
+      <ol class="steps">
+        <li><i class="fas fa-unlock-keyhole"></i><span>Si Android lo pide, tocá <b>Permitir</b> para instalar apps desde este navegador.</span></li>
+        <li><i class="fas fa-shield-halved"></i><span>Si Play Protect avisa, tocá <b>Instalar de todas formas</b>. Es normal en apps fuera de Play Store.</span></li>
+        <li><i class="fas fa-circle-check"></i><span>Tocá <b>Instalar</b> y luego <b>Abrir</b>. Solo hace falta la primera vez.</span></li>
+      </ol>
+      <div class="sheet-a">
+        <a class="btn-ghost" data-apk-link href="https://github.com/RAGE-StudiosC/Spottrack-Mobile/releases/download/v5.0.1/Spottrack-Music-Mobile.apk"><i class="fas fa-rotate-right"></i> Reintentar</a>
+        <button type="button" class="btn-ghost blue" id="m-close">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
+
+  <!-- ===== FICHA: capturas, versión, SHA-256, modal ===== -->
+  <script>
+  (function () {
+    // >>> EDITÁ ACÁ los nombres de tus capturas (carpeta images). Las que no existan se omiten solas.
+    var SCREENSHOTS = ["images/mobile-1.png","images/mobile-2.png","images/mobile-3.png","images/mobile-4.png","images/mobile-5.png","images/mobile-6.png"];
+    var JSON_URL = "https://raw.githubusercontent.com/RAGE-StudiosC/Spottrack-Mobile/main/latest.json";
+    var $ = function (id) { return document.getElementById(id); };
+
+    // Capturas
+    var box = $("shots");
+    SCREENSHOTS.forEach(function (src) {
+      var img = new Image();
+      img.onload = function () {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "shot"; b.appendChild(img); img.alt = "Captura de Spottrack Mobile";
+        b.addEventListener("click", function () { $("lb-img").src = src; $("lb").classList.add("open"); });
+        box.appendChild(b); $("sec-shots").hidden = false;
+      };
+      img.src = src;
+    });
+    $("lb").addEventListener("click", function () { $("lb").classList.remove("open"); });
+
+    // Datos de la versión (latest.json)
+    function setText(id, v) { if (v) $(id).textContent = v; }
+    fetch(JSON_URL + "?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (d) {
+        var v = String(d.version || "").replace(/^v/i, "");
+        if (/^[0-9][0-9A-Za-z.\-]*$/.test(v)) { setText("st-ver", "v" + v); setText("in-ver", v); setText("nw-ver", "· v" + v); window.__spotVersion = v; }
+        if (d.size) setText("in-size", String(d.size).slice(0, 20));
+        if (d.date) { var dt = new Date(d.date); if (!isNaN(dt)) setText("in-date", dt.toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })); }
+        if (d.notes) setText("nw-text", Array.isArray(d.notes) ? d.notes.join(" · ") : String(d.notes));
+        if (/^[a-f0-9]{64}$/i.test(d.sha256 || "")) setText("sha", d.sha256.toLowerCase());
+      }).catch(function () {});
+
+    $("sha-copy").addEventListener("click", function () {
+      var t = $("sha").textContent;
+      if (!/^[a-f0-9]{64}$/.test(t)) return;
+      if (navigator.clipboard) navigator.clipboard.writeText(t);
+      var b = this; b.textContent = "¡Copiado!"; setTimeout(function () { b.textContent = "Copiar"; }, 1500);
+    });
+
+    if (!/android/i.test(navigator.userAgent)) $("not-android").style.display = "block";
+
+    // Modal al instalar
+    var m = $("modal");
+    $("install-btn").addEventListener("click", function () { setTimeout(function () { m.classList.add("open"); }, 400); });
+    function closeM() { m.classList.remove("open"); }
+    $("m-close").addEventListener("click", closeM);
+    m.addEventListener("click", function (e) { if (e.target === m) closeM(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeM(); $("lb").classList.remove("open"); } });
+  })();
+  </script>
+
+  <!-- ===== RESEÑAS: Google + Firebase ===== -->
+  <script>
+  (function () {
+    // >>> PEGÁ ACÁ la URL de tu Apps Script (termina en /exec)
+    var API = "https://script.google.com/macros/s/AKfycbz-vTnmq4msI6ompvOQoeOgxkpKBjKfgfBv032DasYd6UJ8d2qFmwDQCeQXeYqt_pA/exec";
+    var DONE_KEY = "spottrackReviewed";
+    var $ = function (id) { return document.getElementById(id); };
+
+    if (!API || API.indexOf("PEGAR") === 0) { $("rv-main").hidden = true; $("rv-off").hidden = false; return; }
+
+    var reviews = [], shown = 10, rating = 0;
+
+    function starsHTML(n) { var s = ""; for (var i = 1; i <= 5; i++) s += '<svg class="star' + (i <= Math.round(n) ? "" : " off") + '"><use href="#sp-star"/></svg>'; return s; }
+    function avatar(name) { var d = document.createElement("span"); d.className = "av"; d.textContent = (name || "?").trim().charAt(0).toUpperCase(); return d; }
+
+    function renderSummary() {
+      var n = reviews.length, c = [0, 0, 0, 0, 0, 0], sum = 0;
+      reviews.forEach(function (r) { c[r.rating]++; sum += r.rating; });
+      var avg = n ? sum / n : 0, label = n ? n + (n === 1 ? " reseña" : " reseñas") : "Sin reseñas", t = n ? avg.toFixed(1).replace(".", ",") : "–";
+      $("rv-avg").textContent = t; $("st-avg").textContent = t;
+      $("rv-avg-st").innerHTML = starsHTML(avg);
+      $("rv-total").textContent = label; $("st-count").textContent = label;
+      $("rv-bars").innerHTML = [5, 4, 3, 2, 1].map(function (k) { return '<div class="rv-bar"><em>' + k + '</em><i><span style="width:' + (n ? c[k] / n * 100 : 0) + '%"></span></i></div>'; }).join("");
+    }
+
+    function renderList() {
+      var list = $("rv-list"); list.innerHTML = "";
+      if (!reviews.length) { list.innerHTML = '<div class="rv-empty">Todavía no hay reseñas. ¡Sé el primero!</div>'; $("rv-more").hidden = true; return; }
+      reviews.slice(0, shown).forEach(function (r) {
+        var it = document.createElement("div"); it.className = "rv-item";
+        var h = document.createElement("div"); h.className = "rv-item-h"; h.appendChild(avatar(r.name));
+        var w = document.createElement("div");
+        var nm = document.createElement("b"); nm.textContent = r.name;
+        var st = document.createElement("span"); st.className = "st"; st.innerHTML = starsHTML(r.rating);
+        var dt = document.createElement("small"), d = new Date(r.date);
+        dt.textContent = " · " + (isNaN(d) ? "" : d.toLocaleDateString("es-AR", { day: "numeric", month: "short", year: "numeric" })) + (r.version ? " · v" + r.version : "");
+        var l2 = document.createElement("div"); l2.appendChild(st); l2.appendChild(dt);
+        w.appendChild(nm); w.appendChild(l2); h.appendChild(w); it.appendChild(h);
+        if (r.text) { var p = document.createElement("p"); p.textContent = r.text; it.appendChild(p); }
+        list.appendChild(it);
+      });
+      $("rv-more").hidden = reviews.length <= shown;
+    }
+
+    function showDone() { $("rv-write").hidden = true; $("rv-done").hidden = false; }
+
+    function load() {
+      return fetch(API + "?t=" + Math.floor(Date.now() / 30000))
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          reviews = (d.reviews || []).filter(function (r) { return r.rating >= 1 && r.rating <= 5; }).map(function (r) {
+            return { name: String(r.name || "Usuario").slice(0, 40), rating: r.rating | 0, text: String(r.text || "").slice(0, 500), version: String(r.version || "").slice(0, 20), date: r.date };
+          });
+          renderSummary(); renderList();
+        })
+        .catch(function () { $("rv-list").innerHTML = '<div class="rv-empty">No se pudieron cargar las reseñas.</div>'; });
+    }
+
+    function msg(t, err) { var m = $("rv-msg"); m.hidden = !t; m.textContent = t || ""; m.classList.toggle("err", !!err); }
+
+    // Estrellas
+    var pick = $("pick");
+    for (var i = 1; i <= 5; i++) (function (i) {
+      var b = document.createElement("button"); b.type = "button"; b.innerHTML = '<svg class="star"><use href="#sp-star"/></svg>';
+      b.setAttribute("role", "radio"); b.setAttribute("aria-label", i + " estrellas");
+      b.addEventListener("click", function () { rating = i; Array.prototype.forEach.call(pick.children, function (x, k) { x.classList.toggle("on", k < i); }); $("rv-send").disabled = false; });
+      pick.appendChild(b);
+    })(i);
+    $("rv-text").addEventListener("input", function (e) { $("rv-len").textContent = e.target.value.length; });
+
+    $("rv-send").addEventListener("click", function () {
+      var email = $("rv-email").value.trim();
+      if (!rating) return msg("Elegí una calificación.", true);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return msg("Ingresá un correo válido.", true);
+      var btn = $("rv-send"); btn.disabled = true; msg("Enviando…");
+      fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: email, name: $("rv-name").value.trim(), rating: rating, text: $("rv-text").value.trim(), version: window.__spotVersion || "5.0.1", hp: $("rv-hp").value })
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        if (d.ok) { try { localStorage.setItem(DONE_KEY, "1"); } catch (e) {} msg(""); showDone(); return load(); }
+        btn.disabled = false;
+        if (d.error === "duplicate") { try { localStorage.setItem(DONE_KEY, "1"); } catch (e) {} showDone(); load(); return; }
+        msg(d.error === "limit" ? "Demasiados envíos, probá más tarde." : "No se pudo enviar. Revisá los datos e intentá de nuevo.", true);
+      }).catch(function () { btn.disabled = false; msg("No se pudo enviar. Intentá de nuevo.", true); });
+    });
+
+    $("rv-more").addEventListener("click", function () { shown += 10; renderList(); });
+
+    try { if (localStorage.getItem(DONE_KEY)) showDone(); } catch (e) {}
+    load();
+  })();
+  </script>
+</body>
+</html>
